@@ -1,0 +1,10 @@
+.navbar {
+  height: 110px;
+  background-color: white;
+  border: none;
+}
+
+.nav {
+  float: right;
+  vertical-align: middle;
+}
