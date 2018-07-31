@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
 import './main.css';
@@ -9,21 +10,21 @@ class Main extends React.Component {
         <Grid>
           <Row>
             <Col sm={3} className="yellow">
-              <p>1</p>
+              <div><FontAwesomeIcon icon="signal" className="fa-6x icons" /></div>
             </Col>
             <Col sm={3} className="green">
-              <p>2</p>
+              <div><FontAwesomeIcon icon="chart-pie" className="fa-6x icons" /></div>
             </Col>
             <Col sm={3} className="purple">
-              <p>3</p>
+              <div><FontAwesomeIcon icon="chart-bar" className="fa-6x icons" /></div>
             </Col>
             <Col sm={3} className="red">
-              <p>4</p>
+              <div><FontAwesomeIcon icon="chart-area" className="fa-6x icons" /></div>
             </Col>
           </Row>
           <Row>
             <Col sm={3} className="purple">
-              <p>5</p>
+              <div><FontAwesomeIcon icon="chart-line" className="fa-6x icons" /></div>
             </Col>
             <Col sm={3} className="red">
               <p>6</p>
