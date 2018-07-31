@@ -1,4 +1,24 @@
 .main {
-  margin: 100px 0;
+  margin: 20px 0;
   flex: 1;
+}
+
+.yellow {
+  background-color: #FEF796;
+  height: 200px;
+}
+
+.green {
+  background-color: #88B0A3;
+  height: 200px;
+}
+
+.purple {
+  background-color: #A498DA;
+  height: 200px;
+}
+
+.red {
+  background-color: #F79191;
+  height: 200px;
 }
