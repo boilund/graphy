@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
-import { Col, Grid, Row } from 'react-bootstrap';
+import { Button, Col, Grid, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './home-screen.css';
 
 class HomeScreen extends React.Component {
@@ -8,6 +9,13 @@ class HomeScreen extends React.Component {
     return (
       <main className="main">
         <Grid>
+          <Row>
+            <Col sm={12}>
+              <Button>
+                <Link to='./creating' >Create graph</Link>
+              </Button>
+            </Col>
+          </Row>
           <Row>
             <Col sm={3} className="yellow">
               <div><FontAwesomeIcon icon="signal" className="fa-6x icons" /></div>

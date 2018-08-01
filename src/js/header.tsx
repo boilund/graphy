@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { MenuItem, Nav, Navbar, NavDropdown, NavItem } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './header.css';
 
 import logo from './logoAndBrand.png';
@@ -11,18 +12,23 @@ class Header extends React.Component {
         <Navbar className="navbar">
           <Navbar.Header>
             <Navbar.Brand>
-              <a href='#home'><img src={logo} alt="logo" /></a>
+              <Link to='/'>
+                <img src={logo} alt="logo" />
+              </Link>
             </Navbar.Brand>
           </Navbar.Header>
           <Nav className="nav">
-            <NavItem eventKey={1} href="#">
-              My graphs
+            <NavItem eventKey={1}>
+              <Link to='/myGraphs'>
+                My graphs
+              </Link>
             </NavItem>
-            <NavItem eventKey={2} href="#">
-              Share
-            </NavItem>
-            <NavDropdown eventKey={3} title="Login" id="basic-nav-dropdown">
-              <MenuItem eventKey={3.1}>Login with your account</MenuItem>
+            <NavDropdown eventKey={2} title="Login" id="basic-nav-dropdown">
+              <MenuItem eventKey={2.1}>
+                <Link to='/login'>
+                  Login
+                </Link>
+              </MenuItem>
               <MenuItem eventKey={3.2}>Create new account</MenuItem>
             </NavDropdown>
           </Nav>
