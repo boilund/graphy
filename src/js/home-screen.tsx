@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as React from 'react';
 import { Col, Grid, Row } from 'react-bootstrap';
-import './main.css';
+import './home-screen.css';
 
-class Main extends React.Component {
+class HomeScreen extends React.Component {
   public render() {
     return (
       <main className="main">
@@ -27,21 +27,19 @@ class Main extends React.Component {
               <div><FontAwesomeIcon icon="chart-line" className="fa-6x icons" /></div>
             </Col>
             <Col sm={3} className="red">
-              <p>6</p>
+              <div><FontAwesomeIcon icon="signal" className="fa-6x icons" /></div>
             </Col>
             <Col sm={3} className="yellow">
-              <p>7</p>
+              <div><FontAwesomeIcon icon="chart-area" className="fa-6x icons" /></div>
             </Col>
             <Col sm={3} className="green">
-              <p>8</p>
+              <div><FontAwesomeIcon icon="chart-pie" className="fa-6x icons" /></div>
             </Col>
           </Row>
         </Grid>
-
-
       </main>
     );
   }
 }
 
-export default Main;
+export default HomeScreen;
