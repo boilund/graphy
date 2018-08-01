@@ -7,6 +7,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.0-14",
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "0.1.0-11",
+    "@types/react-router-dom": "^4.3.0",
     "ajv": "^6.5.1",
     "i": "^0.3.6",
     "npm": "^6.2.0",
@@ -30,6 +31,7 @@
     "@types/react-dom": "^16.0.6",
     "@types/react-bootstrap": "^0.32.11",
     "@types/react-fontawesome": "^1.6.3",
+    "@types/react-router": "^4.0.30",
     "@types/recharts": "^1.0.23",
     "typescript": "^2.9.2"
   }
