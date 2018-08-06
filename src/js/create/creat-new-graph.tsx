@@ -13,20 +13,33 @@ import SetXYaxis from "./set-xy-axis";
 // ];
 
 interface IState {
+  chartAttribute: {
+    xAxis: string[];
+    yAxis: string[];
+  };
   data: number[];
+  id: number;
+  title: string;
   type: string;
   value: number;
 }
 
-class CreateNewGraph extends React.Component<{}, IState> {
-  constructor(props: any) {
-    super(props);
-
-    this.state = {
+const initialState = {
+  chartAttribute: {
+    xAxis: [],
+    yAxis: []
+  },
       data: [],
+  id: 0,
+  title: "",
       type: "line-chart",
       value: 0
     };
+
+class CreateNewGraph extends React.Component<{}, IState> {
+  constructor(props: any) {
+    super(props);
+    this.state = initialState;
   }
 
   public handleChange = (e: any): void => {
