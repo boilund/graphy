@@ -29,27 +29,22 @@ const initialState = {
     xAxis: [],
     yAxis: []
   },
-      data: [],
+  data: [],
   id: 0,
   title: "",
-      type: "line-chart",
-      value: 0
-    };
+  type: "line-chart",
+  value: 0
+};
 
 class CreateNewGraph extends React.Component<{}, IState> {
   constructor(props: any) {
     super(props);
     this.state = initialState;
+    this.handleTitleChange = this.handleTitleChange.bind(this);
   }
 
-  public handleChange = (e: any): void => {
-    this.setState({
-      value: e.target.value
-    });
-  };
-
   public render() {
-    const { type, value } = this.state;
+    const { type, value, title } = this.state;
 
     return (
       <main className="main">
@@ -58,6 +53,15 @@ class CreateNewGraph extends React.Component<{}, IState> {
             <Col sm={12}>
               <h2>Create graph flow</h2>
               <p>Here we will create a new graph</p>
+            </Col>
+            <h3>Graph title set</h3>
+            <Col sm={12}>
+              <FormControl
+                type="text"
+                placeholder="Enter graph title"
+                value={title}
+                onChange={this.handleTitleChange}
+              />
             </Col>
             <Col sm={12}>
               <h3>Data set</h3>
@@ -92,7 +96,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
                         type="text"
                         value={value}
                         placeholder="value"
-                        onChange={this.handleChange}
+                        // onChange={this.handleChange}
                       />
                     </td>
                     <td>
@@ -185,6 +189,12 @@ class CreateNewGraph extends React.Component<{}, IState> {
       </main>
     );
   }
+
+  private handleTitleChange = (e: any): void => {
+    this.setState({
+      title: e.target.value
+    });
+  };
 }
 
 export default CreateNewGraph;
