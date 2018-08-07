@@ -13,27 +13,21 @@ import SetXYaxis from "./set-xy-axis";
 // ];
 
 interface IState {
-  chartAttribute: {
-    xAxis: string[];
-    yAxis: string[];
-  };
   data: number[];
   id: number;
   title: string;
   type: string;
-  value: number;
+  xAxis: string;
+  yAxis: string;
 }
 
 const initialState = {
-  chartAttribute: {
-    xAxis: [],
-    yAxis: []
-  },
   data: [],
   id: 0,
   title: "",
   type: "line-chart",
-  value: 0
+  xAxis: "",
+  yAxis: ""
 };
 
 class CreateNewGraph extends React.Component<{}, IState> {
@@ -41,6 +35,8 @@ class CreateNewGraph extends React.Component<{}, IState> {
     super(props);
     this.state = initialState;
     this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleXAxisChange = this.handleXAxisChange.bind(this);
+    this.handleYAxisChange = this.handleYAxisChange.bind(this);
   }
 
   public render() {
@@ -75,16 +71,18 @@ class CreateNewGraph extends React.Component<{}, IState> {
                   <tr>
                     <th>
                       <FormControl
+                        id="r1c1"
                         type="text"
-                        placeholder="Enter title"
-                        // onChange={this.handleChange}
+                        placeholder="Enter X axis name"
+                        onChange={this.handleXAxisChange}
                       />
                     </th>
                     <th>
                       <FormControl
+                        id="r1c2"
                         type="text"
-                        placeholder="Enter title"
-                        // onChange={this.handleChange}
+                        placeholder="Enter Y axis name"
+                        onChange={this.handleYAxisChange}
                       />
                     </th>
                   </tr>
@@ -193,6 +191,18 @@ class CreateNewGraph extends React.Component<{}, IState> {
   private handleTitleChange = (e: any): void => {
     this.setState({
       title: e.target.value
+    });
+  };
+
+  private handleXAxisChange = (e: any): void => {
+    this.setState({
+      xAxis: e.target.value
+    });
+  };
+
+  private handleYAxisChange = (e: any): void => {
+    this.setState({
+      yAxis: e.target.value
     });
   };
 }
