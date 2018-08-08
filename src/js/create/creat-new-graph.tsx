@@ -49,7 +49,39 @@ class CreateNewGraph extends React.Component<{}, IState> {
   }
 
   public render() {
-    const { type, value, title } = this.state;
+    const { data, row, type, title } = this.state;
+
+    const tableContents = new Array(row).fill({
+      amt: 0,
+      name: "",
+      pv: 0,
+      uv: 0
+    });
+
+    tableContents.splice(0, data.length, ...data);
+
+    const inputTable = tableContents.map((item: IData, index: number) => {
+      return (
+        <tr key={index}>
+          <td>
+            <FormControl
+              type="text"
+              value={item.uv}
+              placeholder="value"
+              // onChange={this.handleChange}
+            />
+          </td>
+          <td>
+            <FormControl
+              type="text"
+              value={item.pv}
+              placeholder="value"
+              // onChange={this.handleChange}
+            />
+          </td>
+        </tr>
+      );
+    });
 
     return (
       <main className="main">
@@ -68,7 +100,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
                 onChange={this.handleTitleChange}
               />
             </Col>
-              <h3>Data set</h3>
+            <h3>Data set</h3>
             <Col sm={10}>
               <Table
                 striped={true}
@@ -96,98 +128,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                    <td>
-                      <FormControl
-                        type="text"
-                        value={value}
-                        placeholder="value"
-                        // onChange={this.handleChange}
-                      />
-                    </td>
-                  </tr>
-                </tbody>
+                <tbody>{inputTable}</tbody>
               </Table>
             </Col>
             <Col sm={2}>
