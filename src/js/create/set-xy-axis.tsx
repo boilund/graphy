@@ -4,7 +4,6 @@ import Complete from "./complete";
 
 interface IProps {
   type: string;
-  value: number;
   // data: { key: number }[];
 }
 
@@ -15,8 +14,6 @@ interface IState {
 
 class SetXYaxis extends React.Component<IProps, IState> {
   public render() {
-    const { value } = this.props;
-
     return (
       <React.Fragment>
         <Row>
@@ -38,7 +35,7 @@ class SetXYaxis extends React.Component<IProps, IState> {
             </FormControl>
           </Col>
         </Row>
-        <Complete value={value} />
+        <Complete />
       </React.Fragment>
     );
   }

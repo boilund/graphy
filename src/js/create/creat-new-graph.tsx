@@ -188,7 +188,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
             </Col>
           </Row>
 
-          <SetXYaxis type={type} value={value} />
+          <SetXYaxis type={type} />
         </Grid>
       </main>
     );

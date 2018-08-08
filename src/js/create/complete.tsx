@@ -20,11 +20,7 @@ const data = [
   { name: "Page G", uv: 3490, pv: 4300, amt: 2100 }
 ];
 
-interface IProps {
-  value: number;
-}
-
-class Complete extends React.Component<IProps, {}> {
+class Complete extends React.Component<{}, {}> {
   public render() {
     return (
       <React.Fragment>
