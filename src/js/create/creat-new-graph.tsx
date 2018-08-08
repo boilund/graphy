@@ -12,8 +12,15 @@ import SetXYaxis from "./set-xy-axis";
 //   { name: "Page G", uv: 3490, pv: 4300, amt: 2100 }
 // ];
 
+interface IData {
+  name: string;
+  uv: number;
+  pv: number;
+  amt: number;
+}
+
 interface IState {
-  data: number[];
+  data: IData[];
   id: number;
   row: number;
   title: string;
