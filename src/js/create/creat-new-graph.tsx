@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Col, FormControl, Grid, Row, Table } from "react-bootstrap";
+import { Button, Col, FormControl, Grid, Row, Table } from "react-bootstrap";
 import SetXYaxis from "./set-xy-axis";
 
 // const data = [
@@ -15,6 +15,7 @@ import SetXYaxis from "./set-xy-axis";
 interface IState {
   data: number[];
   id: number;
+  row: number;
   title: string;
   type: string;
   xAxis: string;
@@ -24,6 +25,7 @@ interface IState {
 const initialState = {
   data: [],
   id: 0,
+  row: 1,
   title: "",
   type: "line-chart",
   xAxis: "",
@@ -59,8 +61,8 @@ class CreateNewGraph extends React.Component<{}, IState> {
                 onChange={this.handleTitleChange}
               />
             </Col>
-            <Col sm={12}>
               <h3>Data set</h3>
+            <Col sm={10}>
               <Table
                 striped={true}
                 bordered={true}
@@ -181,7 +183,11 @@ class CreateNewGraph extends React.Component<{}, IState> {
                 </tbody>
               </Table>
             </Col>
+            <Col sm={2}>
+              <Button onClick={this.addRow}>Add row</Button>
+            </Col>
           </Row>
+
           <SetXYaxis type={type} value={value} />
         </Grid>
       </main>
@@ -203,6 +209,14 @@ class CreateNewGraph extends React.Component<{}, IState> {
   private handleYAxisChange = (e: any): void => {
     this.setState({
       yAxis: e.target.value
+    });
+  };
+
+  private addRow = (e: any): void => {
+    const { row } = this.state;
+
+    this.setState({
+      row: row + 1
     });
   };
 }
