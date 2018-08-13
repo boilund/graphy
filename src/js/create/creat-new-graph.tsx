@@ -115,6 +115,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
                         id="r1c1"
                         type="text"
                         placeholder="Enter X axis name"
+                        value={xAxis}
                         onChange={this.handleXAxisChange}
                       />
                     </th>
@@ -123,6 +124,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
                         id="r1c2"
                         type="text"
                         placeholder="Enter Y axis name"
+                        value={yAxis}
                         onChange={this.handleYAxisChange}
                       />
                     </th>
