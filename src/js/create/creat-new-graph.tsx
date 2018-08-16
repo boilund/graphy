@@ -54,6 +54,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleXAxisChange = this.handleXAxisChange.bind(this);
     this.handleYAxisChange = this.handleYAxisChange.bind(this);
+    this.addRow = this.addRow.bind(this);
   }
 
   public render() {
