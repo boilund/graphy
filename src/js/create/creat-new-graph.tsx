@@ -1,6 +1,5 @@
 import * as React from "react";
-import { Button, Col, FormControl, Grid, Row, Table } from "react-bootstrap";
-import SetXYaxis from "./set-xy-axis";
+import Complete from "./complete";
 
 // const data = [
 //   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
@@ -138,7 +137,8 @@ class CreateNewGraph extends React.Component<{}, IState> {
             </Col>
           </Row>
 
-          <SetXYaxis type={type} />
+          <Complete />
+
         </Grid>
       </main>
     );
