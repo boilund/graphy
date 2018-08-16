@@ -21,10 +21,8 @@ import Complete from "./complete";
 // ];
 
 interface IData {
-  name: string;
-  uv: number;
-  pv: number;
-  amt: number;
+  columnX: string | number;
+  columnY: number;
 }
 
 interface IState {
@@ -38,7 +36,7 @@ interface IState {
 }
 
 const initialState = {
-  data: [],
+  data: [{ columnX: "", columnY: 0 }],
   id: 0,
   row: 1,
   title: "",
@@ -58,13 +56,11 @@ class CreateNewGraph extends React.Component<{}, IState> {
   }
 
   public render() {
-    const { data, row, type, title } = this.state;
+    const { data, row, title, xAxis, yAxis } = this.state;
 
     const tableContents = new Array(row).fill({
-      amt: 0,
-      name: "",
-      pv: 0,
-      uv: 0
+      columnX: "",
+      columnY: 0
     });
 
     tableContents.splice(0, data.length, ...data);
@@ -75,17 +71,19 @@ class CreateNewGraph extends React.Component<{}, IState> {
           <td>
             <FormControl
               type="text"
-              value={item.uv}
-              placeholder="value"
-              // onChange={this.handleChange}
+              value={item.columnX}
+              placeholder="Enter text"
+              name="columnX"
+              onChange={this.handleDataChange.bind(this, index)}
             />
           </td>
           <td>
             <FormControl
               type="text"
-              value={item.pv}
-              placeholder="value"
-              // onChange={this.handleChange}
+              value={item.columnY}
+              placeholder="Enter number"
+              name="columnY"
+              onChange={this.handleDataChange.bind(this, index)}
             />
           </td>
         </tr>
@@ -170,6 +168,21 @@ class CreateNewGraph extends React.Component<{}, IState> {
     this.setState({
       yAxis: e.target.value
     });
+  };
+
+  private handleDataChange = (
+    index: number,
+    e: React.FormEvent<FormControlProps>
+  ): void => {
+    const { data } = this.state;
+    const { name, value } = e.currentTarget;
+    const targetData = {
+      ...data[index],
+      [name as any]: value
+    };
+    data.splice(index, 1, targetData);
+
+    this.setState({ data });
   };
 
   private addRow = (e: any): void => {
