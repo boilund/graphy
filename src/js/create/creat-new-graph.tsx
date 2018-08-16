@@ -9,6 +9,7 @@ import {
   Table
 } from "react-bootstrap";
 import Complete from "./complete";
+import "./create-new-graph.css";
 
 // const data = [
 //   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
@@ -94,12 +95,8 @@ class CreateNewGraph extends React.Component<{}, IState> {
       <main className="main">
         <Grid>
           <Row>
-            <Col sm={12}>
-              <h2>Create graph flow</h2>
-              <p>Here we will create a new graph</p>
-            </Col>
             <h3>Graph title set</h3>
-            <Col sm={12}>
+            <Col sm={12} className="margin">
               <FormControl
                 type="text"
                 placeholder="Enter graph title"
@@ -108,7 +105,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
               />
             </Col>
             <h3>Data set</h3>
-            <Col sm={10}>
+            <Col sm={10} className="margin">
               <Table
                 striped={true}
                 bordered={true}
@@ -140,7 +137,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
                 <tbody>{inputTable}</tbody>
               </Table>
             </Col>
-            <Col sm={2}>
+            <Col sm={2} className="margin">
               <Button onClick={this.addRow}>Add Row</Button>
             </Col>
           </Row>
