@@ -21,7 +21,7 @@ import "./create-new-graph.css";
 //   { name: "Page G", uv: 3490, pv: 4300, amt: 2100 }
 // ];
 
-interface IData {
+export interface IData {
   columnX: string | number;
   columnY: number;
 }
@@ -142,8 +142,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
             </Col>
           </Row>
 
-          <Complete />
-
+          <Complete data={data} />
         </Grid>
       </main>
     );
