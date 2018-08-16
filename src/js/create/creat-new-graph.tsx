@@ -172,7 +172,12 @@ class CreateNewGraph extends React.Component<{}, IState> {
     e: React.FormEvent<FormControlProps>
   ): void => {
     const { data } = this.state;
-    const { name, value } = e.currentTarget;
+    const { name } = e.currentTarget;
+    let { value } = e.currentTarget;
+
+    if (name === "columnY" && value !== undefined) {
+      value = +value;
+    }
     const targetData = {
       ...data[index],
       [name as any]: value
