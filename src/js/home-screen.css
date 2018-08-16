@@ -1,6 +1,7 @@
 .main {
-  margin: 20px 0;
+  margin-top: 20px;
   flex: 1;
+  width: 100%;
 }
 
 .yellow {
