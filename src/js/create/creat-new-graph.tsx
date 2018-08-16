@@ -142,7 +142,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
               </Table>
             </Col>
             <Col sm={2}>
-              <Button onClick={this.addRow}>Add row</Button>
+              <Button onClick={this.addRow}>Add Row</Button>
             </Col>
           </Row>
 
