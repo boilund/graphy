@@ -8,18 +8,21 @@ import {
   Row,
   Table
 } from "react-bootstrap";
+import BarGraph from "./bar-graph";
 import "./create-new-graph.css";
 import LineGraph from "./line-graph";
 
-// const data = [
-//   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
-//   { name: "Page B", uv: 3000, pv: 1398, amt: 2210 },
-//   { name: "Page C", uv: 2000, pv: 9800, amt: 2290 },
-//   { name: "Page D", uv: 2780, pv: 3908, amt: 2000 },
-//   { name: "Page E", uv: 1890, pv: 4800, amt: 2181 },
-//   { name: "Page F", uv: 2390, pv: 3800, amt: 2500 },
-//   { name: "Page G", uv: 3490, pv: 4300, amt: 2100 }
-// ];
+interface Id {
+  id: string;
+}
+
+interface IParams {
+  params: Id;
+}
+
+interface IProps {
+  match: IParams;
+}
 
 export interface IData {
   columnX: string | number;
@@ -41,12 +44,12 @@ const initialState = {
   id: 0,
   row: 1,
   title: "",
-  type: "line-chart",
+  type: "",
   xAxis: "",
   yAxis: ""
 };
 
-class CreateNewGraph extends React.Component<{}, IState> {
+class CreateNewGraph extends React.Component<IProps, IState> {
   constructor(props: any) {
     super(props);
     this.state = initialState;
@@ -142,11 +145,26 @@ class CreateNewGraph extends React.Component<{}, IState> {
             </Col>
           </Row>
 
-          <LineGraph data={data} yAxis={yAxis} />
+          {this.setGraph()}
+
         </Grid>
       </main>
     );
   }
+
+  private setGraph = () => {
+    const { id } = this.props.match.params;
+    const { data, yAxis } = this.state;
+
+    switch (id) {
+      case "line-chart":
+        return <LineGraph data={data} yAxis={yAxis} />;
+      case "bar-chart":
+        return <BarGraph data={data} yAxis={yAxis} />;
+      default:
+        return;
+    }
+  };
 
   private handleTitleChange = (e: any): void => {
     this.setState({
