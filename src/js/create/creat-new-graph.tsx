@@ -8,8 +8,8 @@ import {
   Row,
   Table
 } from "react-bootstrap";
-import Complete from "./complete";
 import "./create-new-graph.css";
+import LineGraph from "./line-graph";
 
 // const data = [
 //   { name: "Page A", uv: 4000, pv: 2400, amt: 2400 },
@@ -142,7 +142,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
             </Col>
           </Row>
 
-          <Complete data={data} />
+          <LineGraph data={data} yAxis={yAxis} />
         </Grid>
       </main>
     );

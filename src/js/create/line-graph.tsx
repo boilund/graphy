@@ -10,19 +10,21 @@ import {
   YAxis
 } from "recharts";
 import { IData } from "./creat-new-graph";
+import "./graph-style.css";
 
 interface IProps {
   data: IData[];
+  yAxis: string;
 }
 
-const Complete: React.SFC<IProps> = (props: IProps) => {
-  const { data } = props;
+const LineGraph: React.SFC<IProps> = (props: IProps) => {
+  const { data, yAxis } = props;
 
   return (
     <React.Fragment>
       <Row>
-        <Col sm={12} style={{ marginBottom: 30 }}>
-          <h3>Completed!</h3>
+        <Col sm={12} className="margin-bottom">
+          <h3>Line Graph</h3>
         </Col>
       </Row>
       <Row>
@@ -30,15 +32,21 @@ const Complete: React.SFC<IProps> = (props: IProps) => {
           <LineChart
             width={730}
             height={250}
-            data={data}
+            data={data.slice()}
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            className="center"
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="columnX" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Line type="monotone" dataKey="columnY" stroke="#8884d8" />
+            <Line
+              type="monotone"
+              dataKey="columnY"
+              name={yAxis}
+              stroke="#8884d8"
+            />
           </LineChart>
         </Col>
       </Row>
@@ -46,4 +54,4 @@ const Complete: React.SFC<IProps> = (props: IProps) => {
   );
 };
 
-export default Complete;
+export default LineGraph;
