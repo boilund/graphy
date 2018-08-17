@@ -92,7 +92,7 @@ class CreateNewGraph extends React.Component<{}, IState> {
     });
 
     return (
-      <main className="main">
+      <main className="App-main">
         <Grid>
           <Row>
             <h3>Graph title set</h3>

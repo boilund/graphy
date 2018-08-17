@@ -10,3 +10,9 @@
   padding: 20px;
 }
 
+.App-main {
+  margin: 50px 0;
+  flex: 1;
+  width: 100%;
+}
+

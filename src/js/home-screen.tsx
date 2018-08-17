@@ -7,7 +7,7 @@ import "./home-screen.css";
 class HomeScreen extends React.Component {
   public render() {
     return (
-      <main className="main">
+      <main className="App-main">
         <Grid fluid={true}>
           <Row>
             <Col sm={3} className="yellow">
