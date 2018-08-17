@@ -33,7 +33,7 @@ class HomeScreen extends React.Component {
           </Row>
           <Row>
             <Col sm={3} className="purple">
-              <Link to="./creating">
+              <Link to="./creating/line-chart">
                 <div>
                   <FontAwesomeIcon icon="chart-line" className="fa-6x icons" />
                 </div>

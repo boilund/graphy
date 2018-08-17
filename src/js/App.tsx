@@ -18,7 +18,7 @@ class App extends React.Component {
             <Header />
             <Switch>
               <Route exact={true} path="/" component={HomeScreen} />
-              <Route path="/creating" component={CreateNewGraph} />
+              <Route path="/creating/:id" component={CreateNewGraph} />
               <Route path="/myGraphs" component={MyGraphs} />
               <Route path="/login" component={Login} />
             </Switch>
