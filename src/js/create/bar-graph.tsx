@@ -18,7 +18,7 @@ interface IProps {
 }
 
 const BarGraph: React.SFC<IProps> = (props: IProps) => {
-  const { data } = props;
+  const { data, yAxis } = props;
 
   return (
     <React.Fragment>
@@ -36,12 +36,11 @@ const BarGraph: React.SFC<IProps> = (props: IProps) => {
           className="center"
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
+          <XAxis dataKey="columnX" />
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="pv" fill="#8884d8" />
-          <Bar dataKey="uv" fill="#82ca9d" />
+          <Bar dataKey="columnY" fill="#8884d8" name={yAxis} />
         </BarChart>
       </Row>
     </React.Fragment>
