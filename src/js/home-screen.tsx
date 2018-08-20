@@ -21,7 +21,7 @@ class HomeScreen extends React.Component {
               </div>
             </Col>
             <Col sm={3} className="purple">
-              <Link to="./creating/bar-chart">
+              <Link to="./creating/bar-graph">
                 <div>
                   <FontAwesomeIcon icon="chart-bar" className="fa-6x icons" />
                 </div>
@@ -35,7 +35,7 @@ class HomeScreen extends React.Component {
           </Row>
           <Row>
             <Col sm={3} className="purple">
-              <Link to="./creating/line-chart">
+              <Link to="./creating/line-graph">
                 <div>
                   <FontAwesomeIcon icon="chart-line" className="fa-6x icons" />
                 </div>

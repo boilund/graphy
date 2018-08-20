@@ -157,9 +157,9 @@ class CreateNewGraph extends React.Component<IProps, IState> {
     const { data, yAxis } = this.state;
 
     switch (id) {
-      case "line-chart":
+      case "line-graph":
         return <LineGraph data={data} yAxis={yAxis} />;
-      case "bar-chart":
+      case "bar-graph":
         return <BarGraph data={data} yAxis={yAxis} />;
       default:
         return;
