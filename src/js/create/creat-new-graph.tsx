@@ -8,6 +8,7 @@ import {
   Row,
   Table
 } from "react-bootstrap";
+import AreaGraph from "./area-graph";
 import BarGraph from "./bar-graph";
 import "./create-new-graph.css";
 import LineGraph from "./line-graph";
@@ -146,7 +147,6 @@ class CreateNewGraph extends React.Component<IProps, IState> {
           </Row>
 
           {this.setGraph()}
-
         </Grid>
       </main>
     );
@@ -161,6 +161,8 @@ class CreateNewGraph extends React.Component<IProps, IState> {
         return <LineGraph data={data} yAxis={yAxis} />;
       case "bar-graph":
         return <BarGraph data={data} yAxis={yAxis} />;
+      case "area-graph":
+        return <AreaGraph data={data} yAxis={yAxis} />;
       default:
         return;
     }

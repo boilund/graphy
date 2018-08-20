@@ -28,9 +28,11 @@ class HomeScreen extends React.Component {
               </Link>
             </Col>
             <Col sm={3} className="red">
-              <div>
-                <FontAwesomeIcon icon="chart-area" className="fa-6x icons" />
-              </div>
+              <Link to="./creating/area-graph">
+                <div>
+                  <FontAwesomeIcon icon="chart-area" className="fa-6x icons" />
+                </div>
+              </Link>
             </Col>
           </Row>
           <Row>
