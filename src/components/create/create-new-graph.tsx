@@ -24,7 +24,11 @@ interface IParams {
 interface IProps {
   match: IParams;
   title: string;
+  xAxis: string;
+  yAxis: string;
   setTitle(title: string): void;
+  setXAxis(xAxis: string): void;
+  setYAxis(yAxis: string): void;
 }
 
 export interface IData {
@@ -36,20 +40,14 @@ interface IState {
   data: IData[];
   id: number;
   row: number;
-  // title: string;
   type: string;
-  xAxis: string;
-  yAxis: string;
 }
 
 const initialState = {
   data: [{ columnX: "", columnY: 0 }],
   id: 0,
   row: 1,
-  // title: "",
-  type: "",
-  xAxis: "",
-  yAxis: ""
+  type: ""
 };
 
 class CreateNewGraph extends React.Component<IProps, IState> {
@@ -63,10 +61,8 @@ class CreateNewGraph extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { data, row, xAxis, yAxis } = this.state;
-    const { title } = this.props;
-    // tslint:disable-next-line:no-console
-    console.log(title);
+    const { data, row } = this.state;
+    const { title, xAxis, yAxis } = this.props;
 
     const tableContents = new Array(row).fill({
       columnX: "",
@@ -178,15 +174,11 @@ class CreateNewGraph extends React.Component<IProps, IState> {
   };
 
   private handleXAxisChange = (e: any): void => {
-    this.setState({
-      xAxis: e.target.value
-    });
+    this.props.setXAxis(e.target.value);
   };
 
   private handleYAxisChange = (e: any): void => {
-    this.setState({
-      yAxis: e.target.value
-    });
+    this.props.setYAxis(e.target.value);
   };
 
   private handleDataChange = (

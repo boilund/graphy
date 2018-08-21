@@ -4,15 +4,19 @@ import * as actions from "../actions/";
 import CreateNewGraph from "../components/create/create-new-graph";
 import { IStoreState } from "../types/index";
 
-export function mapStateToProps({ title }: IStoreState) {
+export function mapStateToProps(state: IStoreState) {
   return {
-    title
+    title: state.title,
+    xAxis: state.xAxis,
+    yAxis: state.yAxis
   };
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.SetTitle>) {
+export function mapDispatchToProps(dispatch: Dispatch<actions.SetValue>) {
   return {
-    setTitle: (title: string) => dispatch(actions.setTitle(title))
+    setTitle: (title: string) => dispatch(actions.setTitle(title)),
+    setXAxis: (xAxis: string) => dispatch(actions.setXAxis(xAxis)),
+    setYAxis: (yAxis: string) => dispatch(actions.setYAxis(yAxis))
   };
 }
 

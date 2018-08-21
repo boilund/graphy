@@ -11,11 +11,9 @@ import * as ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, Store } from "redux";
 // import App from "./components/App";
-// import { Title } from "./actions/";
 import CreateNewGraph from "./containers/create-new-graph";
 import "./index.css";
-// import registerServiceWorker from "./registerServiceWorker";
-import { title } from "./reducers/";
+import { reducer } from "./reducers/";
 import { IStoreState } from "./types/";
 
 library.add(faChartArea, faChartBar, faChartLine, faChartPie, faSignal);
@@ -25,7 +23,7 @@ const devTools: any = (window as any).__REDUX_DEVTOOLS_EXTENSION__
   : createStore;
 
 const initialState = { title: "" };
-const store: Store<IStoreState> = devTools(title, initialState);
+const store: Store<IStoreState> = devTools(reducer, initialState);
 
 ReactDOM.render(
   <Provider store={store}>
@@ -33,4 +31,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById("root") as HTMLElement
 );
-// registerServiceWorker();
