@@ -8,10 +8,10 @@ import {
   Row,
   Table
 } from "react-bootstrap";
-import AreaGraph from "./area-graph";
-import BarGraph from "./bar-graph";
+// import AreaGraph from "./area-graph";
+// import BarGraph from "./bar-graph";
 import "./create-new-graph.css";
-import LineGraph from "./line-graph";
+// import LineGraph from "./line-graph";
 
 interface Id {
   id: string;
@@ -23,6 +23,8 @@ interface IParams {
 
 interface IProps {
   match: IParams;
+  title: string;
+  setTitle(title: string): void;
 }
 
 export interface IData {
@@ -34,7 +36,7 @@ interface IState {
   data: IData[];
   id: number;
   row: number;
-  title: string;
+  // title: string;
   type: string;
   xAxis: string;
   yAxis: string;
@@ -44,7 +46,7 @@ const initialState = {
   data: [{ columnX: "", columnY: 0 }],
   id: 0,
   row: 1,
-  title: "",
+  // title: "",
   type: "",
   xAxis: "",
   yAxis: ""
@@ -61,7 +63,10 @@ class CreateNewGraph extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { data, row, title, xAxis, yAxis } = this.state;
+    const { data, row, xAxis, yAxis } = this.state;
+    const { title } = this.props;
+    // tslint:disable-next-line:no-console
+    console.log(title);
 
     const tableContents = new Array(row).fill({
       columnX: "",
@@ -146,32 +151,30 @@ class CreateNewGraph extends React.Component<IProps, IState> {
             </Col>
           </Row>
 
-          {this.setGraph()}
+          {/* {this.setGraph()} */}
         </Grid>
       </main>
     );
   }
 
-  private setGraph = () => {
-    const { id } = this.props.match.params;
-    const { data, yAxis } = this.state;
+  // private setGraph = () => {
+  //   const { id } = this.props.match.params;
+  //   const { data, yAxis } = this.state;
 
-    switch (id) {
-      case "line-graph":
-        return <LineGraph data={data} yAxis={yAxis} />;
-      case "bar-graph":
-        return <BarGraph data={data} yAxis={yAxis} />;
-      case "area-graph":
-        return <AreaGraph data={data} yAxis={yAxis} />;
-      default:
-        return;
-    }
-  };
+  //   switch (id) {
+  //     case "line-graph":
+  //       return <LineGraph data={data} yAxis={yAxis} />;
+  //     case "bar-graph":
+  //       return <BarGraph data={data} yAxis={yAxis} />;
+  //     case "area-graph":
+  //       return <AreaGraph data={data} yAxis={yAxis} />;
+  //     default:
+  //       return;
+  //   }
+  // };
 
   private handleTitleChange = (e: any): void => {
-    this.setState({
-      title: e.target.value
-    });
+    this.props.setTitle(e.target.value);
   };
 
   private handleXAxisChange = (e: any): void => {
