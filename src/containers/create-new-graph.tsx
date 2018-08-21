@@ -10,7 +10,7 @@ export function mapStateToProps({ title }: IStoreState) {
   };
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.Title>) {
+export function mapDispatchToProps(dispatch: Dispatch<actions.SetTitle>) {
   return {
     setTitle: (title: string) => dispatch(actions.setTitle(title))
   };

@@ -1,2 +1,2 @@
-export const TITLE = "TITLE";
-export type TITLE = typeof TITLE;
+export const SET_TITLE = "SET_TITLE";
+export type SET_TITLE = typeof SET_TITLE;

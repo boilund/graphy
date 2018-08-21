@@ -1,15 +1,15 @@
 import * as constants from "../constants";
 
-export interface ITitle {
+export interface ISetTitle {
   title: string;
-  type: constants.TITLE;
+  type: constants.SET_TITLE;
 }
 
-export type Title = ITitle;
+export type SetTitle = ISetTitle;
 
-export function setTitle(title: string): ITitle {
+export function setTitle(title: string): ISetTitle {
   return {
     title,
-    type: constants.TITLE
+    type: constants.SET_TITLE
   };
 }
