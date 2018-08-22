@@ -15,7 +15,17 @@ export interface ISetYAxis {
   type: constants.SET_Y_AXIS;
 }
 
-export type SetValue = ISetTitle | ISetXAxis | ISetYAxis;
+export interface IData {
+  columnX: string | number;
+  columnY: number;
+}
+
+export interface ISetData {
+  data: IData[];
+  type: constants.SET_DATA;
+}
+
+export type SetValue = ISetTitle | ISetXAxis | ISetYAxis | ISetData;
 
 export function setTitle(title: string): ISetTitle {
   return {
@@ -35,5 +45,12 @@ export function setYAxis(yAxis: string): ISetYAxis {
   return {
     type: constants.SET_Y_AXIS,
     yAxis
+  };
+}
+
+export function setData(data: IData[]): ISetData {
+  return {
+    data,
+    type: constants.SET_DATA
   };
 }

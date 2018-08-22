@@ -22,30 +22,24 @@ interface IParams {
 }
 
 interface IProps {
-  match: IParams;
+  data: IData[];
   title: string;
   xAxis: string;
   yAxis: string;
+  setData(data: IData[]): void;
   setTitle(title: string): void;
   setXAxis(xAxis: string): void;
   setYAxis(yAxis: string): void;
 }
 
-export interface IData {
-  columnX: string | number;
-  columnY: number;
-}
-
 interface IState {
-  data: IData[];
-  id: number;
+  inputData: IData[];
   row: number;
   type: string;
 }
 
 const initialState = {
-  data: [{ columnX: "", columnY: 0 }],
-  id: 0,
+  inputData: [{ columnX: "", columnY: 0 }],
   row: 1,
   type: ""
 };
@@ -61,7 +55,7 @@ class CreateNewGraph extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { data, row } = this.state;
+    const { inputData, row } = this.state;
     const { title, xAxis, yAxis } = this.props;
 
     const tableContents = new Array(row).fill({
@@ -69,7 +63,7 @@ class CreateNewGraph extends React.Component<IProps, IState> {
       columnY: 0
     });
 
-    tableContents.splice(0, data.length, ...data);
+    tableContents.splice(0, inputData.length, ...inputData);
 
     const inputTable = tableContents.map((item: IData, index: number) => {
       return (
@@ -185,7 +179,7 @@ class CreateNewGraph extends React.Component<IProps, IState> {
     index: number,
     e: React.FormEvent<FormControlProps>
   ): void => {
-    const { data } = this.state;
+    const { inputData } = this.state;
     const { name } = e.currentTarget;
     let { value } = e.currentTarget;
 
@@ -193,12 +187,16 @@ class CreateNewGraph extends React.Component<IProps, IState> {
       value = +value;
     }
     const targetData = {
-      ...data[index],
+      ...inputData[index],
       [name as any]: value
     };
-    data.splice(index, 1, targetData);
+    inputData.splice(index, 1, targetData);
 
-    this.setState({ data });
+    this.setState({
+      inputData
+    });
+    // set data to Redux store
+    this.props.setData(inputData);
   };
 
   private addRow = (e: any): void => {

@@ -1,6 +1,6 @@
 import { SetValue } from "../actions";
-import { SET_TITLE, SET_X_AXIS, SET_Y_AXIS } from "../constants/index";
-import { IStoreState } from "../types/index";
+import { SET_DATA, SET_TITLE, SET_X_AXIS, SET_Y_AXIS } from "../constants/";
+import { IStoreState } from "../types/";
 
 export function reducer(state: IStoreState, action: SetValue): IStoreState {
   switch (action.type) {
@@ -10,6 +10,8 @@ export function reducer(state: IStoreState, action: SetValue): IStoreState {
       return { ...state, xAxis: action.xAxis };
     case SET_Y_AXIS:
       return { ...state, yAxis: action.yAxis };
+    case SET_DATA:
+      return { ...state, data: action.data };
     default:
       return state;
   }

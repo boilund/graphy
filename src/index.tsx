@@ -22,7 +22,12 @@ const devTools: any = (window as any).__REDUX_DEVTOOLS_EXTENSION__
   ? (window as any).__REDUX_DEVTOOLS_EXTENSION__()(createStore)
   : createStore;
 
-const initialState = { title: "" };
+const initialState = {
+  data: [{ columnX: "", columnY: 0 }],
+  title: "",
+  xAxis: "",
+  yAxis: ""
+};
 const store: Store<IStoreState> = devTools(reducer, initialState);
 
 ReactDOM.render(
