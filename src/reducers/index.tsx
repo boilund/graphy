@@ -1,6 +1,6 @@
 import { SetValue } from "../actions";
 import { SET_DATA, SET_TITLE, SET_X_AXIS, SET_Y_AXIS } from "../constants/";
-import { initialState } from "../index";
+import { initialState } from "../store/";
 import { IStoreState } from "../types/";
 
 export function reducer(

@@ -1,7 +1,9 @@
 import * as React from "react";
+import { Provider } from "react-redux";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 
+import { store } from "../store/";
 import CreateNewGraph from "./create/create-new-graph";
 import Footer from "./footer";
 import Header from "./header";
@@ -12,9 +14,9 @@ import MyGraphs from "./my-graphs";
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
+      <Provider store={store}>
         <BrowserRouter>
-          <div>
+          <div className="App">
             <Header />
             <Switch>
               <Route exact={true} path="/" component={HomeScreen} />
@@ -25,7 +27,7 @@ class App extends React.Component {
             <Footer />
           </div>
         </BrowserRouter>
-      </div>
+      </Provider>
     );
   }
 }
