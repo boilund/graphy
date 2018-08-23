@@ -8,6 +8,7 @@ import {
   Row,
   Table
 } from "react-bootstrap";
+import { IData } from "../../actions/";
 // import AreaGraph from "./area-graph";
 // import BarGraph from "./bar-graph";
 import "./create-new-graph.css";

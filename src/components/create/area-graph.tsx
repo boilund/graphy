@@ -8,7 +8,7 @@ import {
   XAxis,
   YAxis
 } from "recharts";
-import { IData } from "./create-new-graph";
+import { IData } from "../../actions/";
 import "./graph-style.css";
 
 interface IProps {
