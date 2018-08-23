@@ -14,13 +14,13 @@ import { IData } from "../../actions/";
 import "./create-new-graph.css";
 // import LineGraph from "./line-graph";
 
-interface Id {
-  id: string;
-}
+// interface Id {
+//   id: string;
+// }
 
-interface IParams {
-  params: Id;
-}
+// interface IParams {
+//   params: Id;
+// }
 
 interface IProps {
   data: IData[];
@@ -35,12 +35,14 @@ interface IProps {
 
 interface IState {
   inputData: IData[];
+  // id: number;
   row: number;
   type: string;
 }
 
 const initialState = {
   inputData: [{ columnX: "", columnY: 0 }],
+  // id: 0,
   row: 1,
   type: ""
 };
