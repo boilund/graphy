@@ -218,6 +218,7 @@ class CreateNewGraph extends React.Component<IProps, IState> {
 
   private addRow = (e: any): void => {
     const { row, inputData } = this.state;
+    inputData.push({ columnX: "", columnY: 0 });
 
     this.setState({
       inputData,
