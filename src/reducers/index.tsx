@@ -1,8 +1,12 @@
 import { SetValue } from "../actions";
 import { SET_DATA, SET_TITLE, SET_X_AXIS, SET_Y_AXIS } from "../constants/";
+import { initialState } from "../index";
 import { IStoreState } from "../types/";
 
-export function reducer(state: IStoreState, action: SetValue): IStoreState {
+export function reducer(
+  state: IStoreState = initialState,
+  action: SetValue
+): IStoreState {
   switch (action.type) {
     case SET_TITLE:
       return { ...state, title: action.title };

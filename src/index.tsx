@@ -22,7 +22,7 @@ const devTools: any = (window as any).__REDUX_DEVTOOLS_EXTENSION__
   ? (window as any).__REDUX_DEVTOOLS_EXTENSION__()(createStore)
   : createStore;
 
-const initialState = {
+export const initialState = {
   data: [{ columnX: "", columnY: 0 }],
   title: "",
   xAxis: "",
