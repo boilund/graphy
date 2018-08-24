@@ -9,6 +9,7 @@ import {
   Row,
   Table
 } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { IData } from "../actions/";
 import AreaGraph from "../components/graphs/area-graph";
 import BarGraph from "../components/graphs/bar-graph";
@@ -37,15 +38,15 @@ interface IProps {
 interface IState {
   inputData: IData[];
   // id: number;
+  saveDisabled: boolean;
   row: number;
-  type: string;
 }
 
 const initialState = {
   inputData: [{ columnX: "", columnY: 0 }],
   // id: 0,
   row: 1,
-  type: ""
+  saveDisabled: false
 };
 
 class CreateNewGraph extends React.Component<
@@ -62,11 +63,8 @@ class CreateNewGraph extends React.Component<
   }
 
   public render() {
-    const { inputData, row } = this.state;
+    const { inputData, saveDisabled, row } = this.state;
     const { title, xAxis, yAxis } = this.props;
-
-    // tslint:disable-next-line:no-console
-    console.log("props", this.props);
 
     const tableContents = new Array(row).fill({
       columnX: "",
@@ -157,6 +155,24 @@ class CreateNewGraph extends React.Component<
           </Row>
 
           {this.setGraph()}
+
+          <Row>
+            <Col sm={12}>
+              <Link to="/myGraphs">
+                <Button
+                  bsStyle="success"
+                  className="save-button"
+                  bsSize="large"
+                  block={true}
+                  disabled={saveDisabled}
+                >
+                  {saveDisabled
+                    ? "Check if you have any incorrect input"
+                    : "Save"}
+                </Button>
+              </Link>
+            </Col>
+          </Row>
         </Grid>
       </main>
     );
