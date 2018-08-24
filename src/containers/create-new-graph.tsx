@@ -185,6 +185,13 @@ class CreateNewGraph extends React.Component<
     this.props.setYAxis(e.target.value);
   };
 
+  private validateNumber = (value: any): boolean => {
+    if (isNaN(value)) {
+      return false;
+    }
+    return true;
+  };
+
   private handleDataChange = (
     index: number,
     e: React.FormEvent<FormControlProps>
@@ -193,7 +200,11 @@ class CreateNewGraph extends React.Component<
     const { name } = e.currentTarget;
     let { value } = e.currentTarget;
 
-    if (name === "columnY" && value !== undefined) {
+    if (
+      name === "columnY" &&
+      value !== undefined &&
+      this.validateNumber(value)
+    ) {
       value = +value;
     }
     const targetData = {
