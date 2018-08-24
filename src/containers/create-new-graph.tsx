@@ -9,30 +9,19 @@ import {
   Table
 } from "react-bootstrap";
 import { IData } from "../actions/";
-// import AreaGraph from "../components/graphs/area-graph";
-// import BarGraph from "../components/graphs/bar-graph";
-// import LineGraph from "../components/graphs/line-graph";
+import AreaGraph from "../components/graphs/area-graph";
+import BarGraph from "../components/graphs/bar-graph";
+import LineGraph from "../components/graphs/line-graph";
 import "./create-new-graph.css";
 
 import { connect } from "react-redux";
+import { RouteComponentProps } from "react-router-dom";
 import { Dispatch } from "redux";
 import * as actions from "../actions/";
 import { IStoreState } from "../types/";
 
-// interface Id {
-//   id: string;
-// }
-
-// interface IParams {
-//   params: Id;
-// }
-
-// interface IMatch {
-//   match: IParams;
-// }
 interface IProps {
   data: IData[];
-  // id: IMatch;
   title: string;
   xAxis: string;
   yAxis: string;
@@ -56,7 +45,10 @@ const initialState = {
   type: ""
 };
 
-class CreateNewGraph extends React.Component<IProps, IState> {
+class CreateNewGraph extends React.Component<
+  RouteComponentProps<{ id: string }> & IProps,
+  IState
+> {
   constructor(props: any) {
     super(props);
     this.state = initialState;
@@ -156,27 +148,27 @@ class CreateNewGraph extends React.Component<IProps, IState> {
             </Col>
           </Row>
 
-          {/* {this.setGraph()} */}
+          {this.setGraph()}
         </Grid>
       </main>
     );
   }
 
-  // private setGraph = () => {
-  //   const { id } = this.props.match.params;
-  //   const { data, yAxis } = this.props;
+  private setGraph = () => {
+    const { id } = this.props.match.params;
+    const { data, yAxis } = this.props;
 
-  //   switch (id) {
-  //     case "line-graph":
-  //       return <LineGraph data={data} yAxis={yAxis} />;
-  //     case "bar-graph":
-  //       return <BarGraph data={data} yAxis={yAxis} />;
-  //     case "area-graph":
-  //       return <AreaGraph data={data} yAxis={yAxis} />;
-  //     default:
-  //       return;
-  //   }
-  // };
+    switch (id) {
+      case "line-graph":
+        return <LineGraph data={data} yAxis={yAxis} />;
+      case "bar-graph":
+        return <BarGraph data={data} yAxis={yAxis} />;
+      case "area-graph":
+        return <AreaGraph data={data} yAxis={yAxis} />;
+      default:
+        return;
+    }
+  };
 
   private handleTitleChange = (e: any): void => {
     this.props.setTitle(e.target.value);
@@ -205,8 +197,7 @@ class CreateNewGraph extends React.Component<IProps, IState> {
       ...inputData[index],
       [name as any]: value
     };
-    // tslint:disable-next-line:no-console
-    console.log(targetData);
+
     inputData.splice(index, 1, targetData);
 
     this.setState({
@@ -249,5 +240,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CreateNewGraph);
-
-// export default CreateNewGraph;
