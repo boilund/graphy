@@ -22,10 +22,12 @@ import { IStoreState } from "../types/";
 
 interface IProps {
   data: IData[];
+  graphType: string;
   title: string;
   xAxis: string;
   yAxis: string;
   setData(data: IData[]): void;
+  setGraphType(graphType: string): void;
   setTitle(title: string): void;
   setXAxis(xAxis: string): void;
   setYAxis(yAxis: string): void;
@@ -155,10 +157,11 @@ class CreateNewGraph extends React.Component<
   }
 
   private setGraph = () => {
-    const { id } = this.props.match.params;
+    const { id: graphType } = this.props.match.params;
     const { data, yAxis } = this.props;
+    this.props.setGraphType(graphType);
 
-    switch (id) {
+    switch (graphType) {
       case "line-graph":
         return <LineGraph data={data} yAxis={yAxis} />;
       case "bar-graph":
@@ -221,6 +224,7 @@ class CreateNewGraph extends React.Component<
 export function mapStateToProps(state: IStoreState) {
   return {
     data: state.data,
+    graphType: state.graphType,
     title: state.title,
     xAxis: state.xAxis,
     yAxis: state.yAxis
@@ -230,6 +234,8 @@ export function mapStateToProps(state: IStoreState) {
 export function mapDispatchToProps(dispatch: Dispatch<actions.SetValue>) {
   return {
     setData: (data: actions.IData[]) => dispatch(actions.setData(data)),
+    setGraphType: (graphType: string) =>
+      dispatch(actions.setGraphType(graphType)),
     setTitle: (title: string) => dispatch(actions.setTitle(title)),
     setXAxis: (xAxis: string) => dispatch(actions.setXAxis(xAxis)),
     setYAxis: (yAxis: string) => dispatch(actions.setYAxis(yAxis))

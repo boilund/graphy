@@ -1,5 +1,20 @@
 import * as constants from "../constants";
 
+export interface IData {
+  columnX: string | number;
+  columnY: number;
+}
+
+export interface ISetData {
+  data: IData[];
+  type: constants.SET_DATA;
+}
+
+export interface ISetType {
+  graphType: string;
+  type: constants.SET_TYPE;
+}
+
 export interface ISetTitle {
   title: string;
   type: constants.SET_TITLE;
@@ -15,17 +30,21 @@ export interface ISetYAxis {
   type: constants.SET_Y_AXIS;
 }
 
-export interface IData {
-  columnX: string | number;
-  columnY: number;
+export type SetValue = ISetData | ISetType | ISetTitle | ISetXAxis | ISetYAxis;
+
+export function setData(data: IData[]): ISetData {
+  return {
+    data,
+    type: constants.SET_DATA
+  };
 }
 
-export interface ISetData {
-  data: IData[];
-  type: constants.SET_DATA;
+export function setGraphType(graphType: string): ISetType {
+  return {
+    graphType,
+    type: constants.SET_TYPE
+  };
 }
-
-export type SetValue = ISetTitle | ISetXAxis | ISetYAxis | ISetData;
 
 export function setTitle(title: string): ISetTitle {
   return {
@@ -45,12 +64,5 @@ export function setYAxis(yAxis: string): ISetYAxis {
   return {
     type: constants.SET_Y_AXIS,
     yAxis
-  };
-}
-
-export function setData(data: IData[]): ISetData {
-  return {
-    data,
-    type: constants.SET_DATA
   };
 }
