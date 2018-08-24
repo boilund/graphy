@@ -4,12 +4,12 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import CreateNewGraph from "../containers/create-new-graph";
+import MyGraphs from "../containers/my-graphs";
 import { store } from "../store/";
 import Footer from "./footer";
 import Header from "./header";
 import HomeScreen from "./home-screen";
 import Login from "./login";
-import MyGraphs from "./my-graphs";
 
 class App extends React.Component {
   public render() {
