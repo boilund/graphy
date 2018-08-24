@@ -4,6 +4,7 @@ import {
   Col,
   FormControl,
   FormControlProps,
+  FormGroup,
   Grid,
   Row,
   Table
@@ -87,6 +88,10 @@ class CreateNewGraph extends React.Component<
             />
           </td>
           <td>
+            <FormGroup
+              className="form-group"
+              validationState={this.getValidationState(item.columnY)}
+            >
             <FormControl
               type="text"
               value={item.columnY}
@@ -94,6 +99,7 @@ class CreateNewGraph extends React.Component<
               name="columnY"
               onChange={this.handleDataChange.bind(this, index)}
             />
+            </FormGroup>
           </td>
         </tr>
       );
@@ -190,6 +196,16 @@ class CreateNewGraph extends React.Component<
       return false;
     }
     return true;
+  };
+
+  private getValidationState = (
+    value: any
+  ): "error" | "success" | "warning" | null | undefined => {
+    const isNumber = this.validateNumber(value);
+    if (isNumber) {
+      return "success";
+    }
+    return "error";
   };
 
   private handleDataChange = (
