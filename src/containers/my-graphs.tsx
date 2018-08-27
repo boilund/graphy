@@ -8,6 +8,8 @@ import LineGraph from "../components/graphs/line-graph";
 import { connect } from "react-redux";
 import { IStoreState } from "../types";
 
+import "./my-graphs.css";
+
 interface IProps {
   data: IData[];
   graphType: string;
@@ -26,11 +28,7 @@ class MyGraphs extends React.Component<IProps, {}> {
       <main className="main">
         <Grid>
           <Row>
-            <Col sm={12}>
-              <div className="box">
-                <div>{this.setGraph()}</div>
-              </div>
-            </Col>
+            <Col sm={12}>{this.setGraph()}</Col>
           </Row>
         </Grid>
       </main>
@@ -42,11 +40,23 @@ class MyGraphs extends React.Component<IProps, {}> {
 
     switch (graphType) {
       case "line-graph":
-        return <LineGraph data={data} title={title} yAxis={yAxis} />;
+        return (
+          <div className="box">
+            <LineGraph data={data} title={title} yAxis={yAxis} />
+          </div>
+        );
       case "bar-graph":
-        return <BarGraph data={data} title={title} yAxis={yAxis} />;
+        return (
+          <div className="box">
+            <BarGraph data={data} title={title} yAxis={yAxis} />
+          </div>
+        );
       case "area-graph":
-        return <AreaGraph data={data} title={title} yAxis={yAxis} />;
+        return (
+          <div className="box">
+            <AreaGraph data={data} title={title} yAxis={yAxis} />
+          </div>
+        );
       default:
         return;
     }
