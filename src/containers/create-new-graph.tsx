@@ -175,16 +175,16 @@ class CreateNewGraph extends React.Component<
 
   private setGraph = () => {
     const { id: graphType } = this.props.match.params;
-    const { data, yAxis } = this.props;
+    const { data, title, yAxis } = this.props;
     this.props.setGraphType(graphType);
 
     switch (graphType) {
       case "line-graph":
-        return <LineGraph data={data} yAxis={yAxis} />;
+        return <LineGraph data={data} title={title} yAxis={yAxis} />;
       case "bar-graph":
-        return <BarGraph data={data} yAxis={yAxis} />;
+        return <BarGraph data={data} title={title} yAxis={yAxis} />;
       case "area-graph":
-        return <AreaGraph data={data} yAxis={yAxis} />;
+        return <AreaGraph data={data} title={title} yAxis={yAxis} />;
       default:
         return;
     }

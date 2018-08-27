@@ -14,17 +14,18 @@ import "./graph-style.css";
 
 interface IProps {
   data: IData[];
+  title?: string;
   yAxis: string;
 }
 
 const LineGraph: React.SFC<IProps> = (props: IProps) => {
-  const { data, yAxis } = props;
+  const { data, title, yAxis } = props;
 
   return (
     <React.Fragment>
       <Row>
         <Col sm={12} className="margin-bottom">
-          <h3>Line Graph</h3>
+          <h3>{title ? title : "Line Graph"}</h3>
         </Col>
       </Row>
       <Row>

@@ -13,17 +13,18 @@ import "./graph-style.css";
 
 interface IProps {
   data: IData[];
+  title?: string;
   yAxis: string;
 }
 
 const AreaGraph: React.SFC<IProps> = (props: IProps) => {
-  const { data, yAxis } = props;
+  const { data, title, yAxis } = props;
 
   return (
     <React.Fragment>
       <Row>
         <Col sm={12} className="margin-bottom">
-          <h3>Area Graph</h3>
+          <h3>{title ? title : "Area Graph"}</h3>
         </Col>
       </Row>
       <AreaChart

@@ -14,17 +14,18 @@ import "./graph-style.css";
 
 interface IProps {
   data: IData[];
+  title?: string;
   yAxis: string;
 }
 
 const BarGraph: React.SFC<IProps> = (props: IProps) => {
-  const { data, yAxis } = props;
+  const { data, title, yAxis } = props;
 
   return (
     <React.Fragment>
       <Row>
         <Col sm={12} className="margin-bottom">
-          <h3>Bar Graph</h3>
+          <h3>{title ? title : "Bar Graph"}</h3>
         </Col>
       </Row>
       <Row>

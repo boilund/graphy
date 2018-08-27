@@ -22,15 +22,12 @@ class MyGraphs extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const { title } = this.props;
-
     return (
       <main className="main">
         <Grid>
           <Row>
             <Col sm={12}>
               <div className="box">
-                <h5>{title}</h5>
                 <div>{this.setGraph()}</div>
               </div>
             </Col>
@@ -41,15 +38,15 @@ class MyGraphs extends React.Component<IProps, {}> {
   }
 
   private setGraph = () => {
-    const { data, graphType, yAxis } = this.props;
+    const { data, graphType, title, yAxis } = this.props;
 
     switch (graphType) {
       case "line-graph":
-        return <LineGraph data={data} yAxis={yAxis} />;
+        return <LineGraph data={data} title={title} yAxis={yAxis} />;
       case "bar-graph":
-        return <BarGraph data={data} yAxis={yAxis} />;
+        return <BarGraph data={data} title={title} yAxis={yAxis} />;
       case "area-graph":
-        return <AreaGraph data={data} yAxis={yAxis} />;
+        return <AreaGraph data={data} title={title} yAxis={yAxis} />;
       default:
         return;
     }
