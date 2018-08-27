@@ -22,3 +22,13 @@
   color: white;
   margin-top: 55px;
 }
+
+.square {
+  opacity: 0.9;
+  transition: all .3s;
+}
+
+.square:hover{
+  opacity: 1.0;
+  transform: translateY(-5px);
+}
