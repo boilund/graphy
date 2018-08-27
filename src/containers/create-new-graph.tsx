@@ -38,15 +38,13 @@ interface IProps {
 interface IState {
   inputData: IData[];
   // id: number;
-  saveDisabled: boolean;
   row: number;
 }
 
 const initialState = {
   inputData: [{ columnX: "", columnY: 0 }],
   // id: 0,
-  row: 1,
-  saveDisabled: false
+  row: 1
 };
 
 class CreateNewGraph extends React.Component<
@@ -63,7 +61,7 @@ class CreateNewGraph extends React.Component<
   }
 
   public render() {
-    const { inputData, saveDisabled, row } = this.state;
+    const { inputData, row } = this.state;
     const { title, xAxis, yAxis } = this.props;
 
     const tableContents = new Array(row).fill({
@@ -164,7 +162,6 @@ class CreateNewGraph extends React.Component<
                   className="save-button"
                   bsSize="large"
                   block={true}
-                  disabled={saveDisabled}
                 >
                   {saveDisabled
                     ? "Check if you have any incorrect input"
