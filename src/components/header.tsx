@@ -1,5 +1,6 @@
 import * as React from "react";
 import { MenuItem, Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import "./header.css";
 
@@ -18,14 +19,22 @@ class Header extends React.Component {
             </Navbar.Brand>
           </Navbar.Header>
           <Nav className="nav">
-            <NavItem eventKey={1} componentClass="span">
-              <Link to="/my-graphs">My graphs</Link>
-            </NavItem>
-            <NavDropdown eventKey={2} title="Login" id="basic-nav-dropdown">
-              <MenuItem eventKey={2.1}>
-                <Link to="/login">Login</Link>
-              </MenuItem>
-              <MenuItem eventKey={3.2}>Create new account</MenuItem>
+            <LinkContainer to="/my-graphs">
+              <NavItem eventKey="/my-graphs">My graphs</NavItem>
+            </LinkContainer>
+            <NavDropdown
+              eventKey="/login"
+              title="Login"
+              id="basic-nav-dropdown"
+            >
+              <LinkContainer to="/login">
+                <MenuItem eventKey="/login">Login</MenuItem>
+              </LinkContainer>
+              <LinkContainer to="/create-account">
+                <MenuItem eventKey="/create-account">
+                  Create new account
+                </MenuItem>
+              </LinkContainer>
             </NavDropdown>
           </Nav>
         </Navbar>
