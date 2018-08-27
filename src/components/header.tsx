@@ -19,7 +19,7 @@ class Header extends React.Component {
           </Navbar.Header>
           <Nav className="nav">
             <NavItem eventKey={1} componentClass="span">
-              <Link to="/myGraphs">My graphs</Link>
+              <Link to="/my-graphs">My graphs</Link>
             </NavItem>
             <NavDropdown eventKey={2} title="Login" id="basic-nav-dropdown">
               <MenuItem eventKey={2.1}>
