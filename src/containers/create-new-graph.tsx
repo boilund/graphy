@@ -9,7 +9,7 @@ import {
   Row,
   Table
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import { IData } from "../actions/";
 import AreaGraph from "../components/graphs/area-graph";
 import BarGraph from "../components/graphs/bar-graph";
@@ -88,13 +88,13 @@ class CreateNewGraph extends React.Component<
               className="form-group"
               validationState={this.getValidationState(item.columnY)}
             >
-            <FormControl
-              type="text"
-              value={item.columnY}
-              placeholder="Enter number"
-              name="columnY"
-              onChange={this.handleDataChange.bind(this, index)}
-            />
+              <FormControl
+                type="text"
+                value={item.columnY}
+                placeholder="Enter number"
+                name="columnY"
+                onChange={this.handleDataChange.bind(this, index)}
+              />
             </FormGroup>
           </td>
         </tr>
@@ -156,18 +156,16 @@ class CreateNewGraph extends React.Component<
 
           <Row>
             <Col sm={12}>
-              <Link to="/myGraphs">
+              <LinkContainer to="/my-graphs">
                 <Button
                   bsStyle="success"
                   className="save-button"
                   bsSize="large"
                   block={true}
                 >
-                  {saveDisabled
-                    ? "Check if you have any incorrect input"
-                    : "Save"}
+                  Save
                 </Button>
-              </Link>
+              </LinkContainer>
             </Col>
           </Row>
         </Grid>
