@@ -58,7 +58,7 @@ class MyGraphs extends React.Component<IProps, {}> {
           </div>
         );
       default:
-        return;
+        return <div className="no-graph">You don't have any graph</div>;
     }
   };
 }
