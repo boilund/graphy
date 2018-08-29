@@ -155,7 +155,7 @@ class CreateNewGraph extends React.Component<
           {this.setGraph()}
 
           <Row>
-            <Col sm={12}>
+            <Col sm={12} className="margin">
               <LinkContainer to="/my-graphs">
                 <Button
                   bsStyle="success"
