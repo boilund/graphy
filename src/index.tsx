@@ -4,6 +4,7 @@ import {
   faChartBar,
   faChartLine,
   faChartPie,
+  faComment,
   faSignal
 } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
@@ -11,6 +12,13 @@ import * as ReactDOM from "react-dom";
 import App from "./components/App";
 import "./index.css";
 
-library.add(faChartArea, faChartBar, faChartLine, faChartPie, faSignal);
+library.add(
+  faChartArea,
+  faChartBar,
+  faChartLine,
+  faChartPie,
+  faComment,
+  faSignal
+);
 
 ReactDOM.render(<App />, document.getElementById("root") as HTMLElement);

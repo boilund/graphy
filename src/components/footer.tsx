@@ -1,12 +1,7 @@
+import * as React from "react";
+import "./footer.css";
 
-import * as React from 'react';
-import './footer.css';
-
-import {
-  Col,
-  Grid,
-  Row,
-} from "react-bootstrap";
+import { Col, Grid, Row } from "react-bootstrap";
 
 class Footer extends React.Component {
   public render() {
@@ -23,7 +18,6 @@ class Footer extends React.Component {
             </Col>
             <Col sm={4}>
               <p className="footer-head">SNS</p>
-
             </Col>
           </Row>
           <Row className="align-center">
