@@ -8,42 +8,57 @@ class HomeScreen extends React.Component {
   public render() {
     return (
       <main className="App-main">
-        <Grid fluid={true}>
+        <Grid>
           <Row>
-            <Col sm={3} className="yellow square comment-square">
-              <FontAwesomeIcon
-                icon="comment"
-                className="fa-6x icons comment-icon"
-              />
+            <Col xs={6} sm={4} md={3}>
+              <div className="yellow comment-square">
+                <h2 className="message">Select graph type</h2>
+                <FontAwesomeIcon
+                  icon="comment"
+                  className="fa-6x icons comment-icon"
+                />
+              </div>
             </Col>
             <Link to="./creating/line-graph">
-              <Col sm={3} className="green square">
-                <FontAwesomeIcon icon="chart-line" className="fa-6x icons" />
+              <Col xs={6} sm={4} md={3}>
+                <div className="square green">
+                  <FontAwesomeIcon icon="chart-line" className="fa-6x icons" />
+                </div>
               </Col>
             </Link>
             <Link to="./creating/bar-graph">
-              <Col sm={3} className="purple square">
-                <FontAwesomeIcon icon="chart-bar" className="fa-6x icons" />
+              <Col xs={6} sm={4} md={3}>
+                <div className="square purple">
+                  <FontAwesomeIcon icon="chart-bar" className="fa-6x icons" />
+                </div>
               </Col>
             </Link>
             <Link to="./creating/area-graph">
-              <Col sm={3} className="red square">
-                <FontAwesomeIcon icon="chart-area" className="fa-6x icons" />
+              <Col xs={6} sm={4} md={3}>
+                <div className="square red">
+                  <FontAwesomeIcon icon="chart-area" className="fa-6x icons" />
+                </div>
               </Col>
             </Link>
-          </Row>
-          <Row>
-            <Col sm={3} className="purple square">
-              <FontAwesomeIcon icon="chart-pie" className="fa-6x icons" />
+            <Col xs={6} sm={4} md={3}>
+              <div className="square green">
+                <FontAwesomeIcon icon="chart-pie" className="fa-6x icons" />
+              </div>
             </Col>
-            <Col sm={3} className="red square">
-              <FontAwesomeIcon icon="signal" className="fa-6x icons" />
+            <Col xs={6} sm={4} md={3}>
+              <div className="square red">
+                <FontAwesomeIcon icon="signal" className="fa-6x icons" />
+              </div>
             </Col>
-            <Col sm={3} className="yellow square">
-              <FontAwesomeIcon icon="chart-area" className="fa-6x icons" />
+            <Col xs={6} sm={4} md={3}>
+              <div className="square yellow">
+                <FontAwesomeIcon icon="chart-area" className="fa-6x icons" />
+              </div>
             </Col>
-            <Col sm={3} className="green square">
-              <FontAwesomeIcon icon="chart-pie" className="fa-6x icons" />
+            <Col xs={6} sm={4} md={3}>
+              <div className="square purple">
+                <FontAwesomeIcon icon="chart-pie" className="fa-6x icons" />
+              </div>
             </Col>
           </Row>
         </Grid>

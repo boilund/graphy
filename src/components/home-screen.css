@@ -26,6 +26,7 @@
 .square {
   opacity: 1.0;
   transition: all .3s;
+  margin-bottom: 10px;
 }
 
 .square:hover {
@@ -35,5 +36,16 @@
 }
 
 .comment-icon {
-  transform: scale(2);
+  transform: scale(2.5);
+  position: relative;
+}
+
+.message {
+  z-index: 2;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateY(-60%) translateX(-50%);
+  -webkit-transform: translateY(-60%) translateX(-50%);
+  width: 50%;
 }
