@@ -4,6 +4,7 @@ import { IData } from "../actions/";
 import AreaGraph from "../components/graphs/area-graph";
 import BarGraph from "../components/graphs/bar-graph";
 import LineGraph from "../components/graphs/line-graph";
+import PieGraph from "../components/graphs/pie-graph";
 
 import { connect } from "react-redux";
 import { IStoreState } from "../types";
@@ -55,6 +56,12 @@ class MyGraphs extends React.Component<IProps, {}> {
         return (
           <div className="box">
             <AreaGraph data={data} title={title} yAxis={yAxis} />
+          </div>
+        );
+      case "pie-graph":
+        return (
+          <div className="box">
+            <PieGraph data={data} title={title} yAxis={yAxis} />
           </div>
         );
       default:

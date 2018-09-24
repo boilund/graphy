@@ -14,6 +14,7 @@ import { IData } from "../actions/";
 import AreaGraph from "../components/graphs/area-graph";
 import BarGraph from "../components/graphs/bar-graph";
 import LineGraph from "../components/graphs/line-graph";
+import PieGraph from "../components/graphs/pie-graph";
 import "./create-new-graph.css";
 
 import { connect } from "react-redux";
@@ -185,6 +186,8 @@ class CreateNewGraph extends React.Component<
         return <BarGraph data={data} title={title} yAxis={yAxis} />;
       case "area-graph":
         return <AreaGraph data={data} title={title} yAxis={yAxis} />;
+      case "pie-graph":
+        return <PieGraph data={data} title={title} yAxis={yAxis} />;
       default:
         return;
     }

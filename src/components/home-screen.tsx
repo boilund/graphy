@@ -40,11 +40,13 @@ class HomeScreen extends React.Component {
                 </div>
               </Col>
             </Link>
-            <Col xs={6} sm={4} md={3}>
-              <div className="square green">
-                <FontAwesomeIcon icon="chart-pie" className="fa-6x icons" />
-              </div>
-            </Col>
+            <Link to="./creating/pie-graph">
+              <Col xs={6} sm={4} md={3}>
+                <div className="square green">
+                  <FontAwesomeIcon icon="chart-pie" className="fa-6x icons" />
+                </div>
+              </Col>
+            </Link>
             <Col xs={6} sm={4} md={3}>
               <div className="square red">
                 <FontAwesomeIcon icon="signal" className="fa-6x icons" />
