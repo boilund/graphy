@@ -15,6 +15,7 @@ import AreaGraph from "../components/graphs/area-graph";
 import BarGraph from "../components/graphs/bar-graph";
 import LineGraph from "../components/graphs/line-graph";
 import PieGraph from "../components/graphs/pie-graph";
+import ScatterGraph from "../components/graphs/scatter-graph";
 import "./create-new-graph.css";
 
 import { connect } from "react-redux";
@@ -43,7 +44,7 @@ interface IState {
 }
 
 const initialState = {
-  inputData: [{ columnX: "", columnY: 0 }],
+  inputData: [{ columnX: 0, columnY: 0 }],
   // id: 0,
   row: 1
 };
@@ -66,7 +67,7 @@ class CreateNewGraph extends React.Component<
     const { title, xAxis, yAxis } = this.props;
 
     const tableContents = new Array(row).fill({
-      columnX: "",
+      columnX: 0,
       columnY: 0
     });
 
@@ -188,6 +189,8 @@ class CreateNewGraph extends React.Component<
         return <AreaGraph data={data} title={title} yAxis={yAxis} />;
       case "pie-graph":
         return <PieGraph data={data} title={title} yAxis={yAxis} />;
+      case "scatter-graph":
+        return <ScatterGraph data={data} title={title} yAxis={yAxis} />;
       default:
         return;
     }
@@ -229,14 +232,26 @@ class CreateNewGraph extends React.Component<
     const { inputData } = this.state;
     const { name } = e.currentTarget;
     let { value } = e.currentTarget;
+    const { id: graphType } = this.props.match.params;
 
-    if (
-      name === "columnY" &&
-      value !== undefined &&
-      this.validateNumber(value)
-    ) {
-      value = +value;
+    switch (graphType) {
+      case "scatter-graph":
+        if (value !== undefined && this.validateNumber(value)) {
+          value = +value;
+        }
+        break;
+
+      default:
+        if (
+          name === "columnY" &&
+          value !== undefined &&
+          this.validateNumber(value)
+        ) {
+          value = +value;
+        }
+        break;
     }
+
     const targetData = {
       ...inputData[index],
       [name as any]: value

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80px" height="55px" viewBox="0 0 80 55" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>scatter-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-271.000000, -365.000000)" fill="#FFFFFF">
+            <g id="scatter-icon" transform="translate(271.000000, 365.000000)">
+                <rect id="Rectangle" x="0" y="0" width="10" height="55"></rect>
+                <rect id="Rectangle" transform="translate(44.976867, 50.000000) rotate(-270.000000) translate(-44.976867, -50.000000) " x="39.9768668" y="15.0231332" width="10" height="69.9537337"></rect>
+                <circle id="Oval" cx="37" cy="17" r="5"></circle>
+                <circle id="Oval" cx="54" cy="10" r="5"></circle>
+                <circle id="Oval" cx="66" cy="32" r="5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -4,6 +4,8 @@ import { Col, Grid, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./home-screen.css";
 
+import scatter from "../imgs/scatter-icon.svg";
+
 class HomeScreen extends React.Component {
   public render() {
     return (
@@ -15,7 +17,7 @@ class HomeScreen extends React.Component {
                 <h2 className="message">Select graph type</h2>
                 <FontAwesomeIcon
                   icon="comment"
-                  className="fa-6x icons comment-icon"
+                  className="fa-6x comment-icon"
                 />
               </div>
             </Col>
@@ -47,11 +49,13 @@ class HomeScreen extends React.Component {
                 </div>
               </Col>
             </Link>
-            <Col xs={6} sm={4} md={3}>
-              <div className="square red">
-                <FontAwesomeIcon icon="signal" className="fa-6x icons" />
-              </div>
-            </Col>
+            <Link to="./creating/scatter-graph">
+              <Col xs={6} sm={4} md={3}>
+                <div className="square red">
+                  <img src={scatter} alt="scatter graph" className="icons" />
+                </div>
+              </Col>
+            </Link>
             <Col xs={6} sm={4} md={3}>
               <div className="square yellow">
                 <FontAwesomeIcon icon="chart-area" className="fa-6x icons" />
