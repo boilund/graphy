@@ -107,7 +107,7 @@ class CreateNewGraph extends React.Component<
       <main className="App-main">
         <Grid>
           <Row>
-            <Col sm={12} className="margin">
+            <Col sm={12} md={6}>
               <h3>Graph title set</h3>
               <FormControl
                 type="text"
@@ -115,8 +115,6 @@ class CreateNewGraph extends React.Component<
                 value={title}
                 onChange={this.handleTitleChange}
               />
-            </Col>
-            <Col sm={10} className="margin">
               <h3>Data set</h3>
               <Table
                 striped={true}
@@ -148,14 +146,10 @@ class CreateNewGraph extends React.Component<
                 </thead>
                 <tbody>{inputTable}</tbody>
               </Table>
-            </Col>
-            <Col sm={2} className="margin">
               <Button onClick={this.addRow}>Add Row</Button>
             </Col>
+            {this.setGraph()}
           </Row>
-
-          {this.setGraph()}
-
           <Row>
             <Col sm={12} className="margin">
               <LinkContainer to="/my-graphs">
