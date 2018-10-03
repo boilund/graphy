@@ -148,7 +148,9 @@ class CreateNewGraph extends React.Component<
               </Table>
               <Button onClick={this.addRow}>Add Row</Button>
             </Col>
-            {this.setGraph()}
+            <Col sm={12} md={6} className="margin-bottom">
+              {this.setGraph()}
+            </Col>
           </Row>
           <Row>
             <Col sm={12} className="margin">

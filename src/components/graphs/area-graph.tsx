@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Col } from "react-bootstrap";
 import {
   Area,
   AreaChart,
@@ -21,7 +20,7 @@ const AreaGraph: React.SFC<IProps> = (props: IProps) => {
   const { data, title, yAxis } = props;
 
   return (
-    <Col sm={12} md={6} className="margin-bottom">
+    <React.Fragment>
       <h3>{title ? title : "Area Graph"}</h3>
       <AreaChart
         width={500}
@@ -42,7 +41,7 @@ const AreaGraph: React.SFC<IProps> = (props: IProps) => {
           fill="#8884d8"
         />
       </AreaChart>
-    </Col>
+    </React.Fragment>
   );
 };
 

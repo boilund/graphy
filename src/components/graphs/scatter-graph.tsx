@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Col } from "react-bootstrap";
 import {
   CartesianGrid,
   Scatter,
@@ -21,12 +20,12 @@ const ScatterGraph: React.SFC<IProps> = (props: IProps) => {
   const { data, title } = props;
 
   return (
-    <Col sm={12} md={6} className="margin-bottom">
+    <React.Fragment>
       <h3>{title ? title : "Scatter Graph"}</h3>
       <ScatterChart
         width={500}
         height={500}
-        margin={{ top: 20, right: 20, bottom: 20, left: 20 }}
+        margin={{ top: 20, right: 20, bottom: 20, left: 0 }}
       >
         <CartesianGrid />
         <XAxis dataKey={"columnX"} type="number" name="stature" unit="cm" />
@@ -34,7 +33,7 @@ const ScatterGraph: React.SFC<IProps> = (props: IProps) => {
         <Scatter name={title} data={data.slice()} fill="#8884d8" />
         <Tooltip cursor={{ strokeDasharray: "3 3" }} />
       </ScatterChart>
-    </Col>
+    </React.Fragment>
   );
 };
 

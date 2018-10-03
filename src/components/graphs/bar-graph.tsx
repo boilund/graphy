@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Col } from "react-bootstrap";
 import {
   Bar,
   BarChart,
@@ -22,13 +21,13 @@ const BarGraph: React.SFC<IProps> = (props: IProps) => {
   const { data, title, yAxis } = props;
 
   return (
-    <Col sm={12} md={6} className="margin-bottom">
+    <React.Fragment>
       <h3>{title ? title : "Bar Graph"}</h3>
       <BarChart
         width={500}
         height={300}
         data={data.slice()}
-        margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        margin={{ top: 5, right: 30, left: 0, bottom: 5 }}
         className="center"
       >
         <CartesianGrid strokeDasharray="3 3" />
@@ -38,7 +37,7 @@ const BarGraph: React.SFC<IProps> = (props: IProps) => {
         <Legend />
         <Bar dataKey="columnY" fill="#8884d8" name={yAxis} />
       </BarChart>
-    </Col>
+    </React.Fragment>
   );
 };
 
