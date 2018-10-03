@@ -30,7 +30,10 @@ class MyGraphs extends React.Component<IProps, {}> {
       <main className="main">
         <Grid>
           <Row>
-            <Col sm={12}>{this.setGraph()}</Col>
+            <Col sm={12}>
+              <h1>Your Page</h1>
+            </Col>
+            {this.setGraph()}
           </Row>
         </Grid>
       </main>
@@ -43,36 +46,40 @@ class MyGraphs extends React.Component<IProps, {}> {
     switch (graphType) {
       case "line-graph":
         return (
-          <div className="box">
+          <Col md={6} className="box">
             <LineGraph data={data} title={title} yAxis={yAxis} />
-          </div>
+          </Col>
         );
       case "bar-graph":
         return (
-          <div className="box">
+          <Col md={6} className="box">
             <BarGraph data={data} title={title} yAxis={yAxis} />
-          </div>
+          </Col>
         );
       case "area-graph":
         return (
-          <div className="box">
+          <Col md={6} className="box">
             <AreaGraph data={data} title={title} yAxis={yAxis} />
-          </div>
+          </Col>
         );
       case "pie-graph":
         return (
-          <div className="box">
+          <Col md={6} className="box">
             <PieGraph data={data} title={title} yAxis={yAxis} />
-          </div>
+          </Col>
         );
       case "scatter-graph":
         return (
-          <div className="box">
+          <Col md={6} className="box">
             <ScatterGraph data={data} title={title} yAxis={yAxis} />
-          </div>
+          </Col>
         );
       default:
-        return <div className="no-graph">You don't have any graph</div>;
+        return (
+          <Col md={12} className="box">
+            <div className="no-graph">You don't have any graph</div>
+          </Col>
+        );
     }
   };
 }
