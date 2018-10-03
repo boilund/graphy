@@ -77,18 +77,23 @@ class CreateNewGraph extends React.Component<
       return (
         <tr key={index}>
           <td>
-            <FormControl
-              type="text"
-              value={item.columnX}
+            <FormGroup
+              className="form-group"
+              validationState={this.getValidationState(item.columnX, "X")}
+            >
+              <FormControl
+                type="text"
+                value={item.columnX}
                 placeholder="Enter value"
-              name="columnX"
-              onChange={this.handleDataChange.bind(this, index)}
-            />
+                name="columnX"
+                onChange={this.handleDataChange.bind(this, index)}
+              />
+            </FormGroup>
           </td>
           <td>
             <FormGroup
               className="form-group"
-              validationState={this.getValidationState(item.columnY)}
+              validationState={this.getValidationState(item.columnY, "Y")}
             >
               <FormControl
                 type="text"
@@ -212,13 +217,28 @@ class CreateNewGraph extends React.Component<
   };
 
   private getValidationState = (
-    value: any
+    value: any,
+    axis: string
   ): "error" | "success" | "warning" | null | undefined => {
+    const { id: graphType } = this.props.match.params;
     const isNumber = this.validateNumber(value);
-    if (isNumber) {
-      return "success";
+
+    switch (graphType) {
+      case "scatter-graph":
+        if (isNumber) {
+          return "success";
+        }
+        return "error";
+
+      default:
+        if (axis === "X") {
+          return "success";
+        }
+        if (isNumber) {
+          return "success";
+        }
+        return "error";
     }
-    return "error";
   };
 
   private handleDataChange = (
