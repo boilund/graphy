@@ -80,7 +80,7 @@ class CreateNewGraph extends React.Component<
             <FormControl
               type="text"
               value={item.columnX}
-              placeholder="Enter text"
+                placeholder="Enter value"
               name="columnX"
               onChange={this.handleDataChange.bind(this, index)}
             />
@@ -93,7 +93,7 @@ class CreateNewGraph extends React.Component<
               <FormControl
                 type="text"
                 value={item.columnY}
-                placeholder="Enter number"
+                placeholder="Enter value"
                 name="columnY"
                 onChange={this.handleDataChange.bind(this, index)}
               />
