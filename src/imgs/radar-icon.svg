@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="78px" height="87px" viewBox="0 0 78 87" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>radar-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop" transform="translate(-273.000000, -503.000000)">
+            <g id="Radar-icon" transform="translate(272.000000, 502.000000)">
+                <polygon id="Polygon" fill="#FFFFFF" points="40.1250832 1.34826389 78.7266957 22.5697951 78.7266957 65.114609 39.5315711 87.8375439 1.40913414 65.114609 1.40913414 22.5697951"></polygon>
+                <polygon id="Polygon" fill="#D8D8D8" points="40.1470925 8.38026439 64.0357701 32.7509447 60.0917037 53.9265505 40.1470925 67.9934136 16.0997942 60.4321765 22.2222958 31.7392652"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

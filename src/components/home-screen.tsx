@@ -4,6 +4,7 @@ import { Col, Grid, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./home-screen.css";
 
+import radar from "../imgs/radar-icon.svg";
 import scatter from "../imgs/scatter-icon.svg";
 
 class HomeScreen extends React.Component {
@@ -58,7 +59,7 @@ class HomeScreen extends React.Component {
             </Link>
             <Col xs={6} sm={4} md={3}>
               <div className="square yellow">
-                <FontAwesomeIcon icon="chart-area" className="fa-6x icons" />
+                <img src={radar} alt="radar graph" className="radar icons" />
               </div>
             </Col>
             <Col xs={6} sm={4} md={3}>
