@@ -57,11 +57,13 @@ class HomeScreen extends React.Component {
                 </div>
               </Col>
             </Link>
-            <Col xs={6} sm={4} md={3}>
-              <div className="square yellow">
-                <img src={radar} alt="radar graph" className="radar icons" />
-              </div>
-            </Col>
+            <Link to="./creating/radar-graph">
+              <Col xs={6} sm={4} md={3}>
+                <div className="square yellow">
+                  <img src={radar} alt="radar graph" className="radar icons" />
+                </div>
+              </Col>
+            </Link>
             <Col xs={6} sm={4} md={3}>
               <div className="square purple">
                 <FontAwesomeIcon icon="chart-pie" className="fa-6x icons" />

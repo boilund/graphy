@@ -15,6 +15,7 @@ import AreaGraph from "../components/graphs/area-graph";
 import BarGraph from "../components/graphs/bar-graph";
 import LineGraph from "../components/graphs/line-graph";
 import PieGraph from "../components/graphs/pie-graph";
+import RadarGraph from "../components/graphs/radar-graph";
 import ScatterGraph from "../components/graphs/scatter-graph";
 import "./create-new-graph.css";
 
@@ -192,6 +193,8 @@ class CreateNewGraph extends React.Component<
         return <PieGraph data={data} title={title} yAxis={yAxis} />;
       case "scatter-graph":
         return <ScatterGraph data={data} title={title} yAxis={yAxis} />;
+      case "radar-graph":
+        return <RadarGraph data={data} title={title} yAxis={yAxis} />;
       default:
         return;
     }
