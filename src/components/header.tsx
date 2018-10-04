@@ -14,7 +14,7 @@ class Header extends React.Component {
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">
-                <img src={logo} alt="logo" />
+                <img src={logo} alt="graphy logo" />
               </Link>
             </Navbar.Brand>
           </Navbar.Header>
