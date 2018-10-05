@@ -8,21 +8,9 @@ class Footer extends React.Component {
     return (
       <footer className="footer">
         <Grid>
-          <Row className="align-left">
-            <Col sm={4}>
-              <p className="footer-head">Contact</p>
-              <p>+46 123 456 78 Lund Sweden</p>
-            </Col>
-            <Col sm={4}>
-              <p className="footer-head">News</p>
-            </Col>
-            <Col sm={4}>
-              <p className="footer-head">SNS</p>
-            </Col>
-          </Row>
-          <Row className="align-center">
-            <Col sm={12}>
-              <p>©2018 graphy</p>
+          <Row>
+            <Col sm={12} className="align-center">
+              <p>Graphy - ©2018 Nana Mochihara</p>
             </Col>
           </Row>
         </Grid>
