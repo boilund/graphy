@@ -379,6 +379,14 @@ class CreateNewGraph extends React.Component<
     const isNumber = this.validateNumber(value);
 
     switch (graphType) {
+      case "radar-graph":
+        if (axis === "subject") {
+          return "success";
+        }
+        if (isNumber) {
+          return "success";
+        }
+        return "error";
       case "scatter-graph":
         if (isNumber) {
           return "success";
