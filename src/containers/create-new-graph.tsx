@@ -346,7 +346,7 @@ class CreateNewGraph extends React.Component<
       case "scatter-graph":
         return <ScatterGraph data={data} title={title} yAxis={yAxis} />;
       case "radar-graph":
-        return <RadarGraph data={data} title={title} yAxis={yAxis} />;
+        return <RadarGraph data={data} title={title} />;
       default:
         return;
     }

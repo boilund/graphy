@@ -13,7 +13,6 @@ import "./graph-style.css";
 interface IProps {
   data: IData[];
   title?: string;
-  yAxis: string;
 }
 
 const RadarGraph: React.SFC<IProps> = (props: IProps) => {
