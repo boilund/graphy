@@ -414,6 +414,15 @@ class CreateNewGraph extends React.Component<
     const { id: graphType } = this.props.match.params;
 
     switch (graphType) {
+      case "radar-graph":
+        if (
+          (name === "A" || name === "B" || name === "fullMark") &&
+          value !== undefined &&
+          this.validateNumber(value)
+        ) {
+          value = +value;
+        }
+        break;
       case "scatter-graph":
         if (value !== undefined && this.validateNumber(value)) {
           value = +value;
