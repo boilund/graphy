@@ -5,6 +5,8 @@ import {
   faChartLine,
   faChartPie,
   faComment,
+  faMinusCircle,
+  faPlusCircle,
   faSignal
 } from "@fortawesome/free-solid-svg-icons";
 import * as React from "react";
@@ -18,6 +20,8 @@ library.add(
   faChartLine,
   faChartPie,
   faComment,
+  faMinusCircle,
+  faPlusCircle,
   faSignal
 );
 

@@ -1,6 +1,8 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as React from "react";
 import {
   Button,
+  ButtonToolbar,
   Col,
   FormControl,
   FormControlProps,
@@ -104,6 +106,25 @@ class CreateNewGraph extends React.Component<
               />
             </FormGroup>
           </td>
+          <td>
+            <ButtonToolbar>
+              <Button
+                bsStyle="success"
+                className="inline-block"
+                onClick={this.addRow}
+              >
+                <FontAwesomeIcon icon="plus-circle" />
+              </Button>
+              <Button
+                bsStyle="danger"
+                className="inline-block"
+                onClick={this.removeRow}
+                id={"remove" + index}
+              >
+                <FontAwesomeIcon icon="minus-circle" />
+              </Button>
+            </ButtonToolbar>
+          </td>
         </tr>
       );
     });
@@ -151,7 +172,6 @@ class CreateNewGraph extends React.Component<
                 </thead>
                 <tbody>{inputTable}</tbody>
               </Table>
-              <Button onClick={this.addRow}>Add Row</Button>
             </Col>
             <Col sm={12} md={6} className="margin-bottom">
               {this.setGraph()}
