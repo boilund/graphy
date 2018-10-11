@@ -15,7 +15,6 @@ import AreaGraph from "../components/graphs/area-graph";
 import BarGraph from "../components/graphs/bar-graph";
 import LineGraph from "../components/graphs/line-graph";
 import PieGraph from "../components/graphs/pie-graph";
-import RadarGraph from "../components/graphs/radar-graph";
 import ScatterGraph from "../components/graphs/scatter-graph";
 import "./create-new-graph.css";
 
@@ -50,18 +49,13 @@ const initialState = {
   row: 1
 };
 
-const radarInitialState = {
-  inputData: [{ subject: "", A: 0, B: 0, fullMark: 0 }],
-  // id: 0,
-  row: 1
-};
 class CreateNewGraph extends React.Component<
   RouteComponentProps<{ id: string }> & IProps,
   IState
 > {
   constructor(props: any) {
     super(props);
-    this.state = this.selectInitialState();
+    this.state = initialState;
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleXAxisChange = this.handleXAxisChange.bind(this);
     this.handleYAxisChange = this.handleYAxisChange.bind(this);
@@ -69,16 +63,6 @@ class CreateNewGraph extends React.Component<
   }
 
   public render() {
-    const { id: graphType } = this.props.match.params;
-    switch (graphType) {
-      case "radar-graph":
-        return this.radarTableContents();
-      default:
-        return this.xyTableContents();
-    }
-  }
-
-  private xyTableContents = () => {
     const { inputData, row } = this.state;
     const { title, xAxis, yAxis } = this.props;
 
@@ -190,144 +174,7 @@ class CreateNewGraph extends React.Component<
         </Grid>
       </main>
     );
-  };
-
-  private radarTableContents = () => {
-    const { inputData } = this.state;
-    const { title } = this.props;
-
-    const tableContents = new Array(6).fill({
-      A: 0,
-      B: 0,
-      fullMark: 0,
-      subject: 0
-    });
-
-    tableContents.splice(0, inputData.length, ...inputData);
-
-    const inputTable = tableContents.map((item: IRadarData, index: number) => {
-      return (
-        <tr key={index}>
-          <td>
-            <FormGroup
-              className="form-group"
-              validationState={this.getValidationState(item.subject, "subject")}
-            >
-              <FormControl
-                type="text"
-                value={item.subject}
-                placeholder="Enter value"
-                name="subject"
-                onChange={this.handleDataChange.bind(this, index)}
-              />
-            </FormGroup>
-          </td>
-          <td>
-            <FormGroup
-              className="form-group"
-              validationState={this.getValidationState(item.A, "A")}
-            >
-              <FormControl
-                type="text"
-                value={item.A}
-                placeholder="Enter value"
-                name="A"
-                onChange={this.handleDataChange.bind(this, index)}
-              />
-            </FormGroup>
-          </td>
-          <td>
-            <FormGroup
-              className="form-group"
-              validationState={this.getValidationState(item.B, "B")}
-            >
-              <FormControl
-                type="text"
-                value={item.B}
-                placeholder="Enter value"
-                name="B"
-                onChange={this.handleDataChange.bind(this, index)}
-              />
-            </FormGroup>
-          </td>
-          <td>
-            <FormGroup
-              className="form-group"
-              validationState={this.getValidationState(
-                item.fullMark,
-                "fullMark"
-              )}
-            >
-              <FormControl
-                type="text"
-                value={item.fullMark}
-                placeholder="Enter value"
-                name="fullMark"
-                onChange={this.handleDataChange.bind(this, index)}
-              />
-            </FormGroup>
-          </td>
-        </tr>
-      );
-    });
-
-    return (
-      <main className="App-main">
-        <Grid>
-          <Row>
-            <Col sm={12} md={6}>
-              <h3>Graph title set</h3>
-              <FormControl
-                type="text"
-                placeholder="Enter graph title"
-                value={title}
-                onChange={this.handleTitleChange}
-              />
-              <h3>Data set</h3>
-              <Table
-                striped={true}
-                bordered={true}
-                condensed={true}
-                hover={true}
-              >
-                <thead>
-                  <tr>
-                    <th>Subject</th>
-                    <th>A</th>
-                    <th>B</th>
-                    <th>Full Mark</th>
-                  </tr>
-                </thead>
-                <tbody>{inputTable}</tbody>
-              </Table>
-            </Col>
-            <Col sm={12} md={6} className="margin-bottom">
-              {this.setGraph()}
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={12} className="margin">
-              <LinkContainer to="/my-graphs">
-                <Button
-                  bsStyle="success"
-                  className="save-button"
-                  bsSize="large"
-                  block={true}
-                >
-                  Save
-                </Button>
-              </LinkContainer>
-            </Col>
-          </Row>
-        </Grid>
-      </main>
-    );
-  };
-
-  private selectInitialState = () => {
-    const { id: graphType } = this.props.match.params;
-    return graphType === "radar-graph" ? radarInitialState : initialState;
-  };
+  }
 
   private setGraph = () => {
     const { id: graphType } = this.props.match.params;
@@ -345,8 +192,6 @@ class CreateNewGraph extends React.Component<
         return <PieGraph data={data} title={title} yAxis={yAxis} />;
       case "scatter-graph":
         return <ScatterGraph data={data} title={title} yAxis={yAxis} />;
-      case "radar-graph":
-        return <RadarGraph data={data} title={title} />;
       default:
         return;
     }
@@ -379,14 +224,6 @@ class CreateNewGraph extends React.Component<
     const isNumber = this.validateNumber(value);
 
     switch (graphType) {
-      case "radar-graph":
-        if (axis === "subject") {
-          return "success";
-        }
-        if (isNumber) {
-          return "success";
-        }
-        return "error";
       case "scatter-graph":
         if (isNumber) {
           return "success";
@@ -414,15 +251,6 @@ class CreateNewGraph extends React.Component<
     const { id: graphType } = this.props.match.params;
 
     switch (graphType) {
-      case "radar-graph":
-        if (
-          (name === "A" || name === "B" || name === "fullMark") &&
-          value !== undefined &&
-          this.validateNumber(value)
-        ) {
-          value = +value;
-        }
-        break;
       case "scatter-graph":
         if (value !== undefined && this.validateNumber(value)) {
           value = +value;
