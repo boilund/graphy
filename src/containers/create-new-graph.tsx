@@ -311,6 +311,18 @@ class CreateNewGraph extends React.Component<
       row: row + 1
     });
   };
+
+  private removeRow = (e: any): void => {
+    const { row, inputData } = this.state;
+    const reg = /\d+/;
+    const targetId = e.currentTarget.id.match(reg)[0];
+
+    inputData.splice(targetId, 1);
+    this.setState({
+      inputData,
+      row: row - 1
+    });
+  };
 }
 
 export function mapStateToProps(state: IStoreState) {
