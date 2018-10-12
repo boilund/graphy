@@ -74,6 +74,7 @@ class CreateNewGraph extends React.Component<
     });
 
     tableContents.splice(0, inputData.length, ...inputData);
+    const lastItem = tableContents.length - 1;
 
     const inputTable = tableContents.map((item: IData, index: number) => {
       return (
@@ -106,18 +107,17 @@ class CreateNewGraph extends React.Component<
               />
             </FormGroup>
           </td>
-          <td>
+          <td className="buttons">
             <ButtonToolbar>
               <Button
                 bsStyle="success"
-                className="inline-block"
+                className={index === lastItem ? "" : "hidden"}
                 onClick={this.addRow}
               >
                 <FontAwesomeIcon icon="plus-circle" />
               </Button>
               <Button
                 bsStyle="danger"
-                className="inline-block"
                 onClick={this.removeRow}
                 id={"remove" + index}
               >
