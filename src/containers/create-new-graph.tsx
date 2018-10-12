@@ -173,12 +173,12 @@ class CreateNewGraph extends React.Component<
                 <tbody>{inputTable}</tbody>
               </Table>
             </Col>
-            <Col sm={12} md={6} className="margin-bottom">
+            <Col sm={12} md={6} className="margin-x graph-column">
               {this.setGraph()}
             </Col>
           </Row>
           <Row>
-            <Col sm={12} className="margin">
+            <Col sm={12} className="margin-0">
               <LinkContainer to="/my-graphs">
                 <Button
                   bsStyle="success"
