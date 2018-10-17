@@ -25,6 +25,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { Dispatch } from "redux";
 import * as actions from "../actions/";
 import { IStoreState } from "../types/";
+import { generateUuid } from "../utilities/generateUuid";
 
 interface IProps {
   data: IData[];
@@ -40,12 +41,14 @@ interface IProps {
 }
 
 interface IState {
+  id: string;
   inputData: IData[];
   // id: number;
   row: number;
 }
 
 const initialState = {
+  id: "",
   inputData: [{ columnX: 0, columnY: 0 }],
   // id: 0,
   row: 1
@@ -323,6 +326,10 @@ class CreateNewGraph extends React.Component<
       row: row - 1
     });
   };
+    const id = generateUuid();
+    this.setState({
+      id,
+    });
 }
 
 export function mapStateToProps(state: IStoreState) {
