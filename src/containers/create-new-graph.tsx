@@ -27,6 +27,20 @@ import * as actions from "../actions/";
 import { IStoreState } from "../types/";
 import { generateUuid } from "../utilities/generateUuid";
 
+export interface IGraph {
+  data: IData[];
+  graphType: string;
+  title: string;
+  xAxis: string;
+  yAxis: string;
+}
+
+interface IMyGraph {
+  userId: string;
+  userName: string;
+  graphs: IGraph[];
+}
+
 interface IProps {
   data: IData[];
   graphType: string;
@@ -43,14 +57,14 @@ interface IProps {
 interface IState {
   id: string;
   inputData: IData[];
-  // id: number;
+  myGraph: IMyGraph;
   row: number;
 }
 
 const initialState = {
   id: "",
   inputData: [{ columnX: 0, columnY: 0 }],
-  // id: 0,
+  myGraph: { userId: "1", userName: "Nana", graphs: [] },
   row: 1
 };
 
@@ -188,6 +202,7 @@ class CreateNewGraph extends React.Component<
                   className="save-button"
                   bsSize="large"
                   block={true}
+                  onClick={this.save}
                 >
                   Save
                 </Button>
@@ -326,10 +341,23 @@ class CreateNewGraph extends React.Component<
       row: row - 1
     });
   };
+
+  private save = (e: any): void => {
+    const { data, graphType, title, xAxis, yAxis } = this.props;
+    const { myGraph } = this.state;
+    const latestGraph = { data, graphType, title, xAxis, yAxis };
     const id = generateUuid();
+
+    myGraph.graphs.push(latestGraph);
     this.setState({
       id,
+      myGraph
     });
+
+    // tslint:disable-next-line:no-console
+    console.log(id);
+    localStorage.setItem("myGraph", JSON.stringify(myGraph));
+  };
 }
 
 export function mapStateToProps(state: IStoreState) {
