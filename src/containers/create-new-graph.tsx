@@ -49,20 +49,19 @@ interface IProps {
   yAxis: string;
   setData(data: IData[]): void;
   setGraphType(graphType: string): void;
+  setID(id: string): void;
   setTitle(title: string): void;
   setXAxis(xAxis: string): void;
   setYAxis(yAxis: string): void;
 }
 
 interface IState {
-  id: string;
   inputData: IData[];
   myGraph: IMyGraph;
   row: number;
 }
 
 const initialState = {
-  id: "",
   inputData: [{ columnX: 0, columnY: 0 }],
   myGraph: { userId: "1", userName: "Nana", graphs: [] },
   row: 1
@@ -346,17 +345,14 @@ class CreateNewGraph extends React.Component<
     const { data, graphType, title, xAxis, yAxis } = this.props;
     const { myGraph } = this.state;
     const latestGraph = { data, graphType, title, xAxis, yAxis };
-    const id = generateUuid();
 
     myGraph.graphs.push(latestGraph);
     this.setState({
-      id,
       myGraph
     });
-
-    // tslint:disable-next-line:no-console
-    console.log(id);
     localStorage.setItem("myGraph", JSON.stringify(myGraph));
+
+    this.props.setID(generateUuid());
   };
 }
 
@@ -375,6 +371,7 @@ export function mapDispatchToProps(dispatch: Dispatch<actions.SetValue>) {
     setData: (data: actions.IData[]) => dispatch(actions.setData(data)),
     setGraphType: (graphType: string) =>
       dispatch(actions.setGraphType(graphType)),
+    setID: (id: string) => dispatch(actions.setID(id)),
     setTitle: (title: string) => dispatch(actions.setTitle(title)),
     setXAxis: (xAxis: string) => dispatch(actions.setXAxis(xAxis)),
     setYAxis: (yAxis: string) => dispatch(actions.setYAxis(yAxis))
