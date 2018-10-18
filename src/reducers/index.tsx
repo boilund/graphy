@@ -1,6 +1,7 @@
 import { SetValue } from "../actions";
 import {
   SET_DATA,
+  SET_ID,
   SET_TITLE,
   SET_TYPE,
   SET_X_AXIS,
@@ -16,6 +17,8 @@ export function reducer(
   switch (action.type) {
     case SET_DATA:
       return { ...state, data: action.data };
+    case SET_ID:
+      return { ...state, id: action.id };
     case SET_TITLE:
       return { ...state, title: action.title };
     case SET_TYPE:

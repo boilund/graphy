@@ -10,6 +10,11 @@ export interface ISetData {
   type: constants.SET_DATA;
 }
 
+export interface ISetID {
+  id: string;
+  type: constants.SET_ID;
+}
+
 export interface ISetType {
   graphType: string;
   type: constants.SET_TYPE;
@@ -30,7 +35,13 @@ export interface ISetYAxis {
   type: constants.SET_Y_AXIS;
 }
 
-export type SetValue = ISetData | ISetType | ISetTitle | ISetXAxis | ISetYAxis;
+export type SetValue =
+  | ISetData
+  | ISetID
+  | ISetType
+  | ISetTitle
+  | ISetXAxis
+  | ISetYAxis;
 
 export function setData(data: IData[]): ISetData {
   return {
@@ -43,6 +54,13 @@ export function setGraphType(graphType: string): ISetType {
   return {
     graphType,
     type: constants.SET_TYPE
+  };
+}
+
+export function setID(id: string): ISetID {
+  return {
+    id,
+    type: constants.SET_ID
   };
 }
 
