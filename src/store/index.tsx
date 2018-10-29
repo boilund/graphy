@@ -1,4 +1,6 @@
-import { createStore, Store } from "redux";
+import { applyMiddleware, createStore, Store } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import thunk from "redux-thunk";
 import { reducer } from "../reducers/";
 import { IStoreState } from "../types/";
 
@@ -11,8 +13,7 @@ export const initialState = {
   yAxis: ""
 };
 
-const devTools: any = (window as any).__REDUX_DEVTOOLS_EXTENSION__
-  ? (window as any).__REDUX_DEVTOOLS_EXTENSION__()(createStore)
-  : createStore;
-
-export const store: Store<IStoreState> = devTools(reducer, initialState);
+export const store: Store<IStoreState> = createStore(
+  reducer,
+  composeWithDevTools(applyMiddleware(thunk))
+);
