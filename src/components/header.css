@@ -14,6 +14,14 @@
   float: right;
 }
 
+.navbar-collapse {
+  border: none;
+}
+
+.navbar-nav>li>a {
+  text-align: right;
+}
+
 .navbar-nav>li>a:hover {
   color: #A498DA !important;
   background-color: white !important;
