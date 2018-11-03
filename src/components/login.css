@@ -1,0 +1,37 @@
+.login-main {
+  height: 100%;
+  width: 100%;
+  background: url('../imgs/buildings.jpg') no-repeat left bottom;
+  background-size: cover;
+}
+
+.login-row {
+  margin: 70px 0;
+}
+
+.login-box {
+  height: 350px;
+  background-color: black;
+  opacity: 0.9;
+  border-radius: 5px;
+  color: white;
+}
+
+label {
+  margin: 10px 0;
+}
+
+.login-btn {
+  background-color: #A498DA;
+  color: white;
+  border: none;
+}
+.login-btn:hover, .login-btn:focus {
+  background-color: #7c73a5;
+  color: white;
+}
+
+.signin-btn {
+  border: none;
+}
+
