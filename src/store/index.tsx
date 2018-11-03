@@ -7,6 +7,7 @@ import { IStoreState } from "../types/";
 export const initialState = {
   data: [{ columnX: "", columnY: 0 }],
   graphType: "",
+  graphs: [],
   id: "",
   title: "",
   xAxis: "",

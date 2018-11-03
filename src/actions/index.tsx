@@ -1,4 +1,20 @@
+import { ThunkAction } from "redux-thunk";
 import * as constants from "../constants";
+import { IStoreState } from "../types";
+
+export interface IGraphData {
+  data: IData[];
+  graphType: string;
+  id: string;
+  title: string;
+  xAxis: string;
+  yAxis: string;
+}
+
+export interface ISetGraphData {
+  graphs: IGraphData[];
+  type: constants.SET_GRAPH_DATA;
+}
 
 export interface IData {
   columnX: string | number;
@@ -35,13 +51,32 @@ export interface ISetYAxis {
   type: constants.SET_Y_AXIS;
 }
 
-export type SetValue =
+export type Action =
+  | ISetGraphData
   | ISetData
   | ISetID
   | ISetType
   | ISetTitle
   | ISetXAxis
   | ISetYAxis;
+
+type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, Action>;
+
+export const setGraphData = (
+  graph: IGraphData
+): ThunkResult<void> => dispatch => {
+  // tslint:disable-next-line:no-console
+  console.log("action");
+  const myData = localStorage.getItem("myGraph");
+  let graphs = [];
+  if (myData) {
+    graphs = [...JSON.parse(myData).graphs];
+  }
+  graphs.push(graph);
+
+  localStorage.setItem("myGraph", JSON.stringify(graphs));
+  dispatch({ graphs, type: constants.SET_GRAPH_DATA });
+};
 
 export function setData(data: IData[]): ISetData {
   return {

@@ -1,6 +1,7 @@
-import { SetValue } from "../actions";
+import { Action } from "../actions";
 import {
   SET_DATA,
+  SET_GRAPH_DATA,
   SET_ID,
   SET_TITLE,
   SET_TYPE,
@@ -12,11 +13,13 @@ import { IStoreState } from "../types/";
 
 export function reducer(
   state: IStoreState = initialState,
-  action: SetValue
+  action: Action
 ): IStoreState {
   switch (action.type) {
     case SET_DATA:
       return { ...state, data: action.data };
+    case SET_GRAPH_DATA:
+      return { ...state, graphs: action.graphs };
     case SET_ID:
       return { ...state, id: action.id };
     case SET_TITLE:

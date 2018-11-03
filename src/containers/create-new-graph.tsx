@@ -12,7 +12,7 @@ import {
   Table
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { IData } from "../actions/";
+import { IData, IGraphData } from "../actions/";
 import AreaGraph from "../components/graphs/area-graph";
 import BarGraph from "../components/graphs/bar-graph";
 import LineGraph from "../components/graphs/line-graph";
@@ -22,7 +22,7 @@ import "./create-new-graph.css";
 
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
-import { Dispatch } from "redux";
+import { ThunkDispatch } from "redux-thunk";
 import * as actions from "../actions/";
 import { IStoreState } from "../types/";
 import { generateUuid } from "../utilities/generateUuid";
@@ -44,10 +44,12 @@ interface IMyGraph {
 interface IProps {
   data: IData[];
   graphType: string;
+  graphs: IGraphData[];
   title: string;
   xAxis: string;
   yAxis: string;
   setData(data: IData[]): void;
+  setGraphData(graph: IGraphData): void;
   setGraphType(graphType: string): void;
   setID(id: string): void;
   setTitle(title: string): void;
@@ -341,18 +343,13 @@ class CreateNewGraph extends React.Component<
     });
   };
 
-  private save = (e: any): void => {
+  private save = (): void => {
     const { data, graphType, title, xAxis, yAxis } = this.props;
-    const { myGraph } = this.state;
-    const latestGraph = { data, graphType, title, xAxis, yAxis };
+    const id = generateUuid();
+    this.props.setID(id);
 
-    myGraph.graphs.push(latestGraph);
-    this.setState({
-      myGraph
-    });
-    localStorage.setItem("myGraph", JSON.stringify(myGraph));
-
-    this.props.setID(generateUuid());
+    const graph = { id, data, graphType, title, xAxis, yAxis };
+    this.props.setGraphData(graph);
   };
 }
 
@@ -360,15 +357,20 @@ export function mapStateToProps(state: IStoreState) {
   return {
     data: state.data,
     graphType: state.graphType,
+    graphs: state.graphs,
     title: state.title,
     xAxis: state.xAxis,
     yAxis: state.yAxis
   };
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.SetValue>) {
+export function mapDispatchToProps(
+  dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
+) {
   return {
     setData: (data: actions.IData[]) => dispatch(actions.setData(data)),
+    setGraphData: (graph: actions.IGraphData) =>
+      dispatch(actions.setGraphData(graph)),
     setGraphType: (graphType: string) =>
       dispatch(actions.setGraphType(graphType)),
     setID: (id: string) => dispatch(actions.setID(id)),
