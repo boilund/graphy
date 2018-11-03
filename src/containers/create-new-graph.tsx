@@ -27,24 +27,9 @@ import * as actions from "../actions/";
 import { IStoreState } from "../types/";
 import { generateUuid } from "../utilities/generateUuid";
 
-export interface IGraph {
-  data: IData[];
-  graphType: string;
-  title: string;
-  xAxis: string;
-  yAxis: string;
-}
-
-interface IMyGraph {
-  userId: string;
-  userName: string;
-  graphs: IGraph[];
-}
-
 interface IProps {
   data: IData[];
   graphType: string;
-  graphs: IGraphData[];
   title: string;
   xAxis: string;
   yAxis: string;
@@ -59,13 +44,11 @@ interface IProps {
 
 interface IState {
   inputData: IData[];
-  myGraph: IMyGraph;
   row: number;
 }
 
 const initialState = {
   inputData: [{ columnX: 0, columnY: 0 }],
-  myGraph: { userId: "1", userName: "Nana", graphs: [] },
   row: 1
 };
 
@@ -357,7 +340,6 @@ export function mapStateToProps(state: IStoreState) {
   return {
     data: state.data,
     graphType: state.graphType,
-    graphs: state.graphs,
     title: state.title,
     xAxis: state.xAxis,
     yAxis: state.yAxis
