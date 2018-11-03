@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MenuItem, Nav, Navbar, NavDropdown, NavItem } from "react-bootstrap";
+import { Nav, Navbar, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import "./header.css";
@@ -10,33 +10,29 @@ class Header extends React.Component {
   public render() {
     return (
       <header className="App-header">
-        <Navbar className="navbar">
+        <Navbar collapseOnSelect={true} className="navbar">
           <Navbar.Header>
             <Navbar.Brand>
               <Link to="/">
-                <img src={logo} alt="graphy logo" />
+                <img src={logo} alt="graphy logo" className="logo" />
               </Link>
             </Navbar.Brand>
+            <Navbar.Toggle />
           </Navbar.Header>
-          <Nav className="nav">
-            <LinkContainer to="/my-graphs">
-              <NavItem eventKey="/my-graphs">My graphs</NavItem>
-            </LinkContainer>
-            <NavDropdown
-              eventKey="/login"
-              title="Login"
-              id="basic-nav-dropdown"
-            >
+          <Navbar.Collapse>
+            <Nav className="nav">
+              <LinkContainer to="/my-graphs">
+                <NavItem eventKey={1} className="nav-item">
+                  My graphs
+                </NavItem>
+              </LinkContainer>
               <LinkContainer to="/login">
-                <MenuItem eventKey="/login">Login</MenuItem>
+                <NavItem eventKey={2} className="nav-item">
+                  Login
+                </NavItem>
               </LinkContainer>
-              <LinkContainer to="/create-account">
-                <MenuItem eventKey="/create-account">
-                  Create new account
-                </MenuItem>
-              </LinkContainer>
-            </NavDropdown>
-          </Nav>
+            </Nav>
+          </Navbar.Collapse>
         </Navbar>
       </header>
     );
