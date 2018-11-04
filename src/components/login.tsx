@@ -30,7 +30,7 @@ class Login extends React.Component<{}, IState> {
   public render() {
     const { password, username } = this.state;
     return (
-      <main className="login-main">
+      <main className="App-main login-main">
         <Grid>
           <Row className="login-row">
             <Col xs={8} xsOffset={2} sm={4} smOffset={4} className="login-box">

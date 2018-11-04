@@ -1,18 +1,6 @@
 .login-main {
-  min-height: 80vh;
-  width: 100%;
   background: url('../imgs/buildings.jpg') no-repeat left bottom;
   background-size: cover;
-}
-@media only screen and (min-width: 568px) {
-  .login-main {
-    min-height: 500px;  /* for landscape mobile phones */
-  }
-}
-@media only screen and (min-width: 768px) {
-  .login-main {
-    height: 100vh;
-  }
 }
 
 .login-row {

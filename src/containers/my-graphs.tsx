@@ -25,7 +25,7 @@ class MyGraphs extends React.Component<IProps, {}> {
     const { graphs } = this.props;
 
     return (
-      <main className="main">
+      <main className="App-main">
         <Grid>
           <Row>
             <Col sm={12}>
