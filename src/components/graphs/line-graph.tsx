@@ -22,7 +22,7 @@ const LineGraph: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <React.Fragment>
-      <h3>{title ? title : "Line Graph"}</h3>
+      <h2>{title ? title : "Line Graph"}</h2>
       <LineChart
         width={500}
         height={250}

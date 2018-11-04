@@ -21,7 +21,7 @@ const AreaGraph: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <React.Fragment>
-      <h3>{title ? title : "Area Graph"}</h3>
+      <h2>{title ? title : "Area Graph"}</h2>
       <AreaChart
         width={500}
         height={300}

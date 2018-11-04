@@ -111,18 +111,24 @@ class CreateNewGraph extends React.Component<
           <td className="buttons">
             <ButtonToolbar>
               <Button
-                bsStyle="success"
                 className={index === lastItem ? "" : "hidden"}
                 onClick={this.addRow}
+                style={{ backgroundColor: "#88B0A3", border: "none" }}
               >
-                <FontAwesomeIcon icon="plus-circle" />
+                <FontAwesomeIcon
+                  icon="plus-circle"
+                  style={{ color: "white" }}
+                />
               </Button>
               <Button
-                bsStyle="danger"
                 onClick={this.removeRow}
                 id={"remove" + index}
+                style={{ backgroundColor: "#F79191", border: "none" }}
               >
-                <FontAwesomeIcon icon="minus-circle" />
+                <FontAwesomeIcon
+                  icon="minus-circle"
+                  style={{ color: "white" }}
+                />
               </Button>
             </ButtonToolbar>
           </td>
@@ -136,53 +142,52 @@ class CreateNewGraph extends React.Component<
           <Row>
             <Col sm={12} md={6}>
               <h1 className="sr-only">Create a graph</h1>
-              <FormControl
-                type="text"
-                placeholder="Enter graph title"
-                value={title}
-                onChange={this.handleTitleChange}
-              />
-              <h3>Data set</h3>
-              <Table
-                striped={true}
-                bordered={true}
-                condensed={true}
-                hover={true}
-              >
-                <thead>
-                  <tr>
-                    <th>
-                      <FormControl
-                        id="r1c1"
-                        type="text"
-                        placeholder="Enter X axis name"
-                        value={xAxis}
-                        onChange={this.handleXAxisChange}
-                      />
-                    </th>
-                    <th>
-                      <FormControl
-                        id="r1c2"
-                        type="text"
-                        placeholder="Enter Y axis name"
-                        value={yAxis}
-                        onChange={this.handleYAxisChange}
-                      />
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>{inputTable}</tbody>
-              </Table>
+              <div className="form-space">
+                <h2 className="text-left title">1. Graph title set</h2>
+                <FormControl
+                  type="text"
+                  placeholder="Enter graph title"
+                  value={title}
+                  onChange={this.handleTitleChange}
+                />
+              </div>
+              <div className="form-space">
+                <h2 className="text-left title">2. Data set</h2>
+                <Table condensed={true}>
+                  <thead>
+                    <tr>
+                      <th>
+                        <FormControl
+                          id="r1c1"
+                          type="text"
+                          placeholder="X axis name"
+                          value={xAxis}
+                          onChange={this.handleXAxisChange}
+                        />
+                      </th>
+                      <th>
+                        <FormControl
+                          id="r1c2"
+                          type="text"
+                          placeholder="Y axis name"
+                          value={yAxis}
+                          onChange={this.handleYAxisChange}
+                        />
+                      </th>
+                      <th>{null}</th>
+                    </tr>
+                  </thead>
+                  <tbody>{inputTable}</tbody>
+                </Table>
+              </div>
             </Col>
             <Col sm={12} md={6} className="margin-x graph-column">
-              {this.setGraph()}
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={12} className="margin-0">
+              <div className="form-preview">
+                <h2 className="text-left title">3. Preview</h2>
+                {this.setGraph()}
+              </div>
               <LinkContainer to="/my-graphs">
                 <Button
-                  bsStyle="success"
                   className="save-button"
                   bsSize="large"
                   block={true}

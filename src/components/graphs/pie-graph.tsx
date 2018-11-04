@@ -14,7 +14,7 @@ const PieGraph: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <React.Fragment>
-      <h3>{title ? title : "Pie Graph"}</h3>
+      <h2>{title ? title : "Pie Graph"}</h2>
       <PieChart width={500} height={400}>
         <Pie
           data={data.slice()}

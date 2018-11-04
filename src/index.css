@@ -19,6 +19,6 @@ body#siteBody {
   color: #333;
 }
 
-h2 {
+h1, h2 {
   font-size: 20px;
 }

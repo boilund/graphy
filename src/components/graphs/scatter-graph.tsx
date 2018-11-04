@@ -21,7 +21,7 @@ const ScatterGraph: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <React.Fragment>
-      <h3>{title ? title : "Scatter Graph"}</h3>
+      <h2>{title ? title : "Scatter Graph"}</h2>
       <ScatterChart
         width={500}
         height={500}
