@@ -14,7 +14,7 @@ class HomeScreen extends React.Component {
           <Row>
             <Col xs={6} sm={4}>
               <div className="yellow comment-square">
-                <h2 className="message">Select graph</h2>
+                <h1 className="message">Select graph</h1>
                 <FontAwesomeIcon
                   icon="comment"
                   className="fa-6x comment-icon"

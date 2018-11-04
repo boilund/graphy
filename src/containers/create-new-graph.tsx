@@ -135,7 +135,7 @@ class CreateNewGraph extends React.Component<
         <Grid>
           <Row>
             <Col sm={12} md={6}>
-              <h3>Graph title set</h3>
+              <h1 className="sr-only">Create a graph</h1>
               <FormControl
                 type="text"
                 placeholder="Enter graph title"

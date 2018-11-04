@@ -34,7 +34,7 @@ class Login extends React.Component<{}, IState> {
         <Grid>
           <Row className="login-row">
             <Col xs={8} xsOffset={2} sm={4} smOffset={4} className="login-box">
-              <h2>Login to Graphy</h2>
+              <h1>Login to Graphy</h1>
               <form>
                 <FormGroup
                   controlId="formControlsUsername"
