@@ -62,18 +62,17 @@ export type Action =
 
 type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, Action>;
 
-export const setGraphData = (
-  graph: IGraphData
-): ThunkResult<void> => dispatch => {
-  // tslint:disable-next-line:no-console
-  console.log("action");
+export const fetchGraphs = (): ThunkResult<void> => dispatch => {
   const myData = localStorage.getItem("myGraph");
-  let graphs = [];
   if (myData) {
-    graphs = [...JSON.parse(myData).graphs];
+    const graphs = JSON.parse(myData);
+    dispatch({ graphs, type: constants.SET_GRAPH_DATA });
   }
-  graphs.push(graph);
+};
 
+export const setGraphs = (
+  graphs: IGraphData[]
+): ThunkResult<void> => dispatch => {
   localStorage.setItem("myGraph", JSON.stringify(graphs));
   dispatch({ graphs, type: constants.SET_GRAPH_DATA });
 };

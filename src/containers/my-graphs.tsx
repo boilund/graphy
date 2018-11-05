@@ -8,17 +8,21 @@ import PieGraph from "../components/graphs/pie-graph";
 import ScatterGraph from "../components/graphs/scatter-graph";
 
 import { connect } from "react-redux";
+import { ThunkDispatch } from "redux-thunk";
+import * as actions from "../actions/";
 import { IStoreState } from "../types";
 
 import "./my-graphs.css";
 
 interface IProps {
   graphs: IGraphData[];
+  fetchGraphs(): void;
 }
 
 class MyGraphs extends React.Component<IProps, {}> {
   constructor(props: any) {
     super(props);
+    this.props.fetchGraphs();
   }
 
   public render() {
@@ -86,4 +90,15 @@ export function mapStateToProps(state: IStoreState) {
   };
 }
 
-export default connect(mapStateToProps)(MyGraphs);
+export function mapDispatchToProps(
+  dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
+) {
+  return {
+    fetchGraphs: () => dispatch(actions.fetchGraphs())
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyGraphs);

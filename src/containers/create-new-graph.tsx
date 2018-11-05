@@ -30,12 +30,14 @@ import { generateUuid } from "../utilities/generateUuid";
 interface IProps {
   data: IData[];
   graphType: string;
+  graphs: IGraphData[];
   title: string;
   xAxis: string;
   yAxis: string;
+  fetchGraphs(): void;
   setData(data: IData[]): void;
-  setGraphData(graph: IGraphData): void;
   setGraphType(graphType: string): void;
+  setGraphs(graphs: IGraphData[]): void;
   setID(id: string): void;
   setTitle(title: string): void;
   setXAxis(xAxis: string): void;
@@ -63,6 +65,7 @@ class CreateNewGraph extends React.Component<
     this.handleXAxisChange = this.handleXAxisChange.bind(this);
     this.handleYAxisChange = this.handleYAxisChange.bind(this);
     this.addRow = this.addRow.bind(this);
+    this.props.fetchGraphs();
   }
 
   public render() {
@@ -332,12 +335,13 @@ class CreateNewGraph extends React.Component<
   };
 
   private save = (): void => {
-    const { data, graphType, title, xAxis, yAxis } = this.props;
+    const { data, graphType, graphs, title, xAxis, yAxis } = this.props;
     const id = generateUuid();
     this.props.setID(id);
 
-    const graph = { id, data, graphType, title, xAxis, yAxis };
-    this.props.setGraphData(graph);
+    const currentGraph = { id, data, graphType, title, xAxis, yAxis };
+    graphs.push(currentGraph);
+    this.props.setGraphs(graphs);
   };
 }
 
@@ -345,6 +349,7 @@ export function mapStateToProps(state: IStoreState) {
   return {
     data: state.data,
     graphType: state.graphType,
+    graphs: state.graphs,
     title: state.title,
     xAxis: state.xAxis,
     yAxis: state.yAxis
@@ -355,11 +360,12 @@ export function mapDispatchToProps(
   dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
 ) {
   return {
+    fetchGraphs: () => dispatch(actions.fetchGraphs()),
     setData: (data: actions.IData[]) => dispatch(actions.setData(data)),
-    setGraphData: (graph: actions.IGraphData) =>
-      dispatch(actions.setGraphData(graph)),
     setGraphType: (graphType: string) =>
       dispatch(actions.setGraphType(graphType)),
+    setGraphs: (graphs: actions.IGraphData[]) =>
+      dispatch(actions.setGraphs(graphs)),
     setID: (id: string) => dispatch(actions.setID(id)),
     setTitle: (title: string) => dispatch(actions.setTitle(title)),
     setXAxis: (xAxis: string) => dispatch(actions.setXAxis(xAxis)),
