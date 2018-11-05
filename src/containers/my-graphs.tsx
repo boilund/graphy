@@ -35,14 +35,14 @@ class MyGraphs extends React.Component<IProps, {}> {
             <Col sm={12}>
               <h1>Your Page</h1>
             </Col>
-            {graphs.map((graph, index) => this.setGraph(graph, index))}
+            {graphs.map((graph, index) => this.showGraph(graph, index))}
           </Row>
         </Grid>
       </main>
     );
   }
 
-  private setGraph = (graph: IGraphData, index: number) => {
+  private showGraph = (graph: IGraphData, index: number) => {
     switch (graph.graphType) {
       case "line-graph":
         return (

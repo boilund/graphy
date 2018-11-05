@@ -187,7 +187,7 @@ class CreateNewGraph extends React.Component<
             <Col sm={12} md={6} className="margin-x graph-column">
               <div className="form-preview">
                 <h2 className="text-left title">3. Preview</h2>
-                {this.setGraph()}
+                {this.showGraph()}
               </div>
               <LinkContainer to="/my-graphs">
                 <Button
@@ -206,7 +206,7 @@ class CreateNewGraph extends React.Component<
     );
   }
 
-  private setGraph = () => {
+  private showGraph = () => {
     const { id: graphType } = this.props.match.params;
     const { data, title, yAxis } = this.props;
     this.props.setGraphType(graphType);
