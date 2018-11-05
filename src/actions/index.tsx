@@ -11,7 +11,7 @@ export interface IGraphData {
   yAxis: string;
 }
 
-export interface ISetGraphData {
+export interface ISetGraphs {
   graphs: IGraphData[];
   type: constants.SET_GRAPH_DATA;
 }
@@ -52,7 +52,7 @@ export interface ISetYAxis {
 }
 
 export type Action =
-  | ISetGraphData
+  | ISetGraphs
   | ISetData
   | ISetID
   | ISetType
