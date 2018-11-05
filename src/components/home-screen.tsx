@@ -10,7 +10,7 @@ class HomeScreen extends React.Component {
   public render() {
     return (
       <main className="App-main">
-        <Grid>
+        <Grid className="home-screen-container">
           <Row>
             <Col xs={6} sm={4}>
               <div className="yellow comment-square">

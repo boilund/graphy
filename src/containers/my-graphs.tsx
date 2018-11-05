@@ -46,31 +46,31 @@ class MyGraphs extends React.Component<IProps, {}> {
     switch (graph.graphType) {
       case "line-graph":
         return (
-          <Col md={6} className="box" key={index}>
+          <Col xs={6} sm={4} className="box" key={index}>
             <LineGraph {...graph} />
           </Col>
         );
       case "bar-graph":
         return (
-          <Col md={6} className="box" key={index}>
+          <Col xs={6} sm={4} className="box" key={index}>
             <BarGraph {...graph} />
           </Col>
         );
       case "area-graph":
         return (
-          <Col md={6} className="box" key={index}>
+          <Col xs={6} sm={4} className="box" key={index}>
             <AreaGraph {...graph} />
           </Col>
         );
       case "pie-graph":
         return (
-          <Col md={6} className="box" key={index}>
+          <Col xs={6} sm={4} className="box" key={index}>
             <PieGraph {...graph} />
           </Col>
         );
       case "scatter-graph":
         return (
-          <Col md={6} className="box" key={index}>
+          <Col xs={6} sm={4} className="box" key={index}>
             <ScatterGraph {...graph} />
           </Col>
         );

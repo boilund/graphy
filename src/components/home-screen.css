@@ -1,21 +1,29 @@
+@media only screen and (min-width: 992px) {
+  .home-screen-container {
+    width: 75%;
+  }
+}
+
+.yellow, .green, .purple, .red {
+  height: 150px;
+}
+@media only screen and (min-width: 576px) {
+  .yellow, .green, .purple, .red {
+    height: 230px;
+  }
+}
+
 .yellow {
   background-color: #FEF796;
-  height: 200px;
 }
-
 .green {
   background-color: #88B0A3;
-  height: 200px;
 }
-
 .purple {
   background-color: #A498DA;
-  height: 200px;
 }
-
 .red {
   background-color: #F79191;
-  height: 200px;
 }
 
 .icons {
@@ -36,7 +44,7 @@
 
 .square:hover {
   opacity: 1.0;
-  box-shadow: 5px 3px 3px rgb(51, 51, 51, 0.3);
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 3px 3px -2px rgba(0,0,0,.12);
 }
 
 .comment-square {
@@ -46,11 +54,20 @@
 .comment-icon {
   position: absolute;
   color: white;
-  top: 35%;
+  top: 27%;
+  left: 32%;
+  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+  transform: scale(1.5);
+}
+@media only screen and (min-width: 576px) {
+  .comment-icon {
+    top: 35%;
   left: 40%;
   transform: translateY(-50%) translateX(-50%);
   -webkit-transform: translateY(-50%) translateX(-50%);
-  transform: scale(2.5);
+    transform: scale(2.5);
+  }
 }
 
 .message {
