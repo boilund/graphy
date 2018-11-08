@@ -4,7 +4,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
 import "./header.css";
 
-import logo from "./logoAndBrand.png";
+import logo from "../imgs/logoAndBrand.png";
 
 class Header extends React.Component {
   public render() {
