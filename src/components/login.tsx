@@ -34,6 +34,17 @@ class Login extends React.Component<{}, {}> {
   }
 
   private login = (e: any): void => {
+    firebaseGoogleProvider.addScope("profile");
+    firebaseGoogleProvider.addScope("email");
+    firebaseAuth.signInWithPopup(firebaseGoogleProvider).then((result: any) => {
+      // This gives you a Google Access Token.
+      const token = result.credential.accessToken;
+      // tslint:disable-next-line:no-console
+      console.log(token);
+      // The signed-in user info.
+      const user = result.user;
+      // tslint:disable-next-line:no-console
+      console.log(user);
     });
   };
 }
