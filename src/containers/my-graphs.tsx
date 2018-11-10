@@ -16,6 +16,7 @@ import "./my-graphs.css";
 
 interface IProps {
   graphs: IGraphData[];
+  username: string;
   fetchGraphs(): void;
 }
 
@@ -26,14 +27,14 @@ class MyGraphs extends React.Component<IProps, {}> {
   }
 
   public render() {
-    const { graphs } = this.props;
+    const { username, graphs } = this.props;
 
     return (
       <main className="App-main">
         <Grid>
           <Row>
             <Col sm={12}>
-              <h1>Your Page</h1>
+              <h1>{username}</h1>
             </Col>
             {graphs.map((graph, index) => this.showGraph(graph, index))}
           </Row>
@@ -86,7 +87,8 @@ class MyGraphs extends React.Component<IProps, {}> {
 
 export function mapStateToProps(state: IStoreState) {
   return {
-    graphs: state.graphs
+    graphs: state.graphs,
+    username: state.username
   };
 }
 
