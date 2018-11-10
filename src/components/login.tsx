@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Button, Col, Grid, Row } from "react-bootstrap";
-import { firebaseAuth, firebaseGoogleProvider } from "../firebase";
+import { firebaseApp, firebaseAuth, firebaseGoogleProvider } from "../firebase";
+import google from "../imgs/google-logo.png";
 import "./login.css";
 
 import google from "../imgs/google-logo.png";
@@ -9,6 +10,49 @@ class Login extends React.Component<{}, {}> {
   constructor(props: any) {
     super(props);
     this.login = this.login.bind(this);
+  }
+
+  public componentDidMount() {
+    firebaseAuth
+      .getRedirectResult()
+      .then((result: any) => {
+        if (result.credential) {
+          // This gives you a Google Access Token. You can use it to access the Google API.
+          const token = result.credential.accessToken;
+          // ...
+          // tslint:disable-next-line:no-console
+          console.log(token);
+        }
+        // The signed-in user info.
+        const user = result.user;
+        // tslint:disable-next-line:no-console
+        console.log(user.displayName);
+        this.props.setUserName(user.displayName);
+        this.props.setUserId(user.uid);
+      })
+      .catch((error: any) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        const credential = error.credential;
+        // tslint:disable-next-line:no-console
+        console.error(errorCode, errorMessage, email, credential);
+      });
+
+    firebaseApp.auth().onAuthStateChanged((user: any) => {
+      if (user) {
+        // tslint:disable-next-line:no-console
+        console.log(user);
+        // User is signed in.
+      } else {
+        // tslint:disable-next-line:no-console
+        console.log("no user");
+        // No user is signed in.
+      }
+    });
   }
 
   public render() {
@@ -36,16 +80,9 @@ class Login extends React.Component<{}, {}> {
   private login = (e: any): void => {
     firebaseGoogleProvider.addScope("profile");
     firebaseGoogleProvider.addScope("email");
-    firebaseAuth.signInWithPopup(firebaseGoogleProvider).then((result: any) => {
-      // This gives you a Google Access Token.
-      const token = result.credential.accessToken;
-      // tslint:disable-next-line:no-console
-      console.log(token);
-      // The signed-in user info.
-      const user = result.user;
-      // tslint:disable-next-line:no-console
-      console.log(user);
-    });
+    firebaseAuth.signInWithRedirect(firebaseGoogleProvider);
+  };
+}
   };
 }
 
