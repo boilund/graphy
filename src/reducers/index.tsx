@@ -5,6 +5,8 @@ import {
   SET_ID,
   SET_TITLE,
   SET_TYPE,
+  SET_USER_ID,
+  SET_USER_NAME,
   SET_X_AXIS,
   SET_Y_AXIS
 } from "../constants/";
@@ -26,6 +28,10 @@ export function reducer(
       return { ...state, title: action.title };
     case SET_TYPE:
       return { ...state, graphType: action.graphType };
+    case SET_USER_ID:
+      return { ...state, userId: action.userId };
+    case SET_USER_NAME:
+      return { ...state, username: action.username };
     case SET_X_AXIS:
       return { ...state, xAxis: action.xAxis };
     case SET_Y_AXIS:

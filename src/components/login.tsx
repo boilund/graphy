@@ -4,9 +4,18 @@ import { firebaseApp, firebaseAuth, firebaseGoogleProvider } from "../firebase";
 import google from "../imgs/google-logo.png";
 import "./login.css";
 
-import google from "../imgs/google-logo.png";
+import { connect } from "react-redux";
+import { ThunkDispatch } from "redux-thunk";
+import * as actions from "../actions/";
+import { IStoreState } from "../types";
 
-class Login extends React.Component<{}, {}> {
+interface IProps {
+  username: string;
+  setUserId(userId: string): void;
+  setUserName(username: string): void;
+}
+
+class Login extends React.Component<IProps, {}> {
   constructor(props: any) {
     super(props);
     this.login = this.login.bind(this);
@@ -19,14 +28,11 @@ class Login extends React.Component<{}, {}> {
         if (result.credential) {
           // This gives you a Google Access Token. You can use it to access the Google API.
           const token = result.credential.accessToken;
-          // ...
           // tslint:disable-next-line:no-console
           console.log(token);
         }
         // The signed-in user info.
         const user = result.user;
-        // tslint:disable-next-line:no-console
-        console.log(user.displayName);
         this.props.setUserName(user.displayName);
         this.props.setUserId(user.uid);
       })
@@ -41,11 +47,13 @@ class Login extends React.Component<{}, {}> {
         // tslint:disable-next-line:no-console
         console.error(errorCode, errorMessage, email, credential);
       });
+  }
 
+  public componentDidUpdate() {
     firebaseApp.auth().onAuthStateChanged((user: any) => {
       if (user) {
         // tslint:disable-next-line:no-console
-        console.log(user);
+        console.log("signed in user", user);
         // User is signed in.
       } else {
         // tslint:disable-next-line:no-console
@@ -83,7 +91,23 @@ class Login extends React.Component<{}, {}> {
     firebaseAuth.signInWithRedirect(firebaseGoogleProvider);
   };
 }
+
+export function mapStateToProps(state: IStoreState) {
+  return {
+    username: state.username
   };
 }
 
-export default Login;
+export function mapDispatchToProps(
+  dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
+) {
+  return {
+    setUserId: (userId: string) => dispatch(actions.setUserId(userId)),
+    setUserName: (username: string) => dispatch(actions.setUserName(username))
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Login);

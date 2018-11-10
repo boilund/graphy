@@ -10,6 +10,8 @@ export const initialState = {
   graphs: [],
   id: "",
   title: "",
+  userId: "",
+  username: "",
   xAxis: "",
   yAxis: ""
 };

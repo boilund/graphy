@@ -13,6 +13,12 @@ export type SET_TITLE = typeof SET_TITLE;
 export const SET_TYPE = "SET_TYPE";
 export type SET_TYPE = typeof SET_TYPE;
 
+export const SET_USER_ID = "SET_USER_ID";
+export type SET_USER_ID = typeof SET_USER_ID;
+
+export const SET_USER_NAME = "SET_USER_NAME";
+export type SET_USER_NAME = typeof SET_USER_NAME;
+
 export const SET_X_AXIS = "SET_X_AXIS";
 export type SET_X_AXIS = typeof SET_X_AXIS;
 

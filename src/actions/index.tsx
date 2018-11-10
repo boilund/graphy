@@ -41,6 +41,16 @@ export interface ISetTitle {
   type: constants.SET_TITLE;
 }
 
+export interface ISetUserId {
+  userId: string;
+  type: constants.SET_USER_ID;
+}
+
+export interface ISetUserName {
+  username: string;
+  type: constants.SET_USER_NAME;
+}
+
 export interface ISetXAxis {
   xAxis: string;
   type: constants.SET_X_AXIS;
@@ -57,6 +67,8 @@ export type Action =
   | ISetID
   | ISetType
   | ISetTitle
+  | ISetUserId
+  | ISetUserName
   | ISetXAxis
   | ISetYAxis;
 
@@ -102,6 +114,20 @@ export function setTitle(title: string): ISetTitle {
   return {
     title,
     type: constants.SET_TITLE
+  };
+}
+
+export function setUserId(userId: string): ISetUserId {
+  return {
+    type: constants.SET_USER_ID,
+    userId
+  };
+}
+
+export function setUserName(username: string): ISetUserName {
+  return {
+    type: constants.SET_USER_NAME,
+    username
   };
 }
 
