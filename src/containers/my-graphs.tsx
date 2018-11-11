@@ -12,6 +12,7 @@ import { ThunkDispatch } from "redux-thunk";
 import * as actions from "../actions/";
 import { IStoreState } from "../types";
 
+import { getGraphSize } from "../utilities/getGraphSize";
 import "./my-graphs.css";
 
 interface IProps {
@@ -20,10 +21,23 @@ interface IProps {
   fetchGraphs(): void;
 }
 
-class MyGraphs extends React.Component<IProps, {}> {
+interface IState {
+  windowWidth: number;
+}
+
+class MyGraphs extends React.Component<IProps, IState> {
   constructor(props: any) {
     super(props);
     this.props.fetchGraphs();
+    this.state = {
+      windowWidth: 1000
+    };
+  }
+
+  public componentDidMount() {
+    this.setState({
+      windowWidth: window.innerWidth
+    });
   }
 
   public render() {
@@ -44,35 +58,37 @@ class MyGraphs extends React.Component<IProps, {}> {
   }
 
   private showGraph = (graph: IGraphData, index: number) => {
+    const size = getGraphSize(this.state.windowWidth, "my-page");
+
     switch (graph.graphType) {
       case "line-graph":
         return (
           <Col xs={6} sm={4} className="box" key={index}>
-            <LineGraph {...graph} />
+            <LineGraph {...graph} size={size} />
           </Col>
         );
       case "bar-graph":
         return (
           <Col xs={6} sm={4} className="box" key={index}>
-            <BarGraph {...graph} />
+            <BarGraph {...graph} size={size} />
           </Col>
         );
       case "area-graph":
         return (
           <Col xs={6} sm={4} className="box" key={index}>
-            <AreaGraph {...graph} />
+            <AreaGraph {...graph} size={size} />
           </Col>
         );
       case "pie-graph":
         return (
           <Col xs={6} sm={4} className="box" key={index}>
-            <PieGraph {...graph} />
+            <PieGraph {...graph} size={size} />
           </Col>
         );
       case "scatter-graph":
         return (
           <Col xs={6} sm={4} className="box" key={index}>
-            <ScatterGraph {...graph} />
+            <ScatterGraph {...graph} size={size} />
           </Col>
         );
       default:

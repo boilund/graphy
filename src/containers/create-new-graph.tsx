@@ -25,7 +25,9 @@ import { RouteComponentProps } from "react-router-dom";
 import { ThunkDispatch } from "redux-thunk";
 import * as actions from "../actions/";
 import { IStoreState } from "../types/";
+
 import { generateUuid } from "../utilities/generateUuid";
+import { getGraphSize } from "../utilities/getGraphSize";
 
 interface IProps {
   data: IData[];
@@ -47,11 +49,13 @@ interface IProps {
 interface IState {
   inputData: IData[];
   row: number;
+  windowWidth: number;
 }
 
 const initialState = {
   inputData: [{ columnX: 0, columnY: 0 }],
-  row: 1
+  row: 1,
+  windowWidth: 1000
 };
 
 class CreateNewGraph extends React.Component<
@@ -66,6 +70,12 @@ class CreateNewGraph extends React.Component<
     this.handleYAxisChange = this.handleYAxisChange.bind(this);
     this.addRow = this.addRow.bind(this);
     this.props.fetchGraphs();
+  }
+
+  public componentDidMount() {
+    this.setState({
+      windowWidth: window.innerWidth
+    });
   }
 
   public render() {
@@ -209,19 +219,23 @@ class CreateNewGraph extends React.Component<
   private showGraph = () => {
     const { id: graphType } = this.props.match.params;
     const { data, title, yAxis } = this.props;
+
     this.props.setGraphType(graphType);
+
+    const size = getGraphSize(this.state.windowWidth, "create-page");
+    const graphProps = { data, title, yAxis, size };
 
     switch (graphType) {
       case "line-graph":
-        return <LineGraph data={data} title={title} yAxis={yAxis} />;
+        return <LineGraph {...graphProps} />;
       case "bar-graph":
-        return <BarGraph data={data} title={title} yAxis={yAxis} />;
+        return <BarGraph {...graphProps} />;
       case "area-graph":
-        return <AreaGraph data={data} title={title} yAxis={yAxis} />;
+        return <AreaGraph {...graphProps} />;
       case "pie-graph":
-        return <PieGraph data={data} title={title} yAxis={yAxis} />;
+        return <PieGraph {...graphProps} />;
       case "scatter-graph":
-        return <ScatterGraph data={data} title={title} yAxis={yAxis} />;
+        return <ScatterGraph {...graphProps} />;
       default:
         return;
     }
