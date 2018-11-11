@@ -63,32 +63,42 @@ class MyGraphs extends React.Component<IProps, IState> {
     switch (graph.graphType) {
       case "line-graph":
         return (
-          <Col xs={6} sm={4} className="box" key={index}>
-            <LineGraph {...graph} size={size} />
+          <Col xs={6} sm={4} key={index}>
+            <div className="box">
+              <LineGraph {...graph} size={size} />
+            </div>
           </Col>
         );
       case "bar-graph":
         return (
-          <Col xs={6} sm={4} className="box" key={index}>
-            <BarGraph {...graph} size={size} />
+          <Col xs={6} sm={4} key={index}>
+            <div className="box">
+              <BarGraph {...graph} size={size} />
+            </div>
           </Col>
         );
       case "area-graph":
         return (
-          <Col xs={6} sm={4} className="box" key={index}>
-            <AreaGraph {...graph} size={size} />
+          <Col xs={6} sm={4} key={index}>
+            <div className="box">
+              <AreaGraph {...graph} size={size} />
+            </div>
           </Col>
         );
       case "pie-graph":
         return (
-          <Col xs={6} sm={4} className="box" key={index}>
-            <PieGraph {...graph} size={size} />
+          <Col xs={6} sm={4} key={index}>
+            <div className="box">
+              <PieGraph {...graph} size={size} />
+            </div>
           </Col>
         );
       case "scatter-graph":
         return (
-          <Col xs={6} sm={4} className="box" key={index}>
-            <ScatterGraph {...graph} size={size} />
+          <Col xs={6} sm={4} key={index}>
+            <div className="box">
+              <ScatterGraph {...graph} size={size} />
+            </div>
           </Col>
         );
       default:
