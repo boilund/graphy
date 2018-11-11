@@ -11,6 +11,8 @@ import { IStoreState } from "../types";
 
 interface IProps {
   username: string;
+  loginState: boolean;
+  setLoginState(loginState: boolean): void;
   setUserId(userId: string): void;
   setUserName(username: string): void;
 }
@@ -35,6 +37,7 @@ class Login extends React.Component<IProps, {}> {
         const user = result.user;
         this.props.setUserName(user.displayName);
         this.props.setUserId(user.uid);
+        this.props.setLoginState(true);
       })
       .catch((error: any) => {
         // Handle Errors here.
@@ -52,6 +55,7 @@ class Login extends React.Component<IProps, {}> {
   public componentDidUpdate() {
     firebaseApp.auth().onAuthStateChanged((user: any) => {
       if (user) {
+        this.props.setLoginState(true);
         // tslint:disable-next-line:no-console
         console.log("signed in user", user);
         // User is signed in.
@@ -94,6 +98,7 @@ class Login extends React.Component<IProps, {}> {
 
 export function mapStateToProps(state: IStoreState) {
   return {
+    loginState: state.loginState,
     username: state.username
   };
 }
@@ -102,6 +107,8 @@ export function mapDispatchToProps(
   dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
 ) {
   return {
+    setLoginState: (loginState: boolean) =>
+      dispatch(actions.setLoginState(loginState)),
     setUserId: (userId: string) => dispatch(actions.setUserId(userId)),
     setUserName: (username: string) => dispatch(actions.setUserName(username))
   };

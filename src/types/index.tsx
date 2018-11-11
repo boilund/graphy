@@ -5,6 +5,7 @@ export interface IStoreState {
   readonly graphType: string;
   readonly graphs: IGraphData[];
   readonly id: string;
+  readonly loginState: boolean;
   readonly title: string;
   readonly userId: string;
   readonly username: string;

@@ -4,6 +4,9 @@ export type SET_GRAPH_DATA = typeof SET_GRAPH_DATA;
 export const SET_DATA = "SET_DATA";
 export type SET_DATA = typeof SET_DATA;
 
+export const SET_LOGIN_STATE = "SET_LOGIN_STATE";
+export type SET_LOGIN_STATE = typeof SET_LOGIN_STATE;
+
 export const SET_ID = "SET_ID";
 export type SET_ID = typeof SET_ID;
 

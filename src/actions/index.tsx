@@ -31,6 +31,11 @@ export interface ISetID {
   type: constants.SET_ID;
 }
 
+export interface ISetLoginState {
+  loginState: boolean;
+  type: constants.SET_LOGIN_STATE;
+}
+
 export interface ISetType {
   graphType: string;
   type: constants.SET_TYPE;
@@ -65,6 +70,7 @@ export type Action =
   | ISetGraphs
   | ISetData
   | ISetID
+  | ISetLoginState
   | ISetType
   | ISetTitle
   | ISetUserId
@@ -107,6 +113,13 @@ export function setID(id: string): ISetID {
   return {
     id,
     type: constants.SET_ID
+  };
+}
+
+export function setLoginState(loginState: boolean): ISetLoginState {
+  return {
+    loginState,
+    type: constants.SET_LOGIN_STATE
   };
 }
 

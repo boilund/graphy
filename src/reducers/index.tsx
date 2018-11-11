@@ -3,6 +3,7 @@ import {
   SET_DATA,
   SET_GRAPH_DATA,
   SET_ID,
+  SET_LOGIN_STATE,
   SET_TITLE,
   SET_TYPE,
   SET_USER_ID,
@@ -24,6 +25,8 @@ export function reducer(
       return { ...state, graphs: action.graphs };
     case SET_ID:
       return { ...state, id: action.id };
+    case SET_LOGIN_STATE:
+      return { ...state, loginState: action.loginState };
     case SET_TITLE:
       return { ...state, title: action.title };
     case SET_TYPE:

@@ -9,6 +9,7 @@ export const initialState = {
   graphType: "",
   graphs: [],
   id: "",
+  loginState: false,
   title: "",
   userId: "",
   username: "",
