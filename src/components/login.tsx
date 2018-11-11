@@ -85,17 +85,17 @@ class Login extends React.Component<IProps, {}> {
                 </Button>
               ) : (
                 <React.Fragment>
-              <Button className="btn-block login-btn" onClick={this.login}>
+                  <Button className="btn-block login-btn" onClick={this.login}>
                     <img
                       className="google-logo"
                       src={google}
                       alt="Google logo"
                     />
-                Login with Google account
-              </Button>
-              <Button className="btn-block signin-btn">
-                New to Graphy? Create an account
-              </Button>
+                    Login with Google account
+                  </Button>
+                  <Button className="btn-block signin-btn">
+                    New to Graphy? Create an account
+                  </Button>
                 </React.Fragment>
               )}
             </Col>
@@ -109,6 +109,10 @@ class Login extends React.Component<IProps, {}> {
     firebaseGoogleProvider.addScope("profile");
     firebaseGoogleProvider.addScope("email");
     firebaseAuth.signInWithRedirect(firebaseGoogleProvider);
+  };
+
+  private logout = (e: any): void => {
+    this.props.setLoginState(false);
   };
 }
 
