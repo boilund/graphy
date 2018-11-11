@@ -28,7 +28,7 @@ label {
   margin: 10px 0;
 }
 
-.btn-block {
+.login-btn, .signin-btn {
   margin: 20px 0;
   border-radius: 6px;
   background-color: #f0f0f0;
@@ -36,7 +36,7 @@ label {
   height: 100px;
 }
 
-.btn-block:hover, .btn-block:focus {
+.login-btn:hover, .login-btn:focus, .signin-btn:hover, .signin-btn:focus {
   background-color: #A498DA;
   color: white;
 }
