@@ -10,6 +10,8 @@ import { IStoreState } from "../types";
 
 interface IProps {
   user: firebase.User | null;
+  signIn(): void;
+  signOut(): void;
 }
 
 class Login extends React.Component<IProps, {}> {
@@ -56,12 +58,12 @@ class Login extends React.Component<IProps, {}> {
     );
   }
 
-  private login = (e: any): void => {
-    return;
+  private login = (): void => {
+    this.props.signIn();
   };
 
-  private logout = (e: any): void => {
-    return;
+  private logout = (): void => {
+    this.props.signOut();
   };
 }
 
@@ -74,7 +76,10 @@ export function mapStateToProps(state: IStoreState) {
 export function mapDispatchToProps(
   dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
 ) {
-  return {};
+  return {
+    signIn: () => dispatch(actions.signIn()),
+    signOut: () => dispatch(actions.signOut())
+  };
 }
 
 export default connect(

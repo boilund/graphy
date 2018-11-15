@@ -143,3 +143,31 @@ export const fetchUser = (): ThunkResult<void> => dispatch => {
   });
 };
 
+export const signIn = (): ThunkResult<void> => dispatch => {
+  firebaseGoogleProvider.addScope("profile");
+  firebaseGoogleProvider.addScope("email");
+  firebaseAuth
+    .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+    .then(() => {
+      firebaseAuth.signInWithRedirect(firebaseGoogleProvider);
+    })
+    .catch(error => {
+      // tslint:disable-next-line:no-console
+      console.log(error);
+    });
+};
+
+export const signOut = (): ThunkResult<void> => dispatch => {
+  firebaseAuth
+    .signOut()
+    .then(() => {
+      dispatch({
+        type: constants.FETCH_USER,
+        user: null
+      });
+    })
+    .catch(error => {
+      // tslint:disable-next-line:no-console
+      console.log(error);
+    });
+};
