@@ -37,7 +37,7 @@ class Header extends React.Component<IProps, {}> {
               )}
               <LinkContainer to="/login">
                 <NavItem eventKey={2} className="nav-item">
-                  Login
+                  {user ? "Logout" : "Login"}
                 </NavItem>
               </LinkContainer>
             </Nav>
