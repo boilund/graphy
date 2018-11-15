@@ -27,3 +27,6 @@ export type SET_X_AXIS = typeof SET_X_AXIS;
 
 export const SET_Y_AXIS = "SET_Y_AXIS";
 export type SET_Y_AXIS = typeof SET_Y_AXIS;
+
+export const FETCH_USER = "FETCH_USER";
+export type FETCH_USER = typeof FETCH_USER;

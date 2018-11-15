@@ -7,6 +7,7 @@ export interface IStoreState {
   readonly id: string;
   readonly loginState: boolean;
   readonly title: string;
+  readonly user: firebase.User | null;
   readonly userId: string;
   readonly username: string;
   readonly xAxis: string;

@@ -1,5 +1,7 @@
+import * as firebase from "firebase/app";
 import { ThunkAction } from "redux-thunk";
 import * as constants from "../constants";
+import { firebaseAuth, firebaseGoogleProvider } from "../firebase";
 import { IStoreState } from "../types";
 
 export interface IGraphData {
@@ -66,6 +68,11 @@ export interface ISetYAxis {
   type: constants.SET_Y_AXIS;
 }
 
+export interface IFetchUser {
+  user: firebase.User | null;
+  type: constants.FETCH_USER;
+}
+
 export type Action =
   | ISetGraphs
   | ISetData
@@ -76,7 +83,8 @@ export type Action =
   | ISetUserId
   | ISetUserName
   | ISetXAxis
-  | ISetYAxis;
+  | ISetYAxis
+  | IFetchUser;
 
 type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, Action>;
 
@@ -157,3 +165,20 @@ export function setYAxis(yAxis: string): ISetYAxis {
     yAxis
   };
 }
+
+export const fetchUser = (): ThunkResult<void> => dispatch => {
+  firebaseAuth.onAuthStateChanged(user => {
+    if (user) {
+      dispatch({
+        type: constants.FETCH_USER,
+        user
+      });
+    } else {
+      dispatch({
+        type: constants.FETCH_USER,
+        user: null
+      });
+    }
+  });
+};
+

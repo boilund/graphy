@@ -11,6 +11,7 @@ export const initialState = {
   id: "",
   loginState: false,
   title: "",
+  user: null,
   userId: "",
   username: "",
   xAxis: "",

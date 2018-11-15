@@ -1,5 +1,6 @@
 import { Action } from "../actions";
 import {
+  FETCH_USER,
   SET_DATA,
   SET_GRAPH_DATA,
   SET_ID,
@@ -19,6 +20,8 @@ export function reducer(
   action: Action
 ): IStoreState {
   switch (action.type) {
+    case FETCH_USER:
+      return { ...state, user: action.user };
     case SET_DATA:
       return { ...state, data: action.data };
     case SET_GRAPH_DATA:
