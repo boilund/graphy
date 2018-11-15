@@ -9,12 +9,12 @@ import { connect } from "react-redux";
 import { IStoreState } from "../types";
 
 interface IProps {
-  loginState: boolean;
+  user: firebase.User | null;
 }
 
 class Header extends React.Component<IProps, {}> {
   public render() {
-    const { loginState } = this.props;
+    const { user } = this.props;
     return (
       <header className="App-header">
         <Navbar collapseOnSelect={true} className="navbar">
@@ -28,7 +28,7 @@ class Header extends React.Component<IProps, {}> {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav className="nav">
-              {loginState && (
+              {user && (
                 <LinkContainer to="/my-graphs">
                   <NavItem eventKey={1} className="nav-item">
                     My graphs
@@ -50,8 +50,11 @@ class Header extends React.Component<IProps, {}> {
 
 export function mapStateToProps(state: IStoreState) {
   return {
-    loginState: state.loginState
+    user: state.user
   };
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(
+  mapStateToProps,
+  undefined
+)(Header);
