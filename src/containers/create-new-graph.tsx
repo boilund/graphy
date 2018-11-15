@@ -34,6 +34,7 @@ interface IProps {
   graphType: string;
   graphs: IGraphData[];
   title: string;
+  user: firebase.User | null;
   xAxis: string;
   yAxis: string;
   fetchGraphs(): void;
@@ -80,7 +81,7 @@ class CreateNewGraph extends React.Component<
 
   public render() {
     const { inputData, row } = this.state;
-    const { title, xAxis, yAxis } = this.props;
+    const { title, xAxis, yAxis, user } = this.props;
 
     const tableContents = new Array(row).fill({
       columnX: 0,
@@ -199,16 +200,20 @@ class CreateNewGraph extends React.Component<
                 <h2 className="text-left title">3. Preview</h2>
                 {this.showGraph()}
               </div>
-              <LinkContainer to="/my-graphs">
-                <Button
-                  className="save-button"
-                  bsSize="large"
-                  block={true}
-                  onClick={this.save}
-                >
-                  Save
-                </Button>
-              </LinkContainer>
+              <Button
+                className="save-button"
+                bsSize="large"
+                block={true}
+                onClick={this.save}
+                disabled={!user}
+              >
+                Save
+              </Button>
+              {!user && (
+                <LinkContainer to="/login">
+                  <a>You need to login if you want to save your graph</a>
+                </LinkContainer>
+              )}
             </Col>
           </Row>
         </Grid>
@@ -350,6 +355,9 @@ class CreateNewGraph extends React.Component<
 
   private save = (): void => {
     const { data, graphType, graphs, title, xAxis, yAxis } = this.props;
+
+    this.props.history.push("/my-graphs");
+
     const id = generateUuid();
     this.props.setID(id);
 
@@ -365,6 +373,7 @@ export function mapStateToProps(state: IStoreState) {
     graphType: state.graphType,
     graphs: state.graphs,
     title: state.title,
+    user: state.user,
     xAxis: state.xAxis,
     yAxis: state.yAxis
   };
