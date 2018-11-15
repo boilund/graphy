@@ -33,11 +33,6 @@ export interface ISetID {
   type: constants.SET_ID;
 }
 
-export interface ISetLoginState {
-  loginState: boolean;
-  type: constants.SET_LOGIN_STATE;
-}
-
 export interface ISetType {
   graphType: string;
   type: constants.SET_TYPE;
@@ -46,16 +41,6 @@ export interface ISetType {
 export interface ISetTitle {
   title: string;
   type: constants.SET_TITLE;
-}
-
-export interface ISetUserId {
-  userId: string;
-  type: constants.SET_USER_ID;
-}
-
-export interface ISetUserName {
-  username: string;
-  type: constants.SET_USER_NAME;
 }
 
 export interface ISetXAxis {
@@ -77,11 +62,8 @@ export type Action =
   | ISetGraphs
   | ISetData
   | ISetID
-  | ISetLoginState
   | ISetType
   | ISetTitle
-  | ISetUserId
-  | ISetUserName
   | ISetXAxis
   | ISetYAxis
   | IFetchUser;
@@ -124,31 +106,10 @@ export function setID(id: string): ISetID {
   };
 }
 
-export function setLoginState(loginState: boolean): ISetLoginState {
-  return {
-    loginState,
-    type: constants.SET_LOGIN_STATE
-  };
-}
-
 export function setTitle(title: string): ISetTitle {
   return {
     title,
     type: constants.SET_TITLE
-  };
-}
-
-export function setUserId(userId: string): ISetUserId {
-  return {
-    type: constants.SET_USER_ID,
-    userId
-  };
-}
-
-export function setUserName(username: string): ISetUserName {
-  return {
-    type: constants.SET_USER_NAME,
-    username
   };
 }
 
