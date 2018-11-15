@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Button, Col, Grid, Row } from "react-bootstrap";
-import { firebaseApp, firebaseAuth, firebaseGoogleProvider } from "../firebase";
 import google from "../imgs/google-logo.png";
 import "./login.css";
 
@@ -10,11 +9,7 @@ import * as actions from "../actions/";
 import { IStoreState } from "../types";
 
 interface IProps {
-  username: string;
-  loginState: boolean;
-  setLoginState(loginState: boolean): void;
-  setUserId(userId: string): void;
-  setUserName(username: string): void;
+  user: firebase.User | null;
 }
 
 class Login extends React.Component<IProps, {}> {
@@ -24,52 +19,8 @@ class Login extends React.Component<IProps, {}> {
     this.logout = this.logout.bind(this);
   }
 
-  public componentDidMount() {
-    firebaseAuth
-      .getRedirectResult()
-      .then((result: any) => {
-        if (result.credential) {
-          // This gives you a Google Access Token. You can use it to access the Google API.
-          const token = result.credential.accessToken;
-          // tslint:disable-next-line:no-console
-          console.log(token);
-        }
-        // The signed-in user info.
-        const user = result.user;
-        this.props.setUserName(user.displayName);
-        this.props.setUserId(user.uid);
-        this.props.setLoginState(true);
-      })
-      .catch((error: any) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        const credential = error.credential;
-        // tslint:disable-next-line:no-console
-        console.error(errorCode, errorMessage, email, credential);
-      });
-  }
-
-  public componentDidUpdate() {
-    firebaseApp.auth().onAuthStateChanged((user: any) => {
-      if (user) {
-        this.props.setLoginState(true);
-        // tslint:disable-next-line:no-console
-        console.log("signed in user", user);
-        // User is signed in.
-      } else {
-        // tslint:disable-next-line:no-console
-        console.log("no user");
-        // No user is signed in.
-      }
-    });
-  }
-
   public render() {
-    const { loginState } = this.props;
+    const { user } = this.props;
 
     return (
       <main className="App-main login-main">
@@ -77,9 +28,9 @@ class Login extends React.Component<IProps, {}> {
           <Row className="login-row">
             <Col xs={8} xsOffset={2} sm={4} smOffset={4} className="login-box">
               <h1 className="login-box-header">
-                {loginState ? "Logout from Graphy" : "Login to Graphy"}
+                {user ? "Logout from Graphy" : "Login to Graphy"}
               </h1>
-              {loginState ? (
+              {user ? (
                 <Button className="logout-btn" onClick={this.logout}>
                   Logout
                 </Button>
@@ -106,32 +57,24 @@ class Login extends React.Component<IProps, {}> {
   }
 
   private login = (e: any): void => {
-    firebaseGoogleProvider.addScope("profile");
-    firebaseGoogleProvider.addScope("email");
-    firebaseAuth.signInWithRedirect(firebaseGoogleProvider);
+    return;
   };
 
   private logout = (e: any): void => {
-    this.props.setLoginState(false);
+    return;
   };
 }
 
 export function mapStateToProps(state: IStoreState) {
   return {
-    loginState: state.loginState,
-    username: state.username
+    user: state.user
   };
 }
 
 export function mapDispatchToProps(
   dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
 ) {
-  return {
-    setLoginState: (loginState: boolean) =>
-      dispatch(actions.setLoginState(loginState)),
-    setUserId: (userId: string) => dispatch(actions.setUserId(userId)),
-    setUserName: (username: string) => dispatch(actions.setUserName(username))
-  };
+  return {};
 }
 
 export default connect(

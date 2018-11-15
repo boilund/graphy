@@ -49,3 +49,8 @@ img.google-logo {
   height: 50px;
   margin: 20px 10px;
 }
+
+.logout-btn {
+  height: 50px;
+  width: 150px;
+}
