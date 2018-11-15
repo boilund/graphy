@@ -62,3 +62,10 @@
   background-color: #9387c5;
   color: white;
 }
+
+.btn.save-button:disabled {
+  border: none;
+  background-color: #A498DA;
+  color: white;
+  opacity: 0.8;
+}
