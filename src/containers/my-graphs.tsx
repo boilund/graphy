@@ -17,7 +17,7 @@ import "./my-graphs.css";
 
 interface IProps {
   graphs: IGraphData[];
-  username: string;
+  user: firebase.User | null;
   fetchGraphs(): void;
 }
 
@@ -41,14 +41,14 @@ class MyGraphs extends React.Component<IProps, IState> {
   }
 
   public render() {
-    const { username, graphs } = this.props;
+    const { user, graphs } = this.props;
 
     return (
       <main className="App-main">
         <Grid>
           <Row>
             <Col sm={12}>
-              <h1>{username}</h1>
+              <h1>{user && user.displayName}</h1>
             </Col>
             {graphs.map((graph, index) => this.showGraph(graph, index))}
           </Row>
@@ -114,7 +114,7 @@ class MyGraphs extends React.Component<IProps, IState> {
 export function mapStateToProps(state: IStoreState) {
   return {
     graphs: state.graphs,
-    username: state.username
+    user: state.user
   };
 }
 
