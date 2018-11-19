@@ -2,11 +2,11 @@ import * as React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Footer from "../components/footer";
-import Header from "../components/header";
 import HomeScreen from "../components/home-screen";
-import Login from "../components/login";
-import CreateNewGraph from "../containers/create-new-graph";
-import MyGraphs from "../containers/my-graphs";
+import CreateNewGraph from "./create-new-graph";
+import Header from "./header";
+import Login from "./login";
+import MyGraphs from "./my-graphs";
 
 import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";

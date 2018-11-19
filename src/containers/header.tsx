@@ -7,7 +7,7 @@ import "./header.css";
 
 import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
-import * as actions from "../actions/";
+import * as actions from "../actions";
 import { IStoreState } from "../types";
 
 interface IProps {
