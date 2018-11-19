@@ -6,15 +6,18 @@ import logo from "../imgs/logoAndBrand.png";
 import "./header.css";
 
 import { connect } from "react-redux";
+import { ThunkDispatch } from "redux-thunk";
+import * as actions from "../actions/";
 import { IStoreState } from "../types";
 
 interface IProps {
   user: firebase.User | null;
+  signOut(): void;
 }
 
 class Header extends React.Component<IProps, {}> {
   public render() {
-    const { user } = this.props;
+    const { user, signOut } = this.props;
     return (
       <header className="App-header">
         <Navbar collapseOnSelect={true} className="navbar">
@@ -35,11 +38,17 @@ class Header extends React.Component<IProps, {}> {
                   </NavItem>
                 </LinkContainer>
               )}
-              <LinkContainer to="/login">
-                <NavItem eventKey={2} className="nav-item">
-                  {user ? "Logout" : "Login"}
+              {user ? (
+                <NavItem eventKey={2} className="nav-item" onClick={signOut}>
+                  logout
                 </NavItem>
-              </LinkContainer>
+              ) : (
+                <LinkContainer to="/login">
+                  <NavItem eventKey={2} className="nav-item">
+                    login
+                  </NavItem>
+                </LinkContainer>
+              )}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -54,7 +63,15 @@ export function mapStateToProps(state: IStoreState) {
   };
 }
 
+export function mapDispatchToProps(
+  dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
+) {
+  return {
+    signOut: () => dispatch(actions.signOut())
+  };
+}
+
 export default connect(
   mapStateToProps,
-  undefined
+  mapDispatchToProps
 )(Header);
