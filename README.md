@@ -1,6 +1,6 @@
 # Graphy
 
-Graphy is a application to create and save your graphs. There are five type of graphs that can choose.
+Graphy is a application to create and save your graphs. There are five types of graphs that can choose.
 
 ## Screen shot
 Home screen
