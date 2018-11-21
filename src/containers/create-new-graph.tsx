@@ -32,7 +32,6 @@ import { getGraphSize } from "../utilities/getGraphSize";
 interface IProps {
   data: IData[];
   graphType: string;
-  graphs: IGraphData[];
   title: string;
   user: firebase.User | null;
   xAxis: string;
@@ -40,7 +39,7 @@ interface IProps {
   fetchGraphs(): void;
   setData(data: IData[]): void;
   setGraphType(graphType: string): void;
-  setGraphs(graphs: IGraphData[]): void;
+  setGraphs(graph: IGraphData, user: firebase.User | null): void;
   setID(id: string): void;
   setTitle(title: string): void;
   setXAxis(xAxis: string): void;
@@ -354,7 +353,7 @@ class CreateNewGraph extends React.Component<
   };
 
   private save = (): void => {
-    const { data, graphType, graphs, title, xAxis, yAxis } = this.props;
+    const { data, graphType, title, xAxis, yAxis, user } = this.props;
 
     this.props.history.push("/my-graphs");
 
@@ -362,8 +361,7 @@ class CreateNewGraph extends React.Component<
     this.props.setID(id);
 
     const currentGraph = { id, data, graphType, title, xAxis, yAxis };
-    graphs.push(currentGraph);
-    this.props.setGraphs(graphs);
+    this.props.setGraphs(currentGraph, user);
   };
 }
 
@@ -371,7 +369,6 @@ export function mapStateToProps(state: IStoreState) {
   return {
     data: state.data,
     graphType: state.graphType,
-    graphs: state.graphs,
     title: state.title,
     user: state.user,
     xAxis: state.xAxis,
@@ -387,8 +384,8 @@ export function mapDispatchToProps(
     setData: (data: actions.IData[]) => dispatch(actions.setData(data)),
     setGraphType: (graphType: string) =>
       dispatch(actions.setGraphType(graphType)),
-    setGraphs: (graphs: actions.IGraphData[]) =>
-      dispatch(actions.setGraphs(graphs)),
+    setGraphs: (graph: actions.IGraphData, user: firebase.User | null) =>
+      dispatch(actions.setGraphs(graph, user)),
     setID: (id: string) => dispatch(actions.setID(id)),
     setTitle: (title: string) => dispatch(actions.setTitle(title)),
     setXAxis: (xAxis: string) => dispatch(actions.setXAxis(xAxis)),
