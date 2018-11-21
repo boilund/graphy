@@ -1,6 +1,7 @@
 @media only screen and (min-width: 992px) {
-  .home-screen-container {
+  .home-screen-row {
     width: 75%;
+    margin: 0 auto;
   }
 }
 

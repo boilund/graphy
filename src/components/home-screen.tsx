@@ -9,8 +9,8 @@ import scatter from "../imgs/scatter-icon.svg";
 const HomeScreen: React.SFC = () => {
   return (
     <main className="App-main">
-      <Grid className="home-screen-container">
-        <Row>
+      <Grid>
+        <Row className="home-screen-row">
           <Col xs={6} sm={4}>
             <div className="yellow comment-square">
               <h1 className="message">Select graph</h1>
