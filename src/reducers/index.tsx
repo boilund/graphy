@@ -22,7 +22,16 @@ export function reducer(
     case SET_DATA:
       return { ...state, data: action.data };
     case SET_GRAPH_DATA:
-      return { ...state, graphs: action.graphs };
+      if (state.graphs.some(g => g.id === action.graph.id)) {
+        const targetGraph = state.graphs.find(g => g.id === action.graph.id);
+        if (targetGraph) {
+          const targetIndex = state.graphs.indexOf(targetGraph);
+          state.graphs.slice(targetIndex, 1).push(action.graph);
+        }
+      } else {
+        state.graphs.push(action.graph);
+      }
+      return { ...state, graphs: state.graphs };
     case SET_ID:
       return { ...state, id: action.id };
     case SET_TITLE:
