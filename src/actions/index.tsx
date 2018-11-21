@@ -1,7 +1,7 @@
 import * as firebase from "firebase/app";
 import { ThunkAction } from "redux-thunk";
 import * as constants from "../constants";
-import { firebaseAuth, firebaseGoogleProvider } from "../firebase";
+import { firebaseAuth, firebaseDb, firebaseGoogleProvider } from "../firebase";
 import { IStoreState } from "../types";
 
 export interface IGraphData {
@@ -14,7 +14,7 @@ export interface IGraphData {
 }
 
 export interface ISetGraphs {
-  graphs: IGraphData[];
+  graph: IGraphData;
   type: constants.SET_GRAPH_DATA;
 }
 
@@ -71,18 +71,44 @@ export type Action =
 type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, Action>;
 
 export const fetchGraphs = (): ThunkResult<void> => dispatch => {
+  // TODO: fetch Data from firebase
   const myData = localStorage.getItem("myGraph");
   if (myData) {
     const graphs = JSON.parse(myData);
-    dispatch({ graphs, type: constants.SET_GRAPH_DATA });
+    // TODO: get Data from firebase
+    // tslint:disable-next-line:no-console
+    console.log(graphs);
+    // dispatch({ graphs, type: constants.SET_GRAPH_DATA });
   }
 };
 
 export const setGraphs = (
-  graphs: IGraphData[]
+  graph: IGraphData,
+  user: firebase.User | null
 ): ThunkResult<void> => dispatch => {
-  localStorage.setItem("myGraph", JSON.stringify(graphs));
-  dispatch({ graphs, type: constants.SET_GRAPH_DATA });
+  const firestore = firebase.firestore();
+  const settings = { timestampsInSnapshots: true };
+  firestore.settings(settings);
+
+  if (user) {
+    firebaseDb
+      .collection("users")
+      .doc(`${user.uid}`)
+      .collection("graphs")
+      .add({
+        graph
+      })
+      .then((docRef: any) => {
+        // tslint:disable-next-line:no-console
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch((error: any) => {
+        // tslint:disable-next-line:no-console
+        console.error("Error adding document: ", error);
+      });
+
+    dispatch({ graph, type: constants.SET_GRAPH_DATA });
+  }
 };
 
 export function setData(data: IData[]): ISetData {
