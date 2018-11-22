@@ -1,0 +1,30 @@
+.mypage-buttons {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+}
+
+.mypage-buttons:hover {
+  cursor: pointer;
+  display: block;
+}
+
+.mypage-icon {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(206, 205, 205);
+  border-radius: 50%;
+  font-size: 15px;
+}
+
+.mypage-fa {
+  position: absolute;
+  top: 12px;
+  left: 13px;
+}
+
+.mypage-icon:hover {
+  background-color: rgba(254, 247, 150);
+}
