@@ -24,7 +24,7 @@ const BarGraph: React.SFC<IProps> = (props: IProps) => {
 
   return (
     <React.Fragment>
-      <h2 className="text-left">{title ? title : "Bar Graph"}</h2>
+      <h2>{title ? title : "Bar Graph"}</h2>
       <BarChart
         width={size.width}
         height={size.height}

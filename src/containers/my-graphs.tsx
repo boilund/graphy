@@ -47,7 +47,7 @@ class MyGraphs extends React.Component<IProps, IState> {
       <main className="App-main">
         <Grid>
           <Row>
-            <Col sm={12}>
+            <Col sm={12} className="mypage-title">
               <h1>{user && user.displayName}</h1>
             </Col>
             {graphs.map((graph, index) => this.showGraph(graph, index))}
