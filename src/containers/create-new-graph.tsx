@@ -36,7 +36,6 @@ interface IProps {
   user: firebase.User | null;
   xAxis: string;
   yAxis: string;
-  fetchGraphs(): void;
   setData(data: IData[]): void;
   setGraphType(graphType: string): void;
   setGraphs(graph: IGraphData, user: firebase.User | null): void;
@@ -69,7 +68,6 @@ class CreateNewGraph extends React.Component<
     this.handleXAxisChange = this.handleXAxisChange.bind(this);
     this.handleYAxisChange = this.handleYAxisChange.bind(this);
     this.addRow = this.addRow.bind(this);
-    this.props.fetchGraphs();
   }
 
   public componentDidMount() {
@@ -380,7 +378,6 @@ export function mapDispatchToProps(
   dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
 ) {
   return {
-    fetchGraphs: () => dispatch(actions.fetchGraphs()),
     setData: (data: actions.IData[]) => dispatch(actions.setData(data)),
     setGraphType: (graphType: string) =>
       dispatch(actions.setGraphType(graphType)),

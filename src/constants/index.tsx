@@ -21,3 +21,6 @@ export type SET_Y_AXIS = typeof SET_Y_AXIS;
 
 export const FETCH_USER = "FETCH_USER";
 export type FETCH_USER = typeof FETCH_USER;
+
+export const FETCH_GRAPHS = "FETCH_GRAPHS";
+export type FETCH_GRAPHS = typeof FETCH_GRAPHS;

@@ -13,7 +13,7 @@ export interface IGraphData {
   yAxis: string;
 }
 
-export interface ISetGraphs {
+export interface ISetGraph {
   graph: IGraphData;
   type: constants.SET_GRAPH_DATA;
 }
@@ -58,28 +58,49 @@ export interface IFetchUser {
   type: constants.FETCH_USER;
 }
 
+export interface IFetchGraphs {
+  graphs: IGraphData[];
+  type: constants.FETCH_GRAPHS;
+}
+
 export type Action =
-  | ISetGraphs
+  | ISetGraph
   | ISetData
   | ISetID
   | ISetType
   | ISetTitle
   | ISetXAxis
   | ISetYAxis
-  | IFetchUser;
+  | IFetchUser
+  | IFetchGraphs;
 
 type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, Action>;
 
-export const fetchGraphs = (): ThunkResult<void> => dispatch => {
-  // TODO: fetch Data from firebase
-  const myData = localStorage.getItem("myGraph");
-  if (myData) {
-    const graphs = JSON.parse(myData);
-    // TODO: get Data from firebase
-    // tslint:disable-next-line:no-console
-    console.log(graphs);
-    // dispatch({ graphs, type: constants.SET_GRAPH_DATA });
+export const fetchGraphs = (
+  user: firebase.User | null
+): ThunkResult<void> => dispatch => {
+  const firestore = firebase.firestore();
+  const settings = { timestampsInSnapshots: true };
+  firestore.settings(settings);
+
+  if (user) {
+    const graphs: IGraphData[] = [];
+    firebaseDb
+      .collection("users")
+      .doc(`${user.uid}`)
+      .collection("graphs")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          // doc.data() is never undefined for query doc snapshots
+          graphs.push(doc.data().graph);
+        });
+      })
+      .then(() => {
+        dispatch({ graphs, type: constants.FETCH_GRAPHS });
+      });
   }
+  return;
 };
 
 export const setGraphs = (

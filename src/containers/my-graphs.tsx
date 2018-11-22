@@ -18,7 +18,7 @@ import "./my-graphs.css";
 interface IProps {
   graphs: IGraphData[];
   user: firebase.User | null;
-  fetchGraphs(): void;
+  fetchGraphs(user: firebase.User | null): void;
 }
 
 interface IState {
@@ -28,7 +28,7 @@ interface IState {
 class MyGraphs extends React.Component<IProps, IState> {
   constructor(props: any) {
     super(props);
-    this.props.fetchGraphs();
+    this.props.fetchGraphs(this.props.user);
     this.state = {
       windowWidth: 1000
     };
@@ -122,7 +122,8 @@ export function mapDispatchToProps(
   dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
 ) {
   return {
-    fetchGraphs: () => dispatch(actions.fetchGraphs())
+    fetchGraphs: (user: firebase.User | null) =>
+      dispatch(actions.fetchGraphs(user))
   };
 }
 

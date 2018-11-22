@@ -1,5 +1,6 @@
 import { Action } from "../actions";
 import {
+  FETCH_GRAPHS,
   FETCH_USER,
   SET_DATA,
   SET_GRAPH_DATA,
@@ -19,6 +20,8 @@ export function reducer(
   switch (action.type) {
     case FETCH_USER:
       return { ...state, user: action.user };
+    case FETCH_GRAPHS:
+      return { ...state, graphs: action.graphs };
     case SET_DATA:
       return { ...state, data: action.data };
     case SET_GRAPH_DATA:
