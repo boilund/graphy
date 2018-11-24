@@ -6,7 +6,7 @@ import BarGraph from "../components/graphs/bar-graph";
 import LineGraph from "../components/graphs/line-graph";
 import PieGraph from "../components/graphs/pie-graph";
 import ScatterGraph from "../components/graphs/scatter-graph";
-import MypageButtons from "../components/mypage-buttons";
+import MypageButtons from "./mypage-buttons";
 
 import { connect } from "react-redux";
 import { ThunkDispatch } from "redux-thunk";
@@ -67,7 +67,7 @@ class MyGraphs extends React.Component<IProps, IState> {
           <Col xs={6} sm={4} key={index}>
             <div className="box">
               <LineGraph {...graph} size={size} />
-              <MypageButtons />
+              <MypageButtons graph={graph} />
             </div>
           </Col>
         );
@@ -76,7 +76,7 @@ class MyGraphs extends React.Component<IProps, IState> {
           <Col xs={6} sm={4} key={index}>
             <div className="box">
               <BarGraph {...graph} size={size} />
-              <MypageButtons />
+              <MypageButtons graph={graph} />
             </div>
           </Col>
         );
@@ -85,7 +85,7 @@ class MyGraphs extends React.Component<IProps, IState> {
           <Col xs={6} sm={4} key={index}>
             <div className="box">
               <AreaGraph {...graph} size={size} />
-              <MypageButtons />
+              <MypageButtons graph={graph} />
             </div>
           </Col>
         );
@@ -94,7 +94,7 @@ class MyGraphs extends React.Component<IProps, IState> {
           <Col xs={6} sm={4} key={index}>
             <div className="box">
               <PieGraph {...graph} size={size} />
-              <MypageButtons />
+              <MypageButtons graph={graph} />
             </div>
           </Col>
         );
@@ -103,7 +103,7 @@ class MyGraphs extends React.Component<IProps, IState> {
           <Col xs={6} sm={4} key={index}>
             <div className="box">
               <ScatterGraph {...graph} size={size} />
-              <MypageButtons />
+              <MypageButtons graph={graph} />
             </div>
           </Col>
         );
