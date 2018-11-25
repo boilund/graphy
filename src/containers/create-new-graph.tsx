@@ -122,22 +122,22 @@ class CreateNewGraph extends React.Component<
           <td className="buttons">
             <ButtonToolbar>
               <Button
-                className={index === lastItem ? "" : "hidden"}
-                onClick={this.addRow}
-                style={{ backgroundColor: "#88B0A3", border: "none" }}
-              >
-                <FontAwesomeIcon
-                  icon="plus-circle"
-                  style={{ color: "white" }}
-                />
-              </Button>
-              <Button
                 onClick={this.removeRow}
                 id={"remove" + index}
                 style={{ backgroundColor: "#F79191", border: "none" }}
               >
                 <FontAwesomeIcon
                   icon="minus-circle"
+                  style={{ color: "white" }}
+                />
+              </Button>
+              <Button
+                className={index === lastItem ? "" : "hidden"}
+                onClick={this.addRow}
+                style={{ backgroundColor: "#88B0A3", border: "none" }}
+              >
+                <FontAwesomeIcon
+                  icon="plus-circle"
                   style={{ color: "white" }}
                 />
               </Button>
