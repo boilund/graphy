@@ -38,7 +38,7 @@ interface IProps {
   yAxis: string;
   setData(data: IData[]): void;
   setGraphType(graphType: string): void;
-  setGraphs(graph: IGraphData, user: firebase.User | null): void;
+  setGraph(graph: IGraphData, user: firebase.User | null): void;
   setID(id: string): void;
   setTitle(title: string): void;
   setXAxis(xAxis: string): void;
@@ -359,7 +359,7 @@ class CreateNewGraph extends React.Component<
     this.props.setID(id);
 
     const currentGraph = { id, data, graphType, title, xAxis, yAxis };
-    this.props.setGraphs(currentGraph, user);
+    this.props.setGraph(currentGraph, user);
   };
 }
 
@@ -379,10 +379,10 @@ export function mapDispatchToProps(
 ) {
   return {
     setData: (data: actions.IData[]) => dispatch(actions.setData(data)),
+    setGraph: (graph: actions.IGraphData, user: firebase.User | null) =>
+      dispatch(actions.setGraph(graph, user)),
     setGraphType: (graphType: string) =>
       dispatch(actions.setGraphType(graphType)),
-    setGraphs: (graph: actions.IGraphData, user: firebase.User | null) =>
-      dispatch(actions.setGraphs(graph, user)),
     setID: (id: string) => dispatch(actions.setID(id)),
     setTitle: (title: string) => dispatch(actions.setTitle(title)),
     setXAxis: (xAxis: string) => dispatch(actions.setXAxis(xAxis)),

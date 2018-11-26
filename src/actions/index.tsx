@@ -103,7 +103,7 @@ export const fetchGraphs = (
   return;
 };
 
-export const setGraphs = (
+export const setGraph = (
   graph: IGraphData,
   user: firebase.User | null
 ): ThunkResult<void> => dispatch => {
