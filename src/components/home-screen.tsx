@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import "./home-screen.css";
 
 import scatter from "../imgs/scatter-icon.svg";
+import selectIcon from "../imgs/select-graph-icon.svg";
 
 const HomeScreen: React.SFC = () => {
   return (
@@ -13,8 +14,11 @@ const HomeScreen: React.SFC = () => {
         <Row className="home-screen-row">
           <Col xs={6} sm={4}>
             <div className="yellow comment-square">
-              <h1 className="message">Select graph</h1>
-              <FontAwesomeIcon icon="comment" className="fa-6x comment-icon" />
+              <img
+                src={selectIcon}
+                alt="select graph"
+                className="comment-icon"
+              />
             </div>
           </Col>
           <Link to="./creating/line-graph">

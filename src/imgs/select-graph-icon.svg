@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="177px" height="137px" viewBox="0 0 177 137" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>select-graph-icon</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="select-graph-icon">
+            <polygon id="Triangle" fill="#FFFFFF" transform="translate(153.689691, 121.513117) rotate(121.000000) translate(-153.689691, -121.513117) " points="153.689691 105.056006 165.436202 137.970228 141.943179 137.970228"></polygon>
+            <g stroke-width="1">
+                <ellipse id="Oval" fill="#FFFFFF" cx="88.5" cy="68.5" rx="88.5" ry="68.5"></ellipse>
+                <text id="Select-graph" font-family="Avenir-Book, Avenir" font-size="20" font-weight="normal" letter-spacing="0.833333313" fill="#494949">
+                    <tspan x="27" y="73">Select graph</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
