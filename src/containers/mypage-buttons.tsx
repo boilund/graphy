@@ -20,30 +20,54 @@ interface IProps {
   setYAxis(yAxis: string): void;
 }
 
-class MypageButtons extends React.Component<IProps, {}> {
+interface IState {
+  openMenus: boolean;
+}
+
+class MypageButtons extends React.Component<IProps, IState> {
   constructor(props: any) {
     super(props);
+    this.toggleMenus = this.toggleMenus.bind(this);
     this.handleClickEdit = this.handleClickEdit.bind(this);
+    this.state = {
+      openMenus: false
+    };
   }
 
   public render() {
+    const { openMenus } = this.state;
     return (
-      <div className="mypage-buttons">
-        <span
-          className="mypage-icon d-inline-block"
-          onClick={this.handleClickEdit}
-        >
-          <FontAwesomeIcon icon="pencil-alt" className="mypage-fa" />
-        </span>
-        <span className="mypage-icon d-inline-block">
-          <FontAwesomeIcon icon="download" className="mypage-fa" />
-        </span>
-        <span className="mypage-icon d-inline-block">
-          <FontAwesomeIcon icon="share-alt" className="mypage-fa" />
-        </span>
-      </div>
+      <React.Fragment>
+        {!openMenus && (
+          <div onMouseEnter={this.toggleMenus}>
+            <FontAwesomeIcon icon="ellipsis-v" className="fa-2x menu" />
+          </div>
+        )}
+        {openMenus && (
+          <div className="mypage-buttons" onMouseLeave={this.toggleMenus}>
+            <span
+              className="mypage-icon d-inline-block"
+              onClick={this.handleClickEdit}
+            >
+              <FontAwesomeIcon icon="pencil-alt" className="mypage-fa" />
+            </span>
+            <span className="mypage-icon d-inline-block">
+              <FontAwesomeIcon icon="download" className="mypage-fa" />
+            </span>
+            <span className="mypage-icon d-inline-block">
+              <FontAwesomeIcon icon="share-alt" className="mypage-fa" />
+            </span>
+          </div>
+        )}
+      </React.Fragment>
     );
   }
+
+  private toggleMenus = () => {
+    this.setState({
+      openMenus: !this.state.openMenus
+    });
+  };
 
   private handleClickEdit = (): void => {
     const { graph, setData, setID, setTitle, setXAxis, setYAxis } = this.props;
