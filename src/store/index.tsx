@@ -5,6 +5,7 @@ import { reducer } from "../reducers/";
 import { IStoreState } from "../types/";
 
 export const initialState = {
+  color: "#FC7849",
   data: [{ columnX: "", columnY: 0 }],
   graphType: "",
   graphs: [],

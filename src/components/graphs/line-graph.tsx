@@ -13,6 +13,7 @@ import { Isize } from "../../utilities/getGraphSize";
 import "./graph-style.css";
 
 interface IProps {
+  color: string;
   data: IData[];
   size: Isize;
   title?: string;
@@ -20,7 +21,7 @@ interface IProps {
 }
 
 const LineGraph: React.SFC<IProps> = (props: IProps) => {
-  const { data, title, yAxis, size } = props;
+  const { color, data, title, yAxis, size } = props;
 
   return (
     <React.Fragment>
@@ -37,7 +38,7 @@ const LineGraph: React.SFC<IProps> = (props: IProps) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Line type="monotone" dataKey="columnY" name={yAxis} stroke="#8884d8" />
+        <Line type="monotone" dataKey="columnY" name={yAxis} stroke={color} />
       </LineChart>
     </React.Fragment>
   );

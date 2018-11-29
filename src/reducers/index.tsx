@@ -2,6 +2,7 @@ import { Action } from "../actions";
 import {
   FETCH_GRAPHS,
   FETCH_USER,
+  SET_COLOR,
   SET_DATA,
   SET_GRAPH_DATA,
   SET_ID,
@@ -22,6 +23,8 @@ export function reducer(
       return { ...state, user: action.user };
     case FETCH_GRAPHS:
       return { ...state, graphs: action.graphs };
+    case SET_COLOR:
+      return { ...state, color: action.color };
     case SET_DATA:
       return { ...state, data: action.data };
     case SET_GRAPH_DATA:

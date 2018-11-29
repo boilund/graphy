@@ -12,6 +12,7 @@ import { Isize } from "../../utilities/getGraphSize";
 import "./graph-style.css";
 
 interface IProps {
+  color: string;
   data: IData[];
   size: Isize;
   title?: string;
@@ -19,7 +20,7 @@ interface IProps {
 }
 
 const ScatterGraph: React.SFC<IProps> = (props: IProps) => {
-  const { data, title, size } = props;
+  const { color, data, title, size } = props;
 
   return (
     <React.Fragment>
@@ -32,7 +33,7 @@ const ScatterGraph: React.SFC<IProps> = (props: IProps) => {
         <CartesianGrid />
         <XAxis dataKey={"columnX"} type="number" name="stature" unit="cm" />
         <YAxis dataKey={"columnY"} type="number" name="weight" unit="kg" />
-        <Scatter name={title} data={data.slice()} fill="#8884d8" />
+        <Scatter name={title} data={data.slice()} fill={color} />
         <Tooltip cursor={{ strokeDasharray: "3 3" }} />
       </ScatterChart>
     </React.Fragment>

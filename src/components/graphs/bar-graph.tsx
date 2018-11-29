@@ -13,6 +13,7 @@ import { Isize } from "../../utilities/getGraphSize";
 import "./graph-style.css";
 
 interface IProps {
+  color: string;
   data: IData[];
   size: Isize;
   title?: string;
@@ -20,7 +21,7 @@ interface IProps {
 }
 
 const BarGraph: React.SFC<IProps> = (props: IProps) => {
-  const { data, title, yAxis, size } = props;
+  const { color, data, title, yAxis, size } = props;
 
   return (
     <React.Fragment>
@@ -37,7 +38,7 @@ const BarGraph: React.SFC<IProps> = (props: IProps) => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="columnY" fill="#8884d8" name={yAxis} />
+        <Bar dataKey="columnY" fill={color} name={yAxis} />
       </BarChart>
     </React.Fragment>
   );

@@ -1,6 +1,7 @@
 import { IData, IGraphData } from "../actions/";
 
 export interface IStoreState {
+  readonly color: string;
   readonly data: IData[];
   readonly graphType: string;
   readonly graphs: IGraphData[];

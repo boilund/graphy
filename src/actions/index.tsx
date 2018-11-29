@@ -5,6 +5,7 @@ import { firebaseAuth, firebaseDb, firebaseGoogleProvider } from "../firebase";
 import { IStoreState } from "../types";
 
 export interface IGraphData {
+  color: string;
   data: IData[];
   graphType: string;
   id: string;
@@ -26,6 +27,11 @@ export interface IData {
 export interface ISetData {
   data: IData[];
   type: constants.SET_DATA;
+}
+
+export interface ISetColor {
+  color: string;
+  type: constants.SET_COLOR;
 }
 
 export interface ISetID {
@@ -65,6 +71,7 @@ export interface IFetchGraphs {
 
 export type Action =
   | ISetGraph
+  | ISetColor
   | ISetData
   | ISetID
   | ISetType
@@ -131,6 +138,13 @@ export const setGraph = (
     dispatch({ graph, type: constants.SET_GRAPH_DATA });
   }
 };
+
+export function setColor(color: string): ISetColor {
+  return {
+    color,
+    type: constants.SET_COLOR
+  };
+}
 
 export function setData(data: IData[]): ISetData {
   return {

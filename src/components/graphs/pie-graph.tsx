@@ -5,6 +5,7 @@ import { Isize } from "../../utilities/getGraphSize";
 import "./graph-style.css";
 
 interface IProps {
+  color: string;
   data: IData[];
   size: Isize;
   title?: string;
@@ -12,7 +13,7 @@ interface IProps {
 }
 
 const PieGraph: React.SFC<IProps> = (props: IProps) => {
-  const { data, title, size } = props;
+  const { color, data, title, size } = props;
 
   return (
     <React.Fragment>
@@ -25,7 +26,7 @@ const PieGraph: React.SFC<IProps> = (props: IProps) => {
           cx={"50%"}
           cy={"50%"}
           outerRadius={"80%"}
-          fill="#8884d8"
+          fill={color}
           label={true}
         />
       </PieChart>

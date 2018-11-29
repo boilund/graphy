@@ -1,3 +1,6 @@
+export const SET_COLOR = "SET_COLOR";
+export type SET_COLOR = typeof SET_COLOR;
+
 export const SET_GRAPH_DATA = "SET_GRAPH_DATA";
 export type SET_GRAPH_DATA = typeof SET_GRAPH_DATA;
 

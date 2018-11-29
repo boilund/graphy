@@ -12,6 +12,7 @@ import { Isize } from "../../utilities/getGraphSize";
 import "./graph-style.css";
 
 interface IProps {
+  color: string;
   data: IData[];
   size: Isize;
   title?: string;
@@ -19,7 +20,7 @@ interface IProps {
 }
 
 const AreaGraph: React.SFC<IProps> = (props: IProps) => {
-  const { data, title, yAxis, size } = props;
+  const { color, data, title, yAxis, size } = props;
 
   return (
     <React.Fragment>
@@ -39,8 +40,8 @@ const AreaGraph: React.SFC<IProps> = (props: IProps) => {
           type="monotone"
           dataKey="columnY"
           name={yAxis}
-          stroke="#8884d8"
-          fill="#8884d8"
+          stroke={color}
+          fill={color}
         />
       </AreaChart>
     </React.Fragment>

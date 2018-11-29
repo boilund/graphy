@@ -28,8 +28,10 @@ import { IStoreState } from "../types/";
 
 import { generateUuid } from "../utilities/generateUuid";
 import { getGraphSize } from "../utilities/getGraphSize";
+import { pickColor } from "../utilities/pickColor";
 
 interface IProps {
+  color: string;
   data: IData[];
   graphType: string;
   id: string;
@@ -37,6 +39,7 @@ interface IProps {
   user: firebase.User | null;
   xAxis: string;
   yAxis: string;
+  setColor(color: string): void;
   setData(data: IData[]): void;
   setGraphType(graphType: string): void;
   setGraph(graph: IGraphData, user: firebase.User | null): void;
@@ -76,6 +79,7 @@ class CreateNewGraph extends React.Component<
       inputData: this.props.data,
       windowWidth: window.innerWidth
     });
+    this.props.setColor(pickColor());
   }
 
   public render() {
@@ -222,12 +226,12 @@ class CreateNewGraph extends React.Component<
 
   private showGraph = () => {
     const { id: graphType } = this.props.match.params;
-    const { data, title, yAxis } = this.props;
+    const { color, data, title, yAxis } = this.props;
 
     this.props.setGraphType(graphType);
 
     const size = getGraphSize(this.state.windowWidth, "create-page");
-    const graphProps = { data, title, yAxis, size };
+    const graphProps = { color, data, title, yAxis, size };
 
     switch (graphType) {
       case "line-graph":
@@ -353,13 +357,23 @@ class CreateNewGraph extends React.Component<
   };
 
   private save = (): void => {
-    const { data, graphType, title, xAxis, yAxis, user, id } = this.props;
+    const {
+      color,
+      data,
+      graphType,
+      title,
+      xAxis,
+      yAxis,
+      user,
+      id
+    } = this.props;
     let generatedId;
     if (!id) {
       generatedId = generateUuid();
     }
 
     const currentGraph = {
+      color,
       data,
       graphType,
       id: generatedId || id,
@@ -375,6 +389,7 @@ class CreateNewGraph extends React.Component<
 
 export function mapStateToProps(state: IStoreState) {
   return {
+    color: state.color,
     data: state.data,
     graphType: state.graphType,
     title: state.title,
@@ -388,6 +403,7 @@ export function mapDispatchToProps(
   dispatch: ThunkDispatch<IStoreState, undefined, actions.Action>
 ) {
   return {
+    setColor: (color: string) => dispatch(actions.setColor(color)),
     setData: (data: actions.IData[]) => dispatch(actions.setData(data)),
     setGraph: (graph: actions.IGraphData, user: firebase.User | null) =>
       dispatch(actions.setGraph(graph, user)),
