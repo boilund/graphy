@@ -32,6 +32,7 @@ import { getGraphSize } from "../utilities/getGraphSize";
 interface IProps {
   data: IData[];
   graphType: string;
+  id: string;
   title: string;
   user: firebase.User | null;
   xAxis: string;
@@ -72,6 +73,7 @@ class CreateNewGraph extends React.Component<
 
   public componentDidMount() {
     this.setState({
+      inputData: this.props.data,
       windowWidth: window.innerWidth
     });
   }
@@ -351,15 +353,23 @@ class CreateNewGraph extends React.Component<
   };
 
   private save = (): void => {
-    const { data, graphType, title, xAxis, yAxis, user } = this.props;
+    const { data, graphType, title, xAxis, yAxis, user, id } = this.props;
+    let generatedId;
+    if (!id) {
+      generatedId = generateUuid();
+    }
 
-    this.props.history.push("/my-graphs");
+    const currentGraph = {
+      data,
+      graphType,
+      id: generatedId || id,
+      title,
+      xAxis,
+      yAxis
+    };
 
-    const id = generateUuid();
-    this.props.setID(id);
-
-    const currentGraph = { id, data, graphType, title, xAxis, yAxis };
     this.props.setGraph(currentGraph, user);
+    this.props.history.push("/my-graphs");
   };
 }
 
