@@ -26,7 +26,7 @@ const Login: React.SFC<IProps> = (props: IProps) => {
     <main className="App-main login-main">
       <Grid>
         <Row className="login-row">
-          <Col xs={8} xsOffset={2} sm={4} smOffset={4} className="login-box">
+          <Col xs={10} xsOffset={1} md={4} mdOffset={4} className="login-box">
             <h1 className="login-box-header">Login to Graphy</h1>
             <Button className="btn-block login-btn" onClick={signIn}>
               <img className="google-logo" src={google} alt="Google logo" />

@@ -37,8 +37,7 @@ label {
 }
 
 .login-btn:hover, .login-btn:focus, .signin-btn:hover, .signin-btn:focus {
-  background-color: #A498DA;
-  color: white;
+  color: #3E80E4;
 }
 
 .signin-btn {
@@ -50,7 +49,3 @@ img.google-logo {
   margin: 20px 10px;
 }
 
-.logout-btn {
-  height: 50px;
-  width: 150px;
-}

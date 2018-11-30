@@ -23,9 +23,9 @@ const createPageColumn = {
 };
 
 const myPageColumn = {
-  xs: 6,
+  xs: 12,
   // tslint:disable-next-line:object-literal-sort-keys
-  sm: 4,
+  sm: 6,
   md: 4,
   lg: 4,
   xl: 4

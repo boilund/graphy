@@ -29,6 +29,7 @@ const ScatterGraph: React.SFC<IProps> = (props: IProps) => {
         width={size.width}
         height={size.height}
         margin={{ top: 10, right: 30, bottom: 0, left: 0 }}
+        className="center"
       >
         <CartesianGrid />
         <XAxis dataKey={"columnX"} type="number" name="stature" unit="cm" />

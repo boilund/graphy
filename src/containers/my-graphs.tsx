@@ -64,7 +64,7 @@ class MyGraphs extends React.Component<IProps, IState> {
     switch (graph.graphType) {
       case "line-graph":
         return (
-          <Col xs={6} sm={4} key={index}>
+          <Col xs={12} sm={6} md={4} key={index}>
             <div className="box">
               <LineGraph {...graph} size={size} />
               <MypageButtons graph={graph} />
@@ -73,7 +73,7 @@ class MyGraphs extends React.Component<IProps, IState> {
         );
       case "bar-graph":
         return (
-          <Col xs={6} sm={4} key={index}>
+          <Col xs={12} sm={6} md={4} key={index}>
             <div className="box">
               <BarGraph {...graph} size={size} />
               <MypageButtons graph={graph} />
@@ -82,7 +82,7 @@ class MyGraphs extends React.Component<IProps, IState> {
         );
       case "area-graph":
         return (
-          <Col xs={6} sm={4} key={index}>
+          <Col xs={12} sm={6} md={4} key={index}>
             <div className="box">
               <AreaGraph {...graph} size={size} />
               <MypageButtons graph={graph} />
@@ -91,7 +91,7 @@ class MyGraphs extends React.Component<IProps, IState> {
         );
       case "pie-graph":
         return (
-          <Col xs={6} sm={4} key={index}>
+          <Col xs={12} sm={6} md={4} key={index}>
             <div className="box">
               <PieGraph {...graph} size={size} />
               <MypageButtons graph={graph} />
@@ -100,7 +100,7 @@ class MyGraphs extends React.Component<IProps, IState> {
         );
       case "scatter-graph":
         return (
-          <Col xs={6} sm={4} key={index}>
+          <Col xs={12} sm={6} md={4} key={index}>
             <div className="box">
               <ScatterGraph {...graph} size={size} />
               <MypageButtons graph={graph} />
