@@ -53,21 +53,97 @@
   font-weight: bold;
 }
 
-.save-button {
+.save-button\#55848A {
+  background-color: #55848A;
+  color: white;
+  margin: 20px 0;
+  opacity: 0.9;
+}
+
+.save-button\#55848A:hover {
+  background-color: #55848A;
+  color: white;
+}
+
+.btn.save-button\#55848A:disabled {
+  border: none;
+  background-color: #55848A;
+  color: white;
+  opacity: 0.7;
+}
+
+.save-button\#FC7849 {
   background-color: #FC7849;
   color: white;
   margin: 20px 0;
   opacity: 0.9;
 }
 
-.save-button:hover {
+.save-button\#FC7849:hover {
   background-color: #FC7849;
   color: white;
 }
 
-.btn.save-button:disabled {
+.btn.save-button\#FC7849:disabled {
   border: none;
   background-color: #FC7849;
+  color: white;
+  opacity: 0.7;
+}
+
+.save-button\#FB5154 {
+  background-color: #FB5154;
+  color: white;
+  margin: 20px 0;
+  opacity: 0.9;
+}
+
+.save-button\#FB5154:hover {
+  background-color: #FB5154;
+  color: white;
+}
+
+.btn.save-button\#FB5154:disabled {
+  border: none;
+  background-color: #FB5154;
+  color: white;
+  opacity: 0.7;
+}
+
+.save-button\#FDCC60 {
+  background-color: #FDCC60;
+  color: white;
+  margin: 20px 0;
+  opacity: 0.9;
+}
+
+.save-button\#FDCC60:hover {
+  background-color: #FDCC60;
+  color: white;
+}
+
+.btn.save-button\#FDCC60:disabled {
+  border: none;
+  background-color: #FDCC60;
+  color: white;
+  opacity: 0.7;
+}
+
+.save-button\#95B15E {
+  background-color: #95B15E;
+  color: white;
+  margin: 20px 0;
+  opacity: 0.9;
+}
+
+.save-button\#95B15E:hover {
+  background-color: #95B15E;
+  color: white;
+}
+
+.btn.save-button\#95B15E:disabled {
+  border: none;
+  background-color: #95B15E;
   color: white;
   opacity: 0.7;
 }
