@@ -73,7 +73,7 @@ class MypageButtons extends React.Component<IProps, IState> {
     const { graph, setData, setID, setTitle, setXAxis, setYAxis } = this.props;
     this.props.history.push(`/creating/${graph.graphType}/${graph.id}`);
     setData(graph.data);
-    setID(graph.id);
+    setID(graph.id!);
     setTitle(graph.title);
     setXAxis(graph.xAxis);
     setYAxis(graph.yAxis);
