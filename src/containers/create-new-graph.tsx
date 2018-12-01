@@ -356,6 +356,16 @@ class CreateNewGraph extends React.Component<
     });
   };
 
+  private resetCurrentData = (): void => {
+    const { setData, setID, setTitle, setXAxis, setYAxis } = this.props;
+
+    setData(initialState.inputData);
+    setID(null);
+    setTitle("");
+    setXAxis("");
+    setYAxis("");
+  };
+
   private save = (): void => {
     const {
       color,
@@ -380,6 +390,7 @@ class CreateNewGraph extends React.Component<
 
     this.props.setGraph(currentGraph, user);
     this.props.history.push("/my-graphs");
+    this.resetCurrentData();
   };
 }
 
