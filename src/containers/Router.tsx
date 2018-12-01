@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import Footer from "../components/footer";
 import HomeScreen from "../components/home-screen";
-import CreateNewGraph from "./create-new-graph";
+import CreateUpdateGraph from "./create-update-graph";
 import Header from "./header";
 import Login from "./login";
 import MyGraphs from "./my-graphs";
@@ -29,7 +29,7 @@ class Router extends React.Component<IProps, {}> {
           <Header />
           <Switch>
             <Route exact={true} path="/" component={HomeScreen} />
-            <Route path="/creating/:id" component={CreateNewGraph} />
+            <Route path="/creating/:id" component={CreateUpdateGraph} />
             <Route path="/my-graphs" component={MyGraphs} />
             <Route path="/login" component={Login} />
           </Switch>

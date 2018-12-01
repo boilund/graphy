@@ -12,19 +12,19 @@ import {
   Table
 } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-import { IData, IGraphData } from "../actions/";
+import { IData, IGraphData } from "../actions";
 import AreaGraph from "../components/graphs/area-graph";
 import BarGraph from "../components/graphs/bar-graph";
 import LineGraph from "../components/graphs/line-graph";
 import PieGraph from "../components/graphs/pie-graph";
 import ScatterGraph from "../components/graphs/scatter-graph";
-import "./create-new-graph.css";
+import "./create-update-graph.css";
 
 import { connect } from "react-redux";
 import { RouteComponentProps } from "react-router-dom";
 import { ThunkDispatch } from "redux-thunk";
-import * as actions from "../actions/";
-import { IStoreState } from "../types/";
+import * as actions from "../actions";
+import { IStoreState } from "../types";
 
 import { generateUuid } from "../utilities/generateUuid";
 import { getGraphSize } from "../utilities/getGraphSize";
@@ -61,7 +61,7 @@ const initialState = {
   windowWidth: 1000
 };
 
-class CreateNewGraph extends React.Component<
+class CreateUpdateGraph extends React.Component<
   RouteComponentProps<{ id: string }> & IProps,
   IState
 > {
@@ -427,4 +427,4 @@ export function mapDispatchToProps(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CreateNewGraph);
+)(CreateUpdateGraph);
