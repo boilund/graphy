@@ -9,7 +9,7 @@ export const initialState = {
   data: [{ columnX: "", columnY: 0 }],
   graphType: "",
   graphs: [],
-  id: "",
+  id: null,
   title: "",
   user: null,
   xAxis: "",

@@ -5,7 +5,7 @@ export interface IStoreState {
   readonly data: IData[];
   readonly graphType: string;
   readonly graphs: IGraphData[];
-  readonly id: string;
+  readonly id: string | null;
   readonly title: string;
   readonly user: firebase.User | null;
   readonly xAxis: string;

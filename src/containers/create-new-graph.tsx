@@ -34,7 +34,7 @@ interface IProps {
   color: string;
   data: IData[];
   graphType: string;
-  id: string;
+  id: string | null;
   title: string;
   user: firebase.User | null;
   xAxis: string;
@@ -43,7 +43,7 @@ interface IProps {
   setData(data: IData[]): void;
   setGraphType(graphType: string): void;
   setGraph(graph: IGraphData, user: firebase.User | null): void;
-  setID(id: string): void;
+  setID(id: string | null): void;
   setTitle(title: string): void;
   setXAxis(xAxis: string): void;
   setYAxis(yAxis: string): void;
@@ -367,16 +367,12 @@ class CreateNewGraph extends React.Component<
       user,
       id
     } = this.props;
-    let generatedId;
-    if (!id) {
-      generatedId = generateUuid();
-    }
 
     const currentGraph = {
       color,
       data,
       graphType,
-      id: generatedId || id,
+      id: id === null ? generateUuid() : id,
       title,
       xAxis,
       yAxis
@@ -392,6 +388,7 @@ export function mapStateToProps(state: IStoreState) {
     color: state.color,
     data: state.data,
     graphType: state.graphType,
+    id: state.id,
     title: state.title,
     user: state.user,
     xAxis: state.xAxis,
@@ -409,7 +406,7 @@ export function mapDispatchToProps(
       dispatch(actions.setGraph(graph, user)),
     setGraphType: (graphType: string) =>
       dispatch(actions.setGraphType(graphType)),
-    setID: (id: string) => dispatch(actions.setID(id)),
+    setID: (id: string | null) => dispatch(actions.setID(id)),
     setTitle: (title: string) => dispatch(actions.setTitle(title)),
     setXAxis: (xAxis: string) => dispatch(actions.setXAxis(xAxis)),
     setYAxis: (yAxis: string) => dispatch(actions.setYAxis(yAxis))

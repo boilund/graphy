@@ -8,7 +8,7 @@ export interface IGraphData {
   color: string;
   data: IData[];
   graphType: string;
-  id: string;
+  id: string | null;
   title: string;
   xAxis: string;
   yAxis: string;
@@ -35,7 +35,7 @@ export interface ISetColor {
 }
 
 export interface ISetID {
-  id: string;
+  id: string | null;
   type: constants.SET_ID;
 }
 
@@ -160,7 +160,7 @@ export function setGraphType(graphType: string): ISetType {
   };
 }
 
-export function setID(id: string): ISetID {
+export function setID(id: string | null): ISetID {
   return {
     id,
     type: constants.SET_ID
