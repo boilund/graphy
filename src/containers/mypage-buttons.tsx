@@ -39,12 +39,12 @@ class MypageButtons extends React.Component<IProps, IState> {
     return (
       <React.Fragment>
         {!openMenus && (
-          <div onMouseEnter={this.toggleMenus}>
+          <div onClick={this.toggleMenus}>
             <FontAwesomeIcon icon="ellipsis-v" className="fa-2x menu" />
           </div>
         )}
         {openMenus && (
-          <div className="mypage-buttons" onMouseLeave={this.toggleMenus}>
+          <div className="mypage-buttons" onClick={this.toggleMenus}>
             <span
               className="mypage-icon d-inline-block"
               onClick={this.handleClickEdit}
