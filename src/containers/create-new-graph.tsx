@@ -84,7 +84,7 @@ class CreateNewGraph extends React.Component<
 
   public render() {
     const { inputData, row } = this.state;
-    const { title, xAxis, yAxis, user } = this.props;
+    const { title, xAxis, yAxis, user, color } = this.props;
 
     const tableContents = new Array(row).fill({
       columnX: 0,
@@ -204,7 +204,7 @@ class CreateNewGraph extends React.Component<
                 {this.showGraph()}
               </div>
               <Button
-                className="save-button"
+                className={"save-button" + color}
                 bsSize="large"
                 block={true}
                 onClick={this.save}
