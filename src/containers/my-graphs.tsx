@@ -35,6 +35,10 @@ class MyGraphs extends React.Component<IProps, IState> {
     };
   }
 
+  public componentDidUpdate() {
+    this.props.fetchGraphs(this.props.user);
+  }
+
   public componentDidMount() {
     this.setState({
       windowWidth: window.innerWidth
