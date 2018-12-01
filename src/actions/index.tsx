@@ -83,13 +83,14 @@ export type Action =
 
 type ThunkResult<R> = ThunkAction<R, IStoreState, undefined, Action>;
 
+interface IgraphInfo {
+  idExist: boolean;
+  id: string | undefined;
+}
+
 export const fetchGraphs = (
   user: firebase.User | null
 ): ThunkResult<void> => dispatch => {
-  const firestore = firebase.firestore();
-  const settings = { timestampsInSnapshots: true };
-  firestore.settings(settings);
-
   if (user) {
     const graphs: IGraphData[] = [];
     firebaseDb
@@ -114,29 +115,45 @@ export const setGraph = (
   graph: IGraphData,
   user: firebase.User | null
 ): ThunkResult<void> => dispatch => {
-  const firestore = firebase.firestore();
-  const settings = { timestampsInSnapshots: true };
-  firestore.settings(settings);
+  const userId = user!.uid;
+  const graphsRef = firebaseDb
+    .collection("users")
+    .doc(`${userId}`)
+    .collection("graphs");
 
-  if (user) {
-    firebaseDb
-      .collection("users")
-      .doc(`${user.uid}`)
-      .collection("graphs")
-      .add({
-        graph
-      })
-      .then((docRef: any) => {
-        // tslint:disable-next-line:no-console
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch((error: any) => {
-        // tslint:disable-next-line:no-console
-        console.error("Error adding document: ", error);
-      });
+  const checkGraphId = async () => {
+    const querySnapshot = await graphsRef
+      .where("graph.id", "==", graph.id)
+      .get();
+    const idExist = !querySnapshot.empty;
+    const id = idExist ? querySnapshot.docs[0].id : undefined;
+    return Promise.resolve({ idExist, id });
+  };
 
+  const CreateOrUpdateGraph = (graphInfo: IgraphInfo) => {
+    const { idExist, id } = graphInfo;
+    if (idExist) {
+      // update
+      graphsRef.doc(id).set({ graph });
+    } else {
+      // create new graph
+      graphsRef
+        .add({
+          graph
+        })
+        .then((docRef: any) => {
+          // tslint:disable-next-line:no-console
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch((error: any) => {
+          // tslint:disable-next-line:no-console
+          console.error("Error adding document: ", error);
+        });
+    }
     dispatch({ graph, type: constants.SET_GRAPH_DATA });
-  }
+  };
+
+  checkGraphId().then(CreateOrUpdateGraph);
 };
 
 export function setColor(color: string): ISetColor {
